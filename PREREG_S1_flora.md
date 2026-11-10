@@ -39,3 +39,7 @@ Students with no chatbot turns are excluded (none expected in the release). Cova
 ## Not done
 
 No hyperparameter search beyond L2-regularised logistic regression with C = 1. No outcome-based selection of n-gram length, thresholds or codes.
+
+## Deviations (recorded after the primary run)
+
+D1 (10 November 2026, after the primary run). Chatbot replies can repeat text the student pasted into a prompt, for example a draft sent for feedback. Overlap with such text is the student's own writing. We therefore recomputed uptake excluding 8-grams that also occur in the student's own prompts (`src/run_s1_echo.py`) and repeated RQ2–RQ4 with this label (`results/s1_stats_echo_removed.json`). This correction was not planned; both versions are reported.

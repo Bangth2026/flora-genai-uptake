@@ -61,7 +61,7 @@ def main(a):
         for k, v in enumerate(rng.choice(others, 200)):
             null[i, k] = coverage(prop_tok[u], g8[v], 8)
     null99 = float(np.percentile(null, 99))
-    u8 = U[8]
+    u8 = U[8] if not a.label else np.load(a.label)
     excess = u8 - np.median(null, axis=1)
     q = lambda x: {k: float(v) for k, v in zip(['p10', 'p25', 'median', 'p75', 'p90', 'max'], np.percentile(x, [10, 25, 50, 75, 90, 100]))}
     S['rq1'] = {'U8': {**q(u8), 'mean': float(u8.mean())}, 'U5_median': float(np.median(U[5])), 'U12_median': float(np.median(U[12])),
@@ -185,5 +185,5 @@ def main(a):
 
 
 if __name__ == '__main__':
-    ap = argparse.ArgumentParser(); ap.add_argument('--data'); ap.add_argument('--out')
+    ap = argparse.ArgumentParser(); ap.add_argument('--data'); ap.add_argument('--out'); ap.add_argument('--label', default=None)
     main(ap.parse_args())
