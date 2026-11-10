@@ -44,3 +44,9 @@ No other detectors, models, passage rules or thresholds after seeing detector sc
 ## Deviations
 
 R2-1 (before any detector score was computed). Loading Qwen2.5-1.5B in float32 exceeded the 7 GB memory of the analysis machine and the process was killed before scoring its first passage. Its weights are therefore loaded in bfloat16; logits are cast to float32 before the D1 and D2 computations. The two 0.5B models stay in float32.
+
+R2-2 (during scoring, no analysis run). The scoring process was killed for lack of memory twice while computing D3. Scoring was split into separate processes per detector (`src/r2_detect.py DATA d12 | d3 | merge`) and the Binoculars cross-perplexity was computed in chunks of 64 positions, which gives the same value up to floating-point rounding. No score was inspected before all scores were complete.
+
+## Outcome (added after the analyses)
+
+Results are in `results/r2_stats.json`, `results/r2_sens.json` and, for the post hoc check of composed passages against reading highlights and other proposals (not planned), `results/r2_posthoc.json`. The length floor stayed at 40 tokens (147 chatbot, 618 composed passages).

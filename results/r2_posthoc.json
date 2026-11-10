@@ -1,0 +1,8 @@
+{
+ "n_composed": 618,
+ "share_any_highlight_overlap": 0.003236245954692557,
+ "mean_highlight_cov": 0.001768646045006397,
+ "share_any_peer_overlap": 0.07281553398058252,
+ "mean_peer_cov": 0.011113031340720104,
+ "share_peer_cov_ge20": 0.012944983818770227
+}

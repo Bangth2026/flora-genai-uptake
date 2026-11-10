@@ -1,0 +1,26 @@
+passages D1/D2 0 765 5
+passages D1/D2 100 765 59
+passages D1/D2 200 765 106
+passages D1/D2 300 765 157
+passages D1/D2 400 765 204
+passages D1/D2 500 765 249
+passages D1/D2 600 765 298
+passages D1/D2 700 765 352
+proposals D1/D2 0 275 5
+proposals D1/D2 100 275 280
+proposals D1/D2 200 275 573
+done d12
+passages D3 0 765 2
+passages D3 100 765 118
+passages D3 200 765 228
+passages D3 300 765 341
+passages D3 400 765 440
+passages D3 500 765 542
+passages D3 600 765 655
+passages D3 700 765 776
+/bin/bash: line 1:  4150 Killed                  python3 -I src/r2_detect.py /home/claude/data/flora_raw d3
+proposals D3 0 275 6
+proposals D3 100 275 506
+proposals D3 200 275 1014
+done d3
+done merge
