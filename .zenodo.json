@@ -1,7 +1,7 @@
 {
   "title": "Provenance-checked uptake of chatbot text in graded student proposals (FLoRA): code, analysis plans, statistics",
   "upload_type": "software",
-  "description": "Version 1.1.0. Code, time-stamped analysis plans and statistics files for a study of verbatim uptake of chatbot text in students' graded project proposals (FLoRA Open Data IPS, 275 students). v1.1.0 adds plan R1: time-aware echo correction, third-source filter, clock check from chat-box keystrokes, validation against logged paste events, and extended analyses of grades and detection. All analyses are exploratory. No third-party data are redistributed.",
+  "description": "Version 1.2.0. Code, time-stamped analysis plans and statistics files for a study of verbatim uptake of chatbot text in students' graded project proposals (FLoRA Open Data IPS, 275 students). v1.1.0 added plan R1: time-aware echo correction, third-source filter, clock check from chat-box keystrokes, validation against logged paste events, and extended analyses of grades and detection. v1.2.0 adds plan R2: three open zero-shot AI-text detectors (log-likelihood, Fast-DetectGPT, Binoculars on Qwen2.5 models) evaluated against logged provenance at paragraph level, by first language, and sensitivity of the third-source threshold. All analyses are exploratory. No third-party data are redistributed.",
   "creators": [
     {
       "name": "Truong, Hai Bang",
@@ -31,5 +31,5 @@
       "resource_type": "publication-preprint"
     }
   ],
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

@@ -18,6 +18,8 @@ Code, time-stamped analysis plans and statistics files for a study of how much o
 | `results/s1_stats_uprov.json` | RQ2–RQ4 with U_prov |
 | `PREREG_R1.md`, `src/r1_clock.py` | Plan R1 and clock check, pushed before the R1 analyses |
 | `results/r1_stats.json` | R1 analyses (`src/run_r1.py`) |
+| `PREREG_R2.md` | Plan R2 (open AI-text detectors, third-source threshold), pushed before the R2 analyses; deviations R2-1 and R2-2 recorded |
+| `results/r2_stats.json`, `results/r2_sens.json` | R2 analyses (`src/r2_label.py`, `src/r2_detect.py`, `src/r2_stats.py`); post hoc check `results/r2_posthoc.json` |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -29,7 +31,19 @@ U* is the share of the final proposal covered by 8-grams that are in a chatbot r
 - Grade per SD of U*: 0.02 points on 0–15 (95% CI −0.21 to 0.24); mean grade by uptake quartile 11.9, 11.8, 11.8, 11.7.
 - Detection of the top quartile: exposure AUC 0.615 (0.538–0.693); coded intent and request features add nothing detectable (all gains inconclusive).
 
-All numbers: `results/r1_stats.json`. Earlier versions of the measure: `results/s1_*.json`, `results/s1b_provenance.json`.
+## Open AI-text detectors (plan R2)
+
+Paragraphs of the final proposals (≥ 40 tokens) labelled from the logs: 147 chatbot (≥ 80% covered by chatbot-first 8-grams) and 618 composed (no reply 8-gram, < 5% logged paste).
+
+| Detector | AUC [95% CI] | False flags at 50% / 80% detection |
+|---|---|---|
+| D1 mean log-likelihood, Qwen2.5-1.5B | 0.649 [0.586, 0.708] | 26.7% / 60.8% |
+| D2 Fast-DetectGPT, Qwen2.5-1.5B | 0.533 [0.471, 0.596] | 46.8% / 75.2% |
+| D3 Binoculars, Qwen2.5-0.5B / 0.5B-Instruct | 0.573 [0.501, 0.638] | 41.4% / 73.8% |
+
+Composed paragraphs of students with a first language other than English scored as more machine-like on all three detectors (intervals exclude zero). Third-source threshold k = 3, 5, 10 leaves U* and the grade slope unchanged.
+
+All numbers: `results/r1_stats.json`, `results/r2_stats.json`. Earlier versions of the measure: `results/s1_*.json`, `results/s1b_provenance.json`.
 
 ## Reproduce
 
@@ -47,6 +61,10 @@ python -I src/run_s1.py --data DATA --out results/s1_stats_uprov.json --label re
 python -I src/r1_clock.py DATA
 python -I src/run_r1.py DATA
 python -I src/make_figs.py DATA && python -I src/make_pipeline_fig.py
+# R2 (needs torch, transformers; models Qwen/Qwen2.5-1.5B, Qwen/Qwen2.5-0.5B, Qwen/Qwen2.5-0.5B-Instruct from Hugging Face)
+python -I src/r2_label.py DATA
+for st in d12 d3 merge; do python -I src/r2_detect.py DATA $st; done
+python -I src/r2_stats.py && python -I src/r2_posthoc.py DATA
 ```
 
 Licence: MIT (code). Data remain under their own CC BY 4.0 licence.
