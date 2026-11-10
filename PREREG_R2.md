@@ -40,3 +40,7 @@ Recompute U* with the peer-proposal threshold k = 3, 5 (primary) and 10 other st
 ## Not done
 
 No other detectors, models, passage rules or thresholds after seeing detector scores. Commercial detectors are not used: their model versions change without notice, so results could not be reproduced from the released code.
+
+## Deviations
+
+R2-1 (before any detector score was computed). Loading Qwen2.5-1.5B in float32 exceeded the 7 GB memory of the analysis machine and the process was killed before scoring its first passage. Its weights are therefore loaded in bfloat16; logits are cast to float32 before the D1 and D2 computations. The two 0.5B models stay in float32.
