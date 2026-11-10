@@ -1,5 +1,9 @@
 # Provenance of GenAI text in student proposals (FLoRA): measurement, detection and grading
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101340.svg)](https://doi.org/10.5281/zenodo.24101340)
+
+v1.0.0: `10.5281/zenodo.24101340`. All versions: `10.5281/zenodo.24101339`.
+
 Code, time-stamped analysis plans and statistics files for a study of how much of students' submitted work comes verbatim from a GenAI chatbot, whether dialogue behaviour can detect it, and whether rubric grades reflect it. Data: FLoRA Open Data IPS (Li et al., 2026; Figshare [10.6084/m9.figshare.32321499](https://doi.org/10.6084/m9.figshare.32321499); CC BY 4.0), 275 postgraduate students, 3,542 student–GPT-4o turns. No third-party data are redistributed. All analyses are exploratory.
 
 ## Order of work (see `git log`)
