@@ -16,13 +16,20 @@ Code, time-stamped analysis plans and statistics files for a study of how much o
 | `src/align_check.py`, `PREREG_S1b_provenance.md` | Clock check and plan for provenance validation, committed before the provenance run |
 | `results/s1b_provenance.json` | Provenance from the writing log; decision rule selects U_prov as the primary label |
 | `results/s1_stats_uprov.json` | RQ2–RQ4 with U_prov |
+| `PREREG_R1.md`, `src/r1_clock.py` | Plan R1 and clock check, pushed before the R1 analyses |
+| `results/r1_stats.json` | R1 analyses (`src/run_r1.py`) |
 
-## Main results (Study 1)
+## Main results (plan R1, primary measure U*)
 
-- Naive 8-gram overlap overstates uptake: median 0.21 of proposal tokens. Removing text the student had pasted into prompts gives a median of 0.027 (D1).
-- Writing-log provenance: at the primary clock offset, 79.8% of the remaining overlap was in a chatbot reply before it appeared in the editor (93% at +1 h); 85% of these passages entered the editor in a single jump of 20 or more tokens. By the pre-specified rule (< 0.80), provenance-checked uptake U_prov is the primary label: median 0.019, 21.8% of students with at least a quarter of the proposal from chatbot text, 14.2% with at least half.
-- Detection: no model separates high-uptake students (top quartile of U_prov) above chance; exposure-only AUC 0.522, dialogue behaviour 0.521, combined 0.512; gain over exposure −0.012 (95% CI −0.099 to 0.080).
-- Grading: one SD of U_prov changes the proposal score by 0.07 points on a 15-point scale (95% CI −0.15 to 0.29), adjusting for prior knowledge, first language, degree and length; no association with self-reported gain in understanding (ρ = 0.03, n = 174).
+U* is the share of the final proposal covered by 8-grams that are in a chatbot reply, were not supplied by the student in an earlier prompt (time-aware echo correction), do not occur in reading highlights or in at least five other proposals, and were in a reply no later than their first appearance in the editor. Clocks aligned (chat-box Enter keystrokes vs ask times: median difference 2.2 s, `results/r1_clock.json`).
+
+- A direction-blind echo correction (v1.0) removed 25,994 proposal 8-grams, of which 9,533 (36.7%) had first appeared in a chatbot reply.
+- Logged paste events (68 students) contain 97.1% of U*-covered tokens.
+- Median U* 0.048; 30.5% of students take at least a quarter of the proposal from chatbot replies, 20.0% at least half; 69% of uptake tokens enter in the last 24 h before the last snapshot.
+- Grade per SD of U*: 0.02 points on 0–15 (95% CI −0.21 to 0.24); mean grade by uptake quartile 11.9, 11.8, 11.8, 11.7.
+- Detection of the top quartile: exposure AUC 0.615 (0.538–0.693); coded intent and request features add nothing detectable (all gains inconclusive).
+
+All numbers: `results/r1_stats.json`. Earlier versions of the measure: `results/s1_*.json`, `results/s1b_provenance.json`.
 
 ## Reproduce
 
@@ -36,6 +43,10 @@ python -I src/run_s1.py --data DATA --out results/s1_stats_echo_removed.json --l
 python -I src/align_check.py DATA
 python -I src/run_s1b_provenance.py DATA
 python -I src/run_s1.py --data DATA --out results/s1_stats_uprov.json --label results/Uprov_primary_0h.npy
+# R1 also needs Figshare files 5.2 (trace) and 5.8 (annotation) saved as DATA/trace.pkl and DATA/annot.pkl
+python -I src/r1_clock.py DATA
+python -I src/run_r1.py DATA
+python -I src/make_figs.py DATA && python -I src/make_pipeline_fig.py
 ```
 
 Licence: MIT (code). Data remain under their own CC BY 4.0 licence.

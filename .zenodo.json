@@ -1,13 +1,35 @@
 {
-  "title": "Provenance of GenAI text in student proposals (FLoRA): measurement, detection and grading (code, analysis plans, statistics)",
+  "title": "Provenance-checked uptake of chatbot text in graded student proposals (FLoRA): code, analysis plans, statistics",
   "upload_type": "software",
-  "description": "Code, time-stamped analysis plans and statistics files for a study of verbatim uptake of chatbot text in students' submitted project proposals (FLoRA Open Data IPS, 275 students). Uptake is measured from n-gram overlap, corrected for text the student pasted into prompts, and validated against writing-log provenance. All analyses are exploratory. No third-party data are redistributed.",
-  "creators": [{"name": "Truong, Hai Bang", "affiliation": "Saigon International University", "orcid": "0000-0001-5094-3128"}],
+  "description": "Version 1.1.0. Code, time-stamped analysis plans and statistics files for a study of verbatim uptake of chatbot text in students' graded project proposals (FLoRA Open Data IPS, 275 students). v1.1.0 adds plan R1: time-aware echo correction, third-source filter, clock check from chat-box keystrokes, validation against logged paste events, and extended analyses of grades and detection. All analyses are exploratory. No third-party data are redistributed.",
+  "creators": [
+    {
+      "name": "Truong, Hai Bang",
+      "affiliation": "Saigon International University",
+      "orcid": "0000-0001-5094-3128"
+    }
+  ],
   "license": "MIT",
   "access_right": "open",
-  "keywords": ["generative AI", "learning analytics", "help seeking", "academic writing", "assessment", "provenance"],
+  "keywords": [
+    "generative AI",
+    "learning analytics",
+    "help seeking",
+    "academic writing",
+    "assessment",
+    "provenance"
+  ],
   "related_identifiers": [
-    {"identifier": "10.6084/m9.figshare.32321499", "relation": "references", "resource_type": "dataset"},
-    {"identifier": "arXiv:2601.12718", "relation": "references", "resource_type": "publication-preprint"}
-  ]
+    {
+      "identifier": "10.6084/m9.figshare.32321499",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "arXiv:2601.12718",
+      "relation": "references",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "version": "1.1.0"
 }
