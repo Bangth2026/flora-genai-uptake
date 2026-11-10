@@ -1,0 +1,32 @@
+{
+ "primary_0h": {
+  "share_ue_tokens_chatbot_first": 0.7976444625680635,
+  "spearman_Ue_Uprov": 0.9335876864710162,
+  "Uprov_median": 0.019448946515397084,
+  "Uprov_p75": 0.19470656469170586,
+  "Uprov_p90": 0.7056889261287242,
+  "share_Uprov_ge_0.25": 0.21818181818181817,
+  "share_Uprov_ge_0.50": 0.14181818181818182
+ },
+ "plus1h": {
+  "share_ue_tokens_chatbot_first": 0.9296696970423853,
+  "spearman_Ue_Uprov": 0.9871435631865235,
+  "Uprov_median": 0.025280898876404494,
+  "Uprov_p75": 0.25067711154631445,
+  "Uprov_p90": 0.7991829466296548,
+  "share_Uprov_ge_0.25": 0.2509090909090909,
+  "share_Uprov_ge_0.50": 0.16363636363636364
+ },
+ "plus4h": {
+  "share_ue_tokens_chatbot_first": 0.9472282856388976,
+  "spearman_Ue_Uprov": 0.9887301333239017,
+  "Uprov_median": 0.02556818181818182,
+  "Uprov_p75": 0.2569828230022405,
+  "Uprov_p90": 0.8386674968866749,
+  "share_Uprov_ge_0.25": 0.2545454545454545,
+  "share_Uprov_ge_0.50": 0.17454545454545456
+ },
+ "verdict": "Uprov primary",
+ "paste_share_of_chatbot_first_grams_primary": 0.8488548399968079,
+ "Ue_check_median": 0.02661064425770308
+}

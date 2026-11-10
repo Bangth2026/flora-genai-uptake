@@ -16,3 +16,7 @@ A gram is **chatbot-first** if it never appears in the editor or t_bot ≤ t_ed 
 - Spearman correlation between Ue and U_prov.
 - Paste evidence: share of chatbot-first grams that enter the editor in a single snapshot transition adding at least 20 tokens.
 - RQ2–RQ4 of PREREG_S1_flora.md repeated with U_prov as the label.
+
+## Outcome of the decision rule (recorded after the run)
+
+Share of Ue-covered tokens that are chatbot-first: 0.798 at the primary offset (0.930 at +1 h, 0.947 at +4 h). Under the rule above, U_prov becomes the primary label; RQ2–RQ4 were repeated with it (`results/s1_stats_uprov.json`).
