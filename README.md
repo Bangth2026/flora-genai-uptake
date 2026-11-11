@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
-All versions: concept DOI 10.5281/zenodo.24101339. v1.2.0: 10.5281/zenodo.24109681.
+All versions: concept DOI 10.5281/zenodo.24101339. v1.3.0: 10.5281/zenodo.24123909; v1.2.0: 10.5281/zenodo.24109681.
 
 v1.0.0: `10.5281/zenodo.24101340`. All versions: `10.5281/zenodo.24101339`.
 
