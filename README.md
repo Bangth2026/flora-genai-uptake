@@ -22,6 +22,8 @@ Code, time-stamped analysis plans and statistics files for a study that attribut
 | `results/r2_stats.json`, `results/r2_sens.json` | R2 analyses (`src/r2_label.py`, `src/r2_detect.py`, `src/r2_stats.py`); post hoc check `results/r2_posthoc.json` |
 | `PREREG_R3.md` | Plan R3 (five provenance classes C/E/S/T/X; second dataset with human response-use codes and post-test; FLoRA typed/untraced reanalysis declared post hoc), pushed before the R3 analyses |
 | `results/r3_rs_stats.json`, `results/r3_flora_stats.json`, `results/r3_d3swap.json` | R3 analyses (`src/run_r3_rs.py`, `src/run_r3_flora.py`, `src/r3_d3swap.py`) |
+| `PREREG_R4.md` | Plan R4 (edit-size entry rule; T/X validation against logged pastes; chance baseline and bounds for code; length-controlled human-code validation; censored post-test model), pushed before the R4 analyses |
+| `results/r4_rs_stats.json`, `results/r4_flora_stats.json`, `results/r4_flora_tx_timing.json` | R4 analyses (`src/r4_rs.py`, `src/r4_flora.py`, `src/r4_flora_tx_timing.py`) |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -43,6 +45,8 @@ Each token of the final artefact is labelled C (chatbot-first), E (echo of the s
 | RelianceScope code (n = 79) | 23.4% | 5.0% | 42.9% | 28.6% | 0.1% |
 
 RelianceScope validation: segment uptake vs human codes "copy / write over the response" AUC 0.759 [0.713, 0.799]; U* vs perceived reliance ρ = 0.65. Post-test on pre-test and U*: −0.32 per SD [−0.71, 0.06] (58% at ceiling). FLoRA detectors, chatbot vs typed paragraphs: AUC 0.805 (D1), 0.665 (D2), 0.710 (D3); untraced paragraphs score like chatbot paragraphs.
+
+Plan R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams but 3.0% of T 8-grams entered through a logged paste. RelianceScope chance-corrected U* 13.2% (raw 23.4%); human-code AUC for "copy the response" 0.762, gain over a reply-length model 0.187 [0.139, 0.238]; post-test Tobit −0.75 per SD of U* [−1.37, −0.12].
 
 The RelianceScope data (Jin et al., 2026) are not redistributed here; obtain them from the authors' OSF repository and place them in RS_DIR.
 
@@ -84,6 +88,9 @@ python -I src/r2_stats.py && python -I src/r2_posthoc.py DATA
 python -I src/run_r3_rs.py RS_DIR
 python -I src/run_r3_flora.py DATA && python -I src/r3_d3swap.py
 python -I src/make_fig_classes.py
+# R4 (PROMPT_TXT: text of 'study materials/chatbot prompt.pdf', e.g. via pdftotext)
+python -I src/r4_rs.py RS_DIR PROMPT_TXT
+python -I src/r4_flora.py DATA && python -I src/r4_flora_tx_timing.py DATA
 ```
 
 Licence: MIT (code). Data remain under their own CC BY 4.0 licence.
