@@ -59,3 +59,11 @@ F-d. D3 sensitivity: Binoculars with the roles of observer and performer in the 
 ## Not done
 
 No further datasets, detectors, thresholds or outcome models after seeing R3 results.
+
+## Deviations
+
+R3-1. Segment uptake (R-c) is counted as the number of distinct chatbot-first 8-grams from the segment's replies whose first editor appearance falls in the segment window, rather than as tokens. Counting tokens would require the editor state at the end of each window. The AUC depends only on the ranking of segments.
+
+## Outcome (added after the analyses)
+
+Results: `results/r3_rs_stats.json` (second dataset), `results/r3_flora_stats.json` and `results/r3_d3swap.json` (FLoRA, post hoc). Per-student values for the second dataset are not committed, because that dataset is not ours to redistribute.

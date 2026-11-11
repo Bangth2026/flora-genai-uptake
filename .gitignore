@@ -3,3 +3,4 @@ __pycache__/
 manuscript/
 results/*.pkl
 results/U_R2check.npy
+results/r3_rs_students.csv

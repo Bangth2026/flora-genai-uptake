@@ -1,0 +1,7 @@
+{
+ "chatbot_vs_composed_all": 0.562017039825639,
+ "chatbot_vs_typed": 0.6871567904270142,
+ "chatbot_vs_untraced": 0.5457567642441592,
+ "untraced_vs_typed": 0.6606334841628959,
+ "l1_diff_sd_composed": 0.48674338785934723
+}
