@@ -42,3 +42,13 @@ The R3 entry rule compared the net change in length between consecutive snapshot
 ## Not done
 
 No other models, thresholds or criteria after seeing R4 results.
+
+## Deviations and additions
+
+R4-1 (post hoc refinement of F-1). Logged pastes also contain text that the student typed and later moved within the document. "Covered by a logged paste" is therefore not the same as "entered by a paste". `src/r4_flora_tx_timing.py` adds a stricter test: at the n-gram level, it asks whether a logged paste containing the n-gram occurred within 10 s of the n-gram's first editor appearance. Both versions are reported.
+
+R4-2. In R-4, segment uptake counts only n-grams in class C, so echo n-grams are excluded. The R3 count did not exclude them. As a result, the AUC for the merged positive class is 0.746 here, against 0.759 in R3.
+
+## Outcome (added after the analyses)
+
+Results are in `results/r4_rs_stats.json`, `results/r4_flora_stats.json` and `results/r4_flora_tx_timing.json`.

@@ -3,8 +3,8 @@ import json, matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 ink, sub, grid = '#0b0b0b', '#52514e', '#e4e3df'
 col = {'C': '#1baf7a', 'E': '#eb6834', 'S': '#8a8984', 'T': '#2a78d6', 'X': '#7b5cc4'}
 name = {'C': 'C chatbot-first', 'E': 'E echo', 'S': 'S shared source', 'T': 'T typed', 'X': 'X untraced insertion'}
-f = json.load(open('results/r3_flora_stats.json'))['class_means']; r = json.load(open('results/r3_rs_stats.json'))
-rs = r['class_means']; seg = r['segments']['any_uptake_by_code']
+f = {k: v['mean'] for k, v in json.load(open('results/r4_flora_stats.json'))['classes_edit'].items()}; r = json.load(open('results/r3_rs_stats.json'))
+rs = {k: v['mean'] for k, v in json.load(open('results/r4_rs_stats.json'))['classes_edit'].items()}; seg = r['segments']['any_uptake_by_code']
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8})
 fig, (a, b) = plt.subplots(1, 2, figsize=(7.4, 3.0), gridspec_kw={'width_ratios': [1.15, 1]})
 for i, (lab, d) in enumerate([('FLoRA\n(writing, n = 275)', f), ('RelianceScope\n(code, n = 79)', rs)]):
