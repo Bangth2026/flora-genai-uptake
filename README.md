@@ -4,9 +4,7 @@
 
 All versions: concept DOI 10.5281/zenodo.24101339.
 
-v1.0.0: `10.5281/zenodo.24101340`. All versions: `10.5281/zenodo.24101339`.
-
-Code, time-stamped analysis plans and statistics files for a study of how much of students' submitted work comes verbatim from a GenAI chatbot, whether dialogue behaviour can detect it, and whether rubric grades reflect it. Data: FLoRA Open Data IPS (Li et al., 2026; Figshare [10.6084/m9.figshare.32321499](https://doi.org/10.6084/m9.figshare.32321499); CC BY 4.0), 275 postgraduate students, 3,542 student–GPT-4o turns. No third-party data are redistributed. All analyses are exploratory.
+Code, time-stamped analysis plans and statistics files for a study that attributes each token of students' submitted work to five provenance classes (chatbot-first, echo of the student's own text, shared source, typed, untraced insertion) from dialogue, editor and clipboard logs, and relates verbatim uptake to grades, a post-test, dialogue features and AI-text detectors. Data: FLoRA Open Data IPS (Li et al., 2026; Figshare [10.6084/m9.figshare.32321499](https://doi.org/10.6084/m9.figshare.32321499); CC BY 4.0; 275 postgraduate students) and RelianceScope (Jin et al., 2026; 79 students; not redistributed here). All analyses are exploratory.
 
 ## Order of work (see `git log`)
 
