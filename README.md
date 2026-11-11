@@ -1,4 +1,4 @@
-# Provenance of GenAI text in student proposals (FLoRA): measurement, detection and grading
+# Five-class provenance of chatbot text in student writing (FLoRA) and programming (RelianceScope)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -22,6 +22,8 @@ Code, time-stamped analysis plans and statistics files for a study of how much o
 | `results/r1_stats.json` | R1 analyses (`src/run_r1.py`) |
 | `PREREG_R2.md` | Plan R2 (open AI-text detectors, third-source threshold), pushed before the R2 analyses; deviations R2-1 and R2-2 recorded |
 | `results/r2_stats.json`, `results/r2_sens.json` | R2 analyses (`src/r2_label.py`, `src/r2_detect.py`, `src/r2_stats.py`); post hoc check `results/r2_posthoc.json` |
+| `PREREG_R3.md` | Plan R3 (five provenance classes C/E/S/T/X; second dataset with human response-use codes and post-test; FLoRA typed/untraced reanalysis declared post hoc), pushed before the R3 analyses |
+| `results/r3_rs_stats.json`, `results/r3_flora_stats.json`, `results/r3_d3swap.json` | R3 analyses (`src/run_r3_rs.py`, `src/run_r3_flora.py`, `src/r3_d3swap.py`) |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -32,6 +34,19 @@ U* is the share of the final proposal covered by 8-grams that are in a chatbot r
 - Median U* 0.048; 30.5% of students take at least a quarter of the proposal from chatbot replies, 20.0% at least half; 69% of uptake tokens enter in the last 24 h before the last snapshot.
 - Grade per SD of U*: 0.02 points on 0–15 (95% CI −0.21 to 0.24); mean grade by uptake quartile 11.9, 11.8, 11.8, 11.7.
 - Detection of the top quartile: exposure AUC 0.615 (0.538–0.693); coded intent and request features add nothing detectable (all gains inconclusive).
+
+## Five provenance classes (plan R3)
+
+Each token of the final artefact is labelled C (chatbot-first), E (echo of the student's own text), S (shared source), T (typed in the editor) or X (untraced insertion). U* is the share of class C.
+
+| Mean share of tokens | C | E | S | T | X |
+|---|---|---|---|---|---|
+| FLoRA proposals (n = 275) | 23.6% | 13.6% | 0.2% | 12.8% | 49.8% |
+| RelianceScope code (n = 79) | 23.4% | 5.0% | 42.9% | 28.6% | 0.1% |
+
+RelianceScope validation: segment uptake vs human codes "copy / write over the response" AUC 0.759 [0.713, 0.799]; U* vs perceived reliance ρ = 0.65. Post-test on pre-test and U*: −0.32 per SD [−0.71, 0.06] (58% at ceiling). FLoRA detectors, chatbot vs typed paragraphs: AUC 0.805 (D1), 0.665 (D2), 0.710 (D3); untraced paragraphs score like chatbot paragraphs.
+
+The RelianceScope data (Jin et al., 2026) are not redistributed here; obtain them from the authors' OSF repository and place them in RS_DIR.
 
 ## Open AI-text detectors (plan R2)
 
@@ -67,6 +82,10 @@ python -I src/make_figs.py DATA && python -I src/make_pipeline_fig.py
 python -I src/r2_label.py DATA
 for st in d12 d3 merge; do python -I src/r2_detect.py DATA $st; done
 python -I src/r2_stats.py && python -I src/r2_posthoc.py DATA
+# R3
+python -I src/run_r3_rs.py RS_DIR
+python -I src/run_r3_flora.py DATA && python -I src/r3_d3swap.py
+python -I src/make_fig_classes.py
 ```
 
 Licence: MIT (code). Data remain under their own CC BY 4.0 licence.
