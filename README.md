@@ -26,6 +26,8 @@ Code, time-stamped analysis plans and statistics files for a study that attribut
 | `results/r4_rs_stats.json`, `results/r4_flora_stats.json`, `results/r4_flora_tx_timing.json` | R4 analyses (`src/r4_rs.py`, `src/r4_flora.py`, `src/r4_flora_tx_timing.py`) |
 | `PREREG_R5.md` | Plan R5 (moves within the document, token projection, clock distribution, code-aware tokenisation, origin of E, timing baseline, robustness of grade and post-test models, detector thresholds, size-matched and semantic paraphrase check), pushed before the R5 analyses |
 | `results/r5_*.json` | R5 analyses (`src/r5_flora_attr.py`, `src/r5_clock.py`, `src/r5_flora_grade.py`, `src/r5_flora_para.py`, `src/r5_rs.py`; figure `src/make_fig_classes_r5.py`) |
+| `PREREG_R6.md` | Plan R6 (analyses requested in peer review: degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), pushed before the R6 analyses |
+| `results/r6_flora.json`, `results/r6_rs.json`, `demo/` | R6 analyses (`src/r6_flora.py`, `src/r6_rs.py`) and an end-to-end demonstration on synthetic logs |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -53,6 +55,24 @@ Plan R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams bu
 Plan R5 (checks of assumptions and robustness): moves within the document account for 1.1% of FLoRA X tokens (X 50.2% → 49.6%); a segment-local entry rule gives X 43.6%, T 19.0%. Token projection with E before C: median U* 2.8%, ≥ 50% 16.0% (ρ = 0.98 with U*). Clock: 99.0% of asks whose nearest Enter keystroke was > 30 s away had another chat-box keystroke within 30 s; no offset near 1 h. Grade: null under multiple imputation, missing indicators, Tobit at 15, rank/log/spline U*, and for X and T shares. RelianceScope post-test, per SD: raw U* OLS −0.32 [−0.71, 0.06], Tobit −0.75; U* excluding the reference solution OLS −0.59 [−1.01, −0.18], Tobit −1.04 [−1.58, −0.51]. Code-aware lexers: chance-corrected U* 8.5% (operators kept) and 1.8% (identifiers normalised); bound excluding the reference solution 11–16%.
 
 The RelianceScope data (Jin et al., 2026; [10.1145/3774398.3811612](https://doi.org/10.1145/3774398.3811612)) are used with the permission of the dataset authors, who allow use and redistribution provided the paper is cited. They are not bundled here: obtain them from the authors' Open Science Framework repository and place them in RS_DIR. This repository holds only code and aggregate RelianceScope statistics; `src/run_r3_rs.py` also writes a student-level file (`results/r3_rs_students.csv`), which is excluded from version control and must not be shared.
+
+## Peer-review analyses (plan R6)
+
+No measure or class definition changed. `src/r6_flora.py` reproduces U\* for every FLoRA student exactly.
+
+- Log resolution: with snapshots thinned to ≥ 5, 15, 60, 300 s apart, U\* keeps its ranking (ρ = 0.999, 0.999, 0.995, 0.974); the T/X split agrees with the full-resolution split at κ = 0.98, 0.84, 0.47, 0.12 (τ = 5) and 0.92, 0.92, 0.80, 0.35 (τ = 20).
+- Dialogue only (no snapshots): median 8.8% vs 4.8% for U\* (ρ = 0.94); 16.3% of its chatbot tokens are not chatbot-first; 31.7% of echo tokens become chatbot text. RelianceScope (code attached to each message): equal to U\* (ρ = 1.00).
+- Parameters: grade slope per SD between −0.02 and 0.08 under every n, δ, peer threshold, projection, entry rule and τ (all intervals include zero); X share 51.3% (τ = 1) to 46.3% (τ = 50); students above own null 99th percentile 70.9%, 65.8%, 56.4% at n = 5, 8, 12.
+- Untraced class: 37.6% of X 8-grams entered in the same paste as chatbot-first text; 71.5% in segments > 50 tokens.
+- Logged pastes (≥ 8 tokens, n = 687): 30.6% mostly chatbot text, 19.8% moved within the document, 39.3% from outside the logs, 10.3% mixed; 73.1% of C tokens entered through a paste that was mostly chatbot text.
+- Precision: FLoRA grade 0.005 points per 10 percentage points of uptake (CI −0.06 to 0.07), minimum detectable slope 0.32 points per SD; RelianceScope minimum detectable slope 0.55 (OLS) and 0.89 (Tobit) points per SD; simulated Tobit power 33% for −0.50 and 64% for −0.75 per SD.
+
+## Demo without the study data
+
+```bash
+python demo/make_synthetic.py && python demo/run_demo.py   # or open demo/demo.ipynb
+```
+See `demo/README.md`. `demo/provenance.py` implements Algorithms 1, 2 and 4 with the standard library only.
 
 ## Open AI-text detectors (plan R2)
 
@@ -98,6 +118,8 @@ python -I src/r4_flora.py DATA && python -I src/r4_flora_tx_timing.py DATA
 # R5 (r5_flora_para.py needs results/r2_scores.pkl from R2 and sentence-transformers)
 python -I src/r5_clock.py DATA && python -I src/r5_flora_attr.py DATA && python -I src/r5_flora_grade.py DATA && python -I src/r5_flora_para.py DATA
 python -I src/r5_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r5.py
+# R6 (DATA also needs trace.pkl and annot.pkl as above)
+python -I src/r6_flora.py DATA && python -I src/r6_rs.py RS_DIR PROMPT_TXT
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
