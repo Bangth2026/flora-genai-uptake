@@ -28,6 +28,8 @@ Code, time-stamped analysis plans and statistics files for a study that attribut
 | `results/r5_*.json` | R5 analyses (`src/r5_flora_attr.py`, `src/r5_clock.py`, `src/r5_flora_grade.py`, `src/r5_flora_para.py`, `src/r5_rs.py`; figure `src/make_fig_classes_r5.py`) |
 | `PREREG_R6.md` | Plan R6 (analyses requested in peer review: degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), pushed before the R6 analyses |
 | `results/r6_flora.json`, `results/r6_rs.json`, `demo/` | R6 analyses (`src/r6_flora.py`, `src/r6_rs.py`) and an end-to-end demonstration on synthetic logs |
+| `PREREG_R7.md` | Plan R7 (second review round: students with and without logged pastes; agreement by response-use code), pushed before the R7 analyses |
+| `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -66,6 +68,11 @@ No measure or class definition changed. `src/r6_flora.py` reproduces U\* for eve
 - Untraced class: 37.6% of X 8-grams entered in the same paste as chatbot-first text; 71.5% in segments > 50 tokens.
 - Logged pastes (≥ 8 tokens, n = 687): 30.6% mostly chatbot text, 19.8% moved within the document, 39.3% from outside the logs, 10.3% mixed; 73.1% of C tokens entered through a paste that was mostly chatbot text.
 - Precision: FLoRA grade 0.005 points per 10 percentage points of uptake (CI −0.06 to 0.07), minimum detectable slope 0.32 points per SD; RelianceScope minimum detectable slope 0.55 (OLS) and 0.89 (Tobit) points per SD; simulated Tobit power 33% for −0.50 and 64% for −0.75 per SD.
+
+## Second-round review analyses (plan R7)
+
+- Students with (68) and without (207) logged pastes: no difference in grade (mean 11.81 both), proposal length (median 715 vs 703 tokens), large insertions (median 4 vs 3), untraced share (46.4% vs 51.4%) or English as first language (14.9% vs 9.5%, p = 0.32). Logged students received more chatbot text (median 5,515 vs 4,714 words, SMD 0.30, p = 0.04) and had higher median U\* (11.8% vs 3.4%, p = 0.06). Share of large insertions carrying chatbot-first text: 26.5% vs 24.3%.
+- RelianceScope agreement by response-use code (one against rest, segment uptake): copy the response AUC 0.76 [0.72, 0.80]; write over the response 0.55 [0.49, 0.61]; correct artefact 0.39; create artefacts by oneself 0.32; read and move on 0.31. Share of segments with any uptake: 73%, 47%, 19%, 6%, 3% (edit-size entry rule; the R5 figure used the R3 rule).
 
 ## Demo without the study data
 
@@ -120,6 +127,8 @@ python -I src/r5_clock.py DATA && python -I src/r5_flora_attr.py DATA && python 
 python -I src/r5_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r5.py
 # R6 (DATA also needs trace.pkl and annot.pkl as above)
 python -I src/r6_flora.py DATA && python -I src/r6_rs.py RS_DIR PROMPT_TXT
+# R7
+python -I src/r7_flora.py DATA && python -I src/r7_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r7.py && python -I src/make_flow_fig.py
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
