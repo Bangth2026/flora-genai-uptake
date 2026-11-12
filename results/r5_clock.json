@@ -1,0 +1,27 @@
+{
+ "n_asks": 3542,
+ "n_matched_enter": 1026,
+ "share_within_30s": 0.5955165692007798,
+ "quantiles_abs_s": {
+  "50": 6.01,
+  "60": 30.569,
+  "75": 172.18400000000003,
+  "90": 796.394,
+  "95": 2315.00925
+ },
+ "share_abs_30s_5min": 0.20662768031189083,
+ "share_abs_gt_1h": 0.03996101364522417,
+ "share_within_5min_of_1h": 0.001949317738791423,
+ "share_within_5min_of_10h": 0.0009746588693957114,
+ "share_within_5min_of_11h": 0.0029239766081871343,
+ "any_keystroke": {
+  "n": 1027,
+  "share_within_30s": 0.9961051606621227,
+  "share_within_5min_of_1h": 0.0
+ },
+ "students_with_enter": 71,
+ "students_median_abs_gt_30s": 23,
+ "students_median_near_1h": 0,
+ "asks_without_enter_within_30s_but_keystroke_within_30s": 0.9903614457831326,
+ "n_asks_enter_gt_30s": 415
+}
