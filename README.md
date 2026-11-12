@@ -48,7 +48,7 @@ RelianceScope validation: segment uptake vs human codes "copy / write over the r
 
 Plan R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams but 3.0% of T 8-grams entered through a logged paste. RelianceScope chance-corrected U* 13.2% (raw 23.4%); human-code AUC for "copy the response" 0.762, gain over a reply-length model 0.187 [0.139, 0.238]; post-test Tobit −0.75 per SD of U* [−1.37, −0.12].
 
-The RelianceScope data (Jin et al., 2026) are not redistributed here; obtain them from the authors' OSF repository and place them in RS_DIR.
+The RelianceScope data (Jin et al., 2026) are not redistributed here, and access is governed by the dataset authors. Obtain them from the Open Science Framework repository the authors released with the publication, or from the authors directly, and place them in RS_DIR. This repository holds only code and aggregate RelianceScope statistics; `src/run_r3_rs.py` also writes a student-level file (`results/r3_rs_students.csv`), which is excluded from version control and must not be shared.
 
 ## Open AI-text detectors (plan R2)
 
@@ -93,4 +93,4 @@ python -I src/r4_rs.py RS_DIR PROMPT_TXT
 python -I src/r4_flora.py DATA && python -I src/r4_flora_tx_timing.py DATA
 ```
 
-Licence: MIT (code). Data remain under their own CC BY 4.0 licence.
+Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data remain under the terms set by their authors.
