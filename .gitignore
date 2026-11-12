@@ -6,3 +6,5 @@ results/U_R2check.npy
 results/r3_rs_students.csv
 # student-level RelianceScope output (third-party data, not redistributed)
 results/r3_rs_students.csv
+# intermediate pickles (local only; RelianceScope segment tables are student-level)
+results/*.pkl

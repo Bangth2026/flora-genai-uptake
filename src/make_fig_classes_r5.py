@@ -1,0 +1,43 @@
+"""Fig. 3 (plan R5 version): class composition (a) and segment uptake by human response-use code with segment counts and 95% intervals from 2,000 bootstrap resamples of students (b).
+Needs results/_r3_rs_segments.pkl (written by src/run_r3_rs.py)."""
+import numpy as np, pandas as pd
+import json, matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
+ink, sub, grid = '#0b0b0b', '#52514e', '#e4e3df'
+col = {'C': '#1baf7a', 'E': '#eb6834', 'S': '#8a8984', 'T': '#2a78d6', 'X': '#7b5cc4'}
+name = {'C': 'C chatbot-first', 'E': 'E echo', 'S': 'S shared source', 'T': 'T typed', 'X': 'X untraced insertion'}
+f = {k: v['mean'] for k, v in json.load(open('results/r4_flora_stats.json'))['classes_edit'].items()}; r = json.load(open('results/r3_rs_stats.json'))
+rs = {k: v['mean'] for k, v in json.load(open('results/r4_rs_stats.json'))['classes_edit'].items()}; seg = r['segments']['any_uptake_by_code']
+sg = pd.read_pickle('results/_r3_rs_segments.pkl'); sg['any'] = (sg.up > 0).astype(float); rng = np.random.default_rng(2054)
+studs = sg.u.unique(); idx = {u: np.where(sg.u.values == u)[0] for u in studs}
+CI = {}
+for k in seg:
+    v = []
+    for _ in range(2000):
+        s_ = sg.iloc[np.concatenate([idx[u] for u in rng.choice(studs, len(studs))])]; s_ = s_[s_.label == k]
+        if len(s_): v.append(s_['any'].mean())
+    CI[k] = (np.percentile(v, 2.5), np.percentile(v, 97.5))
+plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8})
+fig, (a, b) = plt.subplots(1, 2, figsize=(7.4, 3.0), gridspec_kw={'width_ratios': [1.15, 1]})
+for i, (lab, d) in enumerate([('FLoRA\n(writing, n = 275)', f), ('RelianceScope\n(code, n = 79)', rs)]):
+    left = 0
+    for k in 'CESTX':
+        a.barh(i, d[k], left=left, color=col[k], height=0.55, edgecolor='white', lw=0.8)
+        if d[k] >= .06: a.text(left + d[k] / 2, i, f'{d[k]*100:.0f}%', ha='center', va='center', color='white', fontsize=7, fontweight='bold')
+        left += d[k]
+a.set_yticks([0, 1]); a.set_yticklabels(['FLoRA\n(writing, n = 275)', 'RelianceScope\n(code, n = 79)']); a.invert_yaxis()
+a.set_xlim(0, 1); a.set_xlabel('Mean share of final-artefact tokens'); a.xaxis.set_major_formatter(lambda v, p: f'{v:.0%}')
+for s in ['top', 'right', 'left']: a.spines[s].set_visible(False)
+a.tick_params(axis='y', length=0); a.legend([plt.Rectangle((0, 0), 1, 1, color=col[k]) for k in 'CESTX'], [name[k] for k in 'CESTX'],
+                                            ncol=3, fontsize=6.3, frameon=False, loc='upper center', bbox_to_anchor=(0.45, -0.28))
+a.set_title('(a) Provenance classes', loc='left', fontsize=8, color=ink)
+order = sorted([k for k in seg if seg[k][1] >= 8], key=lambda k: seg[k][0])
+pos = {'copy the response', 'write over the response'}
+b.barh(range(len(order)), [seg[k][0] for k in order], color=['#1baf7a' if k in pos else '#b9b8b3' for k in order], height=0.6)
+b.errorbar([seg[k][0] for k in order], range(len(order)), xerr=np.array([[seg[k][0] - CI[k][0] for k in order], [CI[k][1] - seg[k][0] for k in order]]), fmt='none', ecolor='#52514e', elinewidth=0.7, capsize=1.5)
+b.set_yticks(range(len(order))); b.set_yticklabels([f'{k} (n = {seg[k][1]})' for k in order], fontsize=6.4)
+b.set_xlim(0, 1); b.xaxis.set_major_formatter(lambda v, p: f'{v:.0%}'); b.set_xlabel('Segments with any chatbot-first uptake')
+for i, k in enumerate(order): b.text(min(CI[k][1] + .02, .9), i, f'{seg[k][0]:.0%}', va='center', fontsize=6.4, color=sub)
+for s in ['top', 'right', 'left']: b.spines[s].set_visible(False)
+b.tick_params(axis='y', length=0); b.grid(axis='x', color=grid, lw=.6); b.set_axisbelow(True)
+b.set_title('(b) Segments by response-use code', loc='left', fontsize=8, color=ink)
+fig.tight_layout(); fig.savefig('results/fig3_classes_r5.png', dpi=300); print('ok')

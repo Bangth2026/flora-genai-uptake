@@ -24,6 +24,8 @@ Code, time-stamped analysis plans and statistics files for a study that attribut
 | `results/r3_rs_stats.json`, `results/r3_flora_stats.json`, `results/r3_d3swap.json` | R3 analyses (`src/run_r3_rs.py`, `src/run_r3_flora.py`, `src/r3_d3swap.py`) |
 | `PREREG_R4.md` | Plan R4 (edit-size entry rule; T/X validation against logged pastes; chance baseline and bounds for code; length-controlled human-code validation; censored post-test model), pushed before the R4 analyses |
 | `results/r4_rs_stats.json`, `results/r4_flora_stats.json`, `results/r4_flora_tx_timing.json` | R4 analyses (`src/r4_rs.py`, `src/r4_flora.py`, `src/r4_flora_tx_timing.py`) |
+| `PREREG_R5.md` | Plan R5 (moves within the document, token projection, clock distribution, code-aware tokenisation, origin of E, timing baseline, robustness of grade and post-test models, detector thresholds, size-matched and semantic paraphrase check), pushed before the R5 analyses |
+| `results/r5_*.json` | R5 analyses (`src/r5_flora_attr.py`, `src/r5_clock.py`, `src/r5_flora_grade.py`, `src/r5_flora_para.py`, `src/r5_rs.py`; figure `src/make_fig_classes_r5.py`) |
 
 ## Main results (plan R1, primary measure U*)
 
@@ -47,6 +49,8 @@ Each token of the final artefact is labelled C (chatbot-first), E (echo of the s
 RelianceScope validation: segment uptake vs human codes "copy / write over the response" AUC 0.759 [0.713, 0.799]; U* vs perceived reliance ρ = 0.65. Post-test on pre-test and U*: −0.32 per SD [−0.71, 0.06] (58% at ceiling). FLoRA detectors, chatbot vs typed paragraphs: AUC 0.805 (D1), 0.665 (D2), 0.710 (D3); untraced paragraphs score like chatbot paragraphs.
 
 Plan R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams but 3.0% of T 8-grams entered through a logged paste. RelianceScope chance-corrected U* 13.2% (raw 23.4%); human-code AUC for "copy the response" 0.762, gain over a reply-length model 0.187 [0.139, 0.238]; post-test Tobit −0.75 per SD of U* [−1.37, −0.12].
+
+Plan R5 (checks of assumptions and robustness): moves within the document account for 1.1% of FLoRA X tokens (X 50.2% → 49.6%); a segment-local entry rule gives X 43.6%, T 19.0%. Token projection with E before C: median U* 2.8%, ≥ 50% 16.0% (ρ = 0.98 with U*). Clock: 99.0% of asks whose nearest Enter keystroke was > 30 s away had another chat-box keystroke within 30 s; no offset near 1 h. Grade: null under multiple imputation, missing indicators, Tobit at 15, rank/log/spline U*, and for X and T shares. RelianceScope post-test, per SD: raw U* OLS −0.32 [−0.71, 0.06], Tobit −0.75; U* excluding the reference solution OLS −0.59 [−1.01, −0.18], Tobit −1.04 [−1.58, −0.51]. Code-aware lexers: chance-corrected U* 8.5% (operators kept) and 1.8% (identifiers normalised); bound excluding the reference solution 11–16%.
 
 The RelianceScope data (Jin et al., 2026; [10.1145/3774398.3811612](https://doi.org/10.1145/3774398.3811612)) are used with the permission of the dataset authors, who allow use and redistribution provided the paper is cited. They are not bundled here: obtain them from the authors' Open Science Framework repository and place them in RS_DIR. This repository holds only code and aggregate RelianceScope statistics; `src/run_r3_rs.py` also writes a student-level file (`results/r3_rs_students.csv`), which is excluded from version control and must not be shared.
 
@@ -91,6 +95,9 @@ python -I src/make_fig_classes.py
 # R4 (PROMPT_TXT: text of 'study materials/chatbot prompt.pdf', e.g. via pdftotext)
 python -I src/r4_rs.py RS_DIR PROMPT_TXT
 python -I src/r4_flora.py DATA && python -I src/r4_flora_tx_timing.py DATA
+# R5 (r5_flora_para.py needs results/r2_scores.pkl from R2 and sentence-transformers)
+python -I src/r5_clock.py DATA && python -I src/r5_flora_attr.py DATA && python -I src/r5_flora_grade.py DATA && python -I src/r5_flora_para.py DATA
+python -I src/r5_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r5.py
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
