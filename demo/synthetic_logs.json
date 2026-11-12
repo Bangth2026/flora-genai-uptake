@@ -1,0 +1,175 @@
+{
+ "n": 8,
+ "tau": 5,
+ "final": "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their contexts my project examines how first year statistics students use worked examples during the weekly online quizzes we will collect quiz logs and short interviews from two tutorial groups and compare the time spent on worked examples with quiz scores across the semester the faculty survey from last year reported that most students open the examples only after a failed attempt which suggests that timing matters more than access",
+ "replies": [
+  [
+   6,
+   "Here is a revised version: my project examines how first year statistics students use worked examples during the weekly online quizzes and how this relates to their final exam performance."
+  ],
+  [
+   8,
+   "A possible method: we will collect quiz logs and short interviews from two tutorial groups and compare the time spent on worked examples with quiz scores across the semester. You could also add a pilot week."
+  ]
+ ],
+ "turns": [
+  [
+   5,
+   "Can you improve this sentence? my project examines how first year statistics students use worked examples during the weekly online quizzes"
+  ],
+  [
+   7.5,
+   "What methods could I use?"
+  ]
+ ],
+ "snapshots": [
+  [
+   0.05,
+   "a"
+  ],
+  [
+   0.1,
+   "a research"
+  ],
+  [
+   0.15,
+   "a research proposal"
+  ],
+  [
+   0.2,
+   "a research proposal on"
+  ],
+  [
+   0.25,
+   "a research proposal on the"
+  ],
+  [
+   0.3,
+   "a research proposal on the use"
+  ],
+  [
+   0.35,
+   "a research proposal on the use of"
+  ],
+  [
+   0.4,
+   "a research proposal on the use of worked"
+  ],
+  [
+   0.45,
+   "a research proposal on the use of worked examples"
+  ],
+  [
+   0.5,
+   "a research proposal on the use of worked examples in"
+  ],
+  [
+   0.55,
+   "a research proposal on the use of worked examples in first"
+  ],
+  [
+   0.6,
+   "a research proposal on the use of worked examples in first year"
+  ],
+  [
+   0.65,
+   "a research proposal on the use of worked examples in first year statistics"
+  ],
+  [
+   0.7,
+   "a research proposal on the use of worked examples in first year statistics learning"
+  ],
+  [
+   0.75,
+   "a research proposal on the use of worked examples in first year statistics learning analytics"
+  ],
+  [
+   0.8,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is"
+  ],
+  [
+   0.85,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the"
+  ],
+  [
+   0.9,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement"
+  ],
+  [
+   0.95,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection"
+  ],
+  [
+   1.0,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis"
+  ],
+  [
+   1.05,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and"
+  ],
+  [
+   1.1,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting"
+  ],
+  [
+   1.15,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of"
+  ],
+  [
+   1.2,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data"
+  ],
+  [
+   1.25,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about"
+  ],
+  [
+   1.3,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners"
+  ],
+  [
+   1.35,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and"
+  ],
+  [
+   1.4,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their"
+  ],
+  [
+   1.45,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their contexts"
+  ],
+  [
+   7.0,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their contexts my project examines how first year statistics students use worked examples during the weekly online quizzes"
+  ],
+  [
+   9.0,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their contexts my project examines how first year statistics students use worked examples during the weekly online quizzes we will collect quiz logs and short interviews from two tutorial groups and compare the time spent on worked examples with quiz scores across the semester"
+  ],
+  [
+   10.0,
+   "a research proposal on the use of worked examples in first year statistics learning analytics is the measurement collection analysis and reporting of data about learners and their contexts my project examines how first year statistics students use worked examples during the weekly online quizzes we will collect quiz logs and short interviews from two tutorial groups and compare the time spent on worked examples with quiz scores across the semester the faculty survey from last year reported that most students open the examples only after a failed attempt which suggests that timing matters more than access"
+  ]
+ ],
+ "shared": [
+  "learning analytics is the measurement collection analysis and reporting of data about learners and their contexts"
+ ],
+ "segments": [
+  [
+   5,
+   8
+  ],
+  [
+   8,
+   12
+  ]
+ ],
+ "expected_shares": {
+  "C": 0.268,
+  "E": 0.165,
+  "S": 0.165,
+  "T": 0.134,
+  "X": 0.268
+ }
+}
