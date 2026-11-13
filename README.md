@@ -34,6 +34,8 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `results/flora_token_classes.csv.gz`, `results/flora_student_classes.csv` | Five-class label of every token of the 275 FLoRA proposals (user_id, token_index, token, class) and per-student class shares, including X_with_C (untraced text that entered with chatbot-first text). Derived from FLoRA Open Data IPS (CC BY 4.0) and released under the same licence |
 | `ANALYSIS_LOG_R9.md`, `ANALYSIS_LOG_R10.md` | Log entries R9 and R10, each committed before its analyses (R10: planted-provenance benchmark, external baselines, online version, RelianceScope intermediate snapshots and parameter table, paste checks with intervals) |
 | `results/r10_*.json` | R10 analyses (`src/r10_benchmark.py`, `src/r10_online.py`, `src/r10_baselines.py`, `src/r10_rs.py`, `src/r10_flora_checks.py`; `demo/baselines.py`, `demo/provenance_online.py`) |
+| `ANALYSIS_LOG_R11.md` | Log entry R11 (properties of the rules, routes outside the specification, route mixes, seeds and intervals, earliest-plausible, paste-log and LLM baselines, entry rules, risk-coverage; FLoRA unresolved class, shared-source rule, clock direction, audit clustering; token entry rule made primary), committed before the R11 analyses |
+| `results/r11_*.json`, `results/fig4_classes_r11.png`, `results/fig5_risk_coverage_r11.png` | R11 analyses (`src/r11_benchmark.py`, `src/r11_flora.py`, `src/r11_llm_baseline.py`; figures `src/make_fig_classes_r11.py`, `src/make_fig_rc_r11.py`). `results/flora_token_classes.csv.gz` and `results/flora_student_classes.csv` re-exported with the token entry rule (n-gram entry kept as a column) |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -115,6 +117,22 @@ No measure, class definition or parameter value changed.
 - Rule conflicts (`src/r10_rule_conflicts.py`): 23 of 16,461 prompt-first FLoRA 8-grams (0.14%) and 4 of 21 in RelianceScope also occur in a shared source; no n-gram is both shared and in the editor before its first reply.
 - Figures 1, 2 and 4 relabelled: four evidential classes (C, E, S, T) and the unresolved outcome X (formerly "untraced").
 - FLoRA paste checks with student-level intervals (`src/r10_flora_checks.py`, 68 students): C tokens covered by logged pastes 97.4% [94.6, 99.3]; X 94.1% [85.7, 99.3]; T 56.2% [40.2, 77.1]. Editor snapshots per 100 final tokens, interval between snapshots and share of large insertions do not differ between students with and without logged pastes (p > 0.13). Asks whose nearest Enter keystroke lay near 1, 10 or 11 h (6 asks, 4 students) all had another chat-box keystroke within 30 s.
+
+## Properties, routes outside the specification and selective prediction (log entry R11)
+
+The entry mode that separates typed (T) from unresolved (X) text is now decided per token (R9, F-8) instead of per n-gram; C, E, S and U* are unchanged. FLoRA class shares with the token entry rule: C 23.6%, E 13.6%, S 0.2%, T 11.7%, X 50.9% (n-gram entry: T 12.4%, X 50.2%; token agreement 93.6%, kappa 0.90).
+
+- Properties (`src/r11_benchmark.py`): none of 17,487 n-grams that were in the editor before any reply contained them was labelled C (800 simulated students); every online label that changed after entry changed from S, T or X to E; two runs gave identical outputs.
+- Seeds (20 x 400 students, R10 routes, token entry): C precision 0.997 (0.996-0.998), recall 0.845 (0.830-0.865), F1 0.915 (0.906-0.926); bootstrap F1 for seed 2100: 0.916 [0.904, 0.928].
+- Routes outside the specification (7 routes, 400 students): C precision 0.999, recall 0.750; reply edited in place 20% / 50%: 46% / 2% of surviving reply tokens stay C, the rest X (T under the n-gram rule); regeneration with both versions logged 0.996 C, first only 0.50 C; copy while streaming with the reply logged at completion 66% E (delta = 0), 98% C with delta = 30 s; undo/redo of typed text becomes X under the token rule.
+- Route mixes (50 Dirichlet mixes x 200 students): C precision >= 0.988 in every mix; recall 0.65-0.98 (13 routes) and 0.52-0.91 (20 routes), 5th-95th percentile.
+- Baselines (F1, chatbot text, seed 2100): attribution 0.916; earliest plausible attribution 0.917 (difference -0.001 [-0.002, 0.000]); dialogue only 0.885 (+0.031 [0.025, 0.039]); naive overlap 0.799; string tiling 0.800; winnowing 0.772; paste-log rule 0.690. With the routes outside the specification, dialogue only 0.866 vs 0.857 for the attribution. LLM baseline: see `results/r11_llm_baseline.json`.
+- Risk-coverage (AURC, lower is better): attribution 0.021 (error 1.1% on the 51.6% of tokens decided before X), earliest plausible 0.054, dialogue only 0.075, naive overlap 0.123; with routes outside the specification 0.065, 0.102, 0.116, 0.157.
+- FLoRA keystroke audit with the token entry rule: T typed 0.96 [0.90, 1.00] (22 students), X not typed 0.94 [0.87, 1.00] (32 students); ICC of agreement within students from about 0 to 0.61.
+- FLoRA pastes mostly X vs mostly C: median 71 vs 37 tokens, 2.3 h vs 17.9 h before the last snapshot, 29.6 vs 5.4 min after the last reply (all p < 0.01). X tokens entering in the last 24 h: 81% (C 69%, T 56%). X entering with chatbot-first text: 37.7% of X, 18.6% of the mean proposal.
+- Shared-source rule: 118 S 8-gram occurrences had appeared in an earlier reply, against 34,053 C (0.35%). Clock: logged ask time follows the chat-box Enter keystroke by a median of 2.2 s (quartiles 1.5, 3.8); no C or editor-first E 8-gram lies within 5 s of its first reply, so delta in [-5, 5] s changes no label. P-1 on FLoRA holds by construction of the rules (delta = 0); the empirical count was run on the simulated students.
+
+Reproduce: `python -I src/r11_benchmark.py DATA WORK && python -I src/r11_flora.py DATA && python -I src/r11_llm_baseline.py WORK 40` (local model; `LLM_BACKEND=api API_BASE=... API_KEY=... MODEL=...` for a hosted model).
 
 ## Demo without the study data
 
