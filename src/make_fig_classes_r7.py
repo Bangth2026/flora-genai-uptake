@@ -4,7 +4,7 @@ import numpy as np, pandas as pd
 import json, matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 ink, sub, grid = '#0b0b0b', '#52514e', '#e4e3df'
 col = {'C': '#1baf7a', 'E': '#eb6834', 'S': '#8a8984', 'T': '#2a78d6', 'X': '#7b5cc4'}
-name = {'C': 'C chatbot-first', 'E': 'E echo', 'S': 'S shared source', 'T': 'T typed', 'X': 'X untraced insertion'}
+name = {'C': 'C chatbot-first', 'E': 'E echo', 'S': 'S shared source', 'T': 'T typed', 'X': 'X unresolved'}
 f = {k: v['mean'] for k, v in json.load(open('results/r4_flora_stats.json'))['classes_edit'].items()}; 
 rs = {k: v['mean'] for k, v in json.load(open('results/r4_rs_stats.json'))['classes_edit'].items()}
 r7 = json.load(open('results/r7_rs.json'))['codes']

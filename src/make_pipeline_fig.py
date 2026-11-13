@@ -1,4 +1,4 @@
-"""Pipeline diagram: five provenance classes (Fig. 1 of the manuscript)."""
+"""Pipeline diagram (Fig. 2 of the manuscript): four evidential classes and the unresolved outcome."""
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 ink, sub, blue, orange, aqua, grey, purple = '#0b0b0b', '#52514e', '#2a78d6', '#eb6834', '#1baf7a', '#8a8984', '#7b5cc4'
@@ -22,12 +22,12 @@ st = [('1 Direction', 'in R, but in Q or W\nbefore the reply → E', orange),
 for i, (t, b, c) in enumerate(st): box(25, 42 - i * 13.5, 26, 11, t, b, c)
 for i in range(3): arr(38, 42 - i * 13.5, 38, 42 - (i + 1) * 13.5 + 11)
 for i in range(5): arr(18, 49 - i * 12.5, 25, 47.5 - min(i, 3) * 13.5)
-box(57, 13, 19, 36, 'Five classes', 'C  chatbot-first\n\nE  echo of the\n    student\'s text\n\nS  shared source\n\nT  typed in editor\n\nX  untraced\n    insertion', ink, lw=2)
+box(57, 13, 19, 36, 'Evidential classes', 'C  chatbot-first\n\nE  echo of the\n    student\'s text\n\nS  shared source\n\nT  typed in editor\n\nUnresolved outcome\nX  source not in logs', ink, lw=2)
 for i in range(4): arr(51, 47.5 - i * 13.5, 57, 31)
-box(82, 36, 21, 13, 'Uptake U*', 'share of A in class C\n(Algorithms 1–3)', aqua)
-box(82, 17, 21, 15, 'Validation', 'paste/copy logs, jump\nrule, chance null,\nhuman response-use codes', blue)
+box(82, 36, 21, 13, 'Uptake U*', 'share of A in class C\n(offline: Algorithms 1–2;\nonline: Algorithm 3)', aqua)
+box(82, 17, 21, 15, 'Validation', 'planted provenance,\npastes, keystrokes,\nchance null, human codes', blue)
 box(82, -2, 21, 15, 'Uses', 'grades, post-test,\ndialogue features,\nAI-text detectors (T vs C)', grey)
 arr(76, 40, 82, 42); arr(76, 28, 82, 24); arr(76, 18, 82, 6)
-box(25, -13, 51, 8, 'Clock check (Algorithm 3)', 'chat-box Enter keystrokes vs ask times → offset δ', grey, lw=1.2)
+box(25, -13, 51, 8, 'Clock check (Algorithm S2)', 'chat-box Enter keystrokes vs ask times → offset δ', grey, lw=1.2)
 arr(38, -5, 38, 1.5)
 fig.tight_layout(); fig.savefig('results/fig0_pipeline.png', dpi=300); print('ok')

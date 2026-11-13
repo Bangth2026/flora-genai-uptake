@@ -21,5 +21,5 @@ arrow(21, y + 3.5, 82, y + 3.5, col['C']); ax.text(51, y + 4.8, 'C  in a reply b
 y = rows['Shared sources\n(readings, template)']
 arrow(21, y + 3.5, 82, y + 3.5, col['S']); ax.text(51, y + 4.8, 'S  text available to all students', color=col['S'], ha='center', fontsize=7.5, fontweight='bold')
 y = rows['Sources not\nin the logs']
-arrow(21, y + 3.5, 82, y + 3.5, col['X']); ax.text(51, y + 4.8, 'X  large insertion; source not recorded (missing provenance)', color=col['X'], ha='center', fontsize=7.5, fontweight='bold')
+arrow(21, y + 3.5, 82, y + 3.5, col['X']); ax.text(51, y + 4.8, 'X  large insertion; source not recorded (unresolved)', color=col['X'], ha='center', fontsize=7.5, fontweight='bold')
 fig.tight_layout(); fig.savefig('results/fig_flow.png', dpi=300); print('ok')
