@@ -1,0 +1,38 @@
+{
+ "C": {
+  "passages": 50,
+  "students": 28,
+  "selected_in_chat_before_entry": 0.86,
+  "ci": [
+   0.7380952380952381,
+   0.9583333333333334
+  ]
+ },
+ "E": {
+  "passages": 50,
+  "students": 25,
+  "selected_in_chat_before_entry": 0.08,
+  "ci": [
+   0.018173701298701297,
+   0.16982135688478517
+  ]
+ },
+ "T": {
+  "passages": 50,
+  "students": 27,
+  "selected_in_chat_before_entry": 0.02,
+  "ci": [
+   0.0,
+   0.061224489795918366
+  ]
+ },
+ "X": {
+  "passages": 50,
+  "students": 33,
+  "selected_in_chat_before_entry": 0.02,
+  "ci": [
+   0.0,
+   0.06666666666666667
+  ]
+ }
+}
