@@ -26,9 +26,12 @@ Code, time-stamped analysis plans and statistics files for a study that attribut
 | `results/r4_rs_stats.json`, `results/r4_flora_stats.json`, `results/r4_flora_tx_timing.json` | R4 analyses (`src/r4_rs.py`, `src/r4_flora.py`, `src/r4_flora_tx_timing.py`) |
 | `PREREG_R5.md` | Plan R5 (moves within the document, token projection, clock distribution, code-aware tokenisation, origin of E, timing baseline, robustness of grade and post-test models, detector thresholds, size-matched and semantic paraphrase check), pushed before the R5 analyses |
 | `results/r5_*.json` | R5 analyses (`src/r5_flora_attr.py`, `src/r5_clock.py`, `src/r5_flora_grade.py`, `src/r5_flora_para.py`, `src/r5_rs.py`; figure `src/make_fig_classes_r5.py`) |
-| `PREREG_R6.md` | Plan R6 (analyses requested in peer review: degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), pushed before the R6 analyses |
+| `PREREG_R6.md` | Plan R6 (degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), pushed before the R6 analyses |
 | `results/r6_flora.json`, `results/r6_rs.json`, `demo/` | R6 analyses (`src/r6_flora.py`, `src/r6_rs.py`) and an end-to-end demonstration on synthetic logs |
-| `PREREG_R7.md` | Plan R7 (second review round: students with and without logged pastes; agreement by response-use code), pushed before the R7 analyses |
+| `PREREG_R7.md` | Plan R7 (students with and without logged pastes; agreement by response-use code), pushed before the R7 analyses |
+| `PREREG_R8.md` | Plan R8 (misclassification of uptake, equivalence tests, order of the E and S rules, retyped code, label-noise ceiling, comparison with the LLM classifiers released with RelianceScope, pre-activity covariates, Tobit standard errors, token-level export), pushed before the R8 analyses; addendum K5 and the Tobit correction were pushed before they ran |
+| `results/r8_flora.json`, `results/r8_rs.json`, `results/r8_rs_llm.json`, `results/r8_rs_tobit.json` | R8 analyses (`src/r8_flora.py`, `src/r8_rs.py`, `src/r8_rs_llm.py`, `src/r8_rs_tobit.py`) |
+| `results/flora_token_classes.csv.gz`, `results/flora_student_classes.csv` | Five-class label of every token of the 275 FLoRA proposals (user_id, token_index, token, class) and per-student class shares, including X_with_C (untraced text that entered with chatbot-first text). Derived from FLoRA Open Data IPS (CC BY 4.0) and released under the same licence |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (plan R1, primary measure U*)
@@ -58,7 +61,9 @@ Plan R5 (checks of assumptions and robustness): moves within the document accoun
 
 The RelianceScope data (Jin et al., 2026; [10.1145/3774398.3811612](https://doi.org/10.1145/3774398.3811612)) are used with the permission of the dataset authors, who allow use and redistribution provided the paper is cited. They are not bundled here: obtain them from the authors' Open Science Framework repository and place them in RS_DIR. This repository holds only code and aggregate RelianceScope statistics; `src/run_r3_rs.py` also writes a student-level file (`results/r3_rs_students.csv`), which is excluded from version control and must not be shared.
 
-## Peer-review analyses (plan R6)
+In v1.8.0 the headings of plans R6 and R7 were reworded to describe their content; their analysis specifications are unchanged, and the original files are in the git history at the commits listed in the article's Online Resource 2.
+
+## Degraded logs and parameter choices (plan R6)
 
 No measure or class definition changed. `src/r6_flora.py` reproduces U\* for every FLoRA student exactly.
 
@@ -69,10 +74,20 @@ No measure or class definition changed. `src/r6_flora.py` reproduces U\* for eve
 - Logged pastes (≥ 8 tokens, n = 687): 30.6% mostly chatbot text, 19.8% moved within the document, 39.3% from outside the logs, 10.3% mixed; 73.1% of C tokens entered through a paste that was mostly chatbot text.
 - Precision: FLoRA grade 0.005 points per 10 percentage points of uptake (CI −0.06 to 0.07), minimum detectable slope 0.32 points per SD; RelianceScope minimum detectable slope 0.55 (OLS) and 0.89 (Tobit) points per SD; simulated Tobit power 33% for −0.50 and 64% for −0.75 per SD.
 
-## Second-round review analyses (plan R7)
+## Paste-logged students and agreement by code (plan R7)
 
 - Students with (68) and without (207) logged pastes: no difference in grade (mean 11.81 both), proposal length (median 715 vs 703 tokens), large insertions (median 4 vs 3), untraced share (46.4% vs 51.4%) or English as first language (14.9% vs 9.5%, p = 0.32). Logged students received more chatbot text (median 5,515 vs 4,714 words, SMD 0.30, p = 0.04) and had higher median U\* (11.8% vs 3.4%, p = 0.06). Share of large insertions carrying chatbot-first text: 26.5% vs 24.3%.
 - RelianceScope agreement by response-use code (one against rest, segment uptake): copy the response AUC 0.76 [0.72, 0.80]; write over the response 0.55 [0.49, 0.61]; correct artefact 0.39; create artefacts by oneself 0.32; read and move on 0.31. Share of segments with any uptake: 73%, 47%, 19%, 6%, 3% (edit-size entry rule; the R5 figure used the R3 rule).
+
+## Misclassification, retyped code and LLM classifiers (plan R8)
+
+- FLoRA grade (OLS, HC3, per SD): C + 0.25X 0.04 [−0.19, 0.26]; C + 0.5X 0.06 [−0.16, 0.29]; C + X 0.08 [−0.16, 0.32]; C + X_C −0.01 [−0.25, 0.24]; C and X_C together 0.01 and −0.02. X_C (untraced text entering with chatbot-first text) is 36.0% of X tokens, 17.4% of the mean proposal. TOST against ±0.25 grade SD: p < 0.001 for U\* and every composite; smallest equivalence bound 0.10 grade SD for U\*. Tobit at 15 with numerical-Hessian SE: 0.02 [−0.21, 0.26].
+- Order of the E and S rules: no n-gram in either dataset was both in a shared source and in the editor before the first reply containing it, so the order changes nothing.
+- RelianceScope, write over the response (92 segments): AUC 0.55 at n = 8, 0.57 at n = 5, 0.62 with the code lexer at n = 5; widening the segment window or counting reply n-grams in the final code regardless of class does not help. Of 49 write-over segments without uptake, 48 had code blocks, 3 had any reply 8-gram in the final code, 16 a reply 5-gram entering the editor during the segment: retyped code was mostly replaced before submission.
+- Label-noise ceiling for the copy code (simulated AUC of a perfect score): 0.93, 0.87, 0.81, 0.79 at label error 5%, 10%, 15%, 17%.
+- Released LLM classifiers (145 matched benchmark segments, passive response use): segment uptake > 0 precision 0.88, recall 0.50, F1 0.64; best LLM configuration F1 0.77, median 0.62.
+- Post-test with pre-activity questionnaire (self-efficacy, motivation, metacognition) instead of task progress, per SD: raw U\* OLS −0.23 [−0.68, 0.22], Tobit −0.56 [−1.19, 0.07]; U\* excluding the reference solution OLS −0.50 [−0.99, −0.02], Tobit −0.85 [−1.39, −0.31].
+- Tobit standard errors: the BFGS inverse-Hessian approximation used in plans R4–R6 understated the uncertainty of models with several covariates; R8 reports numerical-Hessian standard errors (`results/r8_rs_tobit.json`). With the pre-test alone, intervals move by at most 0.04 points.
 
 ## Demo without the study data
 
@@ -129,6 +144,8 @@ python -I src/r5_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r5.py
 python -I src/r6_flora.py DATA && python -I src/r6_rs.py RS_DIR PROMPT_TXT
 # R7
 python -I src/r7_flora.py DATA && python -I src/r7_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r7.py && python -I src/make_flow_fig.py
+# R8 (R2_PASSAGES: results/r2_passages.pkl from src/r2_label.py)
+python -I src/r8_flora.py DATA R2_PASSAGES && python -I src/r8_rs.py RS_DIR PROMPT_TXT && python -I src/r8_rs_llm.py RS_DIR PROMPT_TXT && python -I src/r8_rs_tobit.py RS_DIR PROMPT_TXT
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
