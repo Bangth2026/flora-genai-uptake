@@ -1,0 +1,89 @@
+{
+ "n_students_with_pastes": 68,
+ "P1_token_coverage_by_logged_pastes": {
+  "C": {
+   "pooled": 0.9744670883110799,
+   "ci": [
+    0.9462427648813663,
+    0.9928793115002393
+   ],
+   "students_with_class": 56,
+   "student_median": 1.0
+  },
+  "T": {
+   "pooled": 0.5622957516339869,
+   "ci": [
+    0.40200043864285795,
+    0.7710640118200823
+   ],
+   "students_with_class": 40,
+   "student_median": 0.8595848595848596
+  },
+  "X": {
+   "pooled": 0.9413218294521696,
+   "ci": [
+    0.8573275101098324,
+    0.9934251454861713
+   ],
+   "students_with_class": 59,
+   "student_median": 1.0
+  }
+ },
+ "P1_entry_level_rates_R9": {
+  "T_with_paste": 0.10760667903525047,
+  "X_with_paste": 0.9124437559932138,
+  "T_grams": 4851,
+  "X_grams": 27114
+ },
+ "P2_editor_log_completeness": {
+  "snaps": {
+   "with_pastes_median": 291.0,
+   "without_pastes_median": 182.0,
+   "mannwhitney_p": 0.13382057087947472
+  },
+  "per100": {
+   "with_pastes_median": 42.938835371864144,
+   "without_pastes_median": 25.47945205479452,
+   "mannwhitney_p": 0.1706947742682684
+  },
+  "med_dt": {
+   "with_pastes_median": 0.312000036239624,
+   "without_pastes_median": 0.46900010108947754,
+   "mannwhitney_p": 0.19765633859721943
+  },
+  "sessions": {
+   "with_pastes_median": 3.0,
+   "without_pastes_median": 3.0,
+   "mannwhitney_p": 0.8285219475300591
+  },
+  "large_share": {
+   "with_pastes_median": 0.13407686752788253,
+   "without_pastes_median": 0.16037735849056603,
+   "mannwhitney_p": 0.3174566820328446
+  },
+  "writing_hours": {
+   "with_pastes_median": 0.9126394444704056,
+   "without_pastes_median": 0.7863272222545412,
+   "mannwhitney_p": 0.16103171997920906
+  },
+  "n_with": 68,
+  "n_without": 207
+ },
+ "P3_clock_offsets": {
+  "1h": {
+   "asks": 2,
+   "students": 2,
+   "asks_with_any_chatbox_keystroke_within_30s": 2.0
+  },
+  "10h": {
+   "asks": 1,
+   "students": 1,
+   "asks_with_any_chatbox_keystroke_within_30s": 1.0
+  },
+  "11h": {
+   "asks": 3,
+   "students": 1,
+   "asks_with_any_chatbox_keystroke_within_30s": 3.0
+  }
+ }
+}

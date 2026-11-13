@@ -1,0 +1,116 @@
+{
+ "machine": {
+  "python": "3.13.18",
+  "processor": "x86_64",
+  "cpu_count": 2,
+  "note": "one core used"
+ },
+ "flora": {
+  "n_students": 275,
+  "snapshots": 496733,
+  "token_agreement_online_vs_primary": 0.9928041159848892,
+  "kappa": 0.9889613932754573,
+  "confusion_primary_to_online": {
+   "C": {
+    "C": 45483,
+    "E": 28,
+    "X": 16,
+    "T": 5
+   },
+   "E": {
+    "E": 27891,
+    "T": 45,
+    "C": 114,
+    "X": 13
+   },
+   "S": {
+    "T": 54,
+    "X": 155,
+    "C": 92,
+    "S": 103
+   },
+   "T": {
+    "X": 899,
+    "T": 22123
+   },
+   "X": {
+    "X": 100453
+   }
+  },
+  "class_shares_online": {
+   "C": 0.23136716732329318,
+   "E": 0.1413806374510062,
+   "S": 0.0005215876520453326,
+   "T": 0.11255658972826803,
+   "X": 0.5141740178453872
+  },
+  "class_shares_primary": {
+   "C": 0.23057212595075807,
+   "E": 0.1421098473723123,
+   "S": 0.002045838945886547,
+   "T": 0.1165824361688121,
+   "X": 0.508689751562231
+  },
+  "Ustar_spearman_online_vs_primary": 0.9984726153925187,
+  "Ustar_max_abs_diff": 0.19607843137254902,
+  "Ustar_median_online": 0.046826222684703434,
+  "Ustar_median_primary": 0.04773869346733668,
+  "share_labelled_ngrams_relabelled_after_entry": 0.01851398800670557,
+  "offline_recomputed_agreement_with_primary": 0.9930370580430842,
+  "latency_ms_per_snapshot": {
+   "median": 0.06034900002305221,
+   "p99": 0.23202672004117628,
+   "max": 9.004322000009779
+  },
+  "online_sec_total": 39.545272280000745,
+  "online_sec_median_student": 0.029151750999972137,
+  "offline_sec_total": 33.46580315200015,
+  "offline_sec_median_student": 0.016462680000017826,
+  "peak_memory_MB_online": {
+   "median": 3.219491958618164,
+   "max": 13.305706977844238,
+   "n": 55
+  },
+  "peak_memory_MB_offline": {
+   "median": 1.0968656539916992,
+   "max": 3.1543045043945312
+  }
+ },
+ "reliancescope": {
+  "n_students": 79,
+  "token_agreement_online_vs_offline": 1.0,
+  "kappa": 1.0,
+  "confusion_offline_to_online": {
+   "C": {
+    "C": 2447
+   },
+   "E": {
+    "E": 521
+   },
+   "S": {
+    "S": 4293
+   },
+   "T": {
+    "T": 2844
+   },
+   "X": {
+    "X": 12
+   }
+  },
+  "Ustar_mean_online": 0.2347806735635882,
+  "Ustar_mean_offline": 0.2347806735635882,
+  "Ustar_spearman": 1.0,
+  "share_relabelled_after_entry": 0.021838265099310902,
+  "latency_ms_per_snapshot": {
+   "median": 0.01928699998643424,
+   "p99": 0.06789499997239545,
+   "max": 0.16672299989295425
+  },
+  "online_sec_total": 0.12457861100006085,
+  "peak_memory_MB_online": {
+   "median": 0.1321563720703125,
+   "max": 0.2518930435180664
+  },
+  "note": "offline here: rules of demo/provenance.py with the template as shared source and trimmed alignment; the primary RelianceScope attribution aligns whole snapshots"
+ }
+}

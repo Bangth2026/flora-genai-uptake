@@ -1,0 +1,56 @@
+{
+ "n_students": 275,
+ "Ustar_median": 0.04773869346733668,
+ "Ustar_ge50": 0.2,
+ "naive_overlap_8gram": {
+  "median_share": 0.21301775147928995,
+  "mean_share": 0.3726664331172001,
+  "ge50": 0.36,
+  "ge25": 0.46545454545454545,
+  "chance_median_of_medians": 0.0,
+  "chance_mean": 2.1742084522353583e-05,
+  "spearman_with_Ustar": 0.8367179529290201,
+  "marked_tokens_by_class": {
+   "C": 0.6177935170486154,
+   "E": 0.3807682392369167,
+   "S": 0.0014382437144679176,
+   "T": 0.0,
+   "X": 0.0
+  },
+  "share_of_marked_not_C": 0.3822064829513846
+ },
+ "winnowing_k8_w4": {
+  "median_share": 0.15976331360946747,
+  "mean_share": 0.341641353158485,
+  "ge50": 0.3236363636363636,
+  "ge25": 0.44,
+  "chance_median_of_medians": 0.0,
+  "chance_mean": 0.0,
+  "spearman_with_Ustar": 0.8291173185775503,
+  "marked_tokens_by_class": {
+   "C": 0.6268300987402111,
+   "E": 0.3723853088777368,
+   "S": 0.0007845923820520792,
+   "T": 0.0,
+   "X": 0.0
+  },
+  "share_of_marked_not_C": 0.3731699012597889
+ },
+ "string_tiling_mml8": {
+  "median_share": 0.20625,
+  "mean_share": 0.36958149471884916,
+  "ge50": 0.36,
+  "ge25": 0.46545454545454545,
+  "chance_median_of_medians": 0.0,
+  "chance_mean": 6.679178280301018e-05,
+  "spearman_with_Ustar": 0.8360475516251052,
+  "marked_tokens_by_class": {
+   "C": 0.6182958388673613,
+   "E": 0.38026645489025507,
+   "S": 0.00143770624238358,
+   "T": 0.0,
+   "X": 0.0
+  },
+  "share_of_marked_not_C": 0.3817041611326387
+ }
+}
