@@ -1,0 +1,14 @@
+{
+ "flora": {
+  "final_8grams": 195015,
+  "prompt_first_8grams": 16461,
+  "prompt_first_and_shared": 23,
+  "C_tokens_within_7_of_E": 0.030155868620679177
+ },
+ "reliancescope": {
+  "final_8grams": 9564,
+  "prompt_first_8grams": 21,
+  "prompt_first_and_template": 4
+ },
+ "editor_first_and_shared_R8": 0
+}
