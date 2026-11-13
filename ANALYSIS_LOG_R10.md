@@ -43,3 +43,7 @@ K-3. Label-noise ceiling for the copy code over q = 0, 0.02, 0.04, ..., 0.20 (si
 P-1. Paste-C, and the shares of T and X 8-grams entering with a logged paste, with 95% intervals from 2,000 resamples of the 68 students with logged pastes.
 P-2. Completeness of the editor log: snapshots per 100 final tokens, median interval between snapshots during writing sessions, and the share of large insertions (> tau tokens), for students with and without logged pastes.
 P-3. Clock differences near 1, 10 and 11 h between asks and chat-box Enter keystrokes: number of asks and students, and U* for those students recomputed with delta = +1 h and with the affected asks shifted by the nearest whole hour.
+
+## Addendum (post hoc, committed before it ran): conflicts between the ordered rules
+
+A-1. FLoRA and RelianceScope: number of 8-grams of the final artefacts that meet the conditions of two rules at once: student turn first (rule 1) and shared source (rule 2); shared source and editor first (rule 4, reported in R8 K2); and the number of tokens covered by both a C and an E n-gram, where the token projection decides between them. Script src/r10_rule_conflicts.py.
