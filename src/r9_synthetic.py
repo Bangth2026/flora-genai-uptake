@@ -38,15 +38,15 @@ def student(cfg):
             if r == 'C':
                 if cfg['para']:
                     blk = [R.choice(VOCAB) if (i + 1) % cfg['para'] == 0 else wd for i, wd in enumerate(blk)]
-                doc += blk; truth += ['C'] * k; snap()
+                doc += blk; truth += ['C:paste'] * k; snap()
             else:
-                for wd in blk: t += R.uniform(0.3, 1.5); doc.append(wd); truth.append('C'); snap()
+                for wd in blk: t += R.uniform(0.3, 1.5); doc.append(wd); truth.append('C:retype'); snap()
         elif r == 'E1':
             turns.append((t, 'improve this ' + ' '.join(blk))); t += 5
             replies.append((t, 'here is a revision ' + ' '.join(blk) + ' ' + ' '.join(words(6)))); t += R.uniform(5, 120)
-            doc += blk; truth += ['E'] * k; snap()
+            doc += blk; truth += ['E:prompt-first'] * k; snap()
         elif r == 'E2':
-            for wd in blk: t += R.uniform(0.2, 1.5); doc.append(wd); truth.append('E'); snap()
+            for wd in blk: t += R.uniform(0.2, 1.5); doc.append(wd); truth.append('E:editor-first'); snap()
             t += R.uniform(30, 300); turns.append((t, 'check this ' + ' '.join(blk))); t += 5
             replies.append((t, 'your text ' + ' '.join(blk) + ' reads well'))
         elif r == 'E3':
@@ -55,7 +55,7 @@ def student(cfg):
             t += 10; del doc[start:]; snap()
             t += R.uniform(10, 120); turns.append((t, 'fix this ' + ' '.join(blk))); t += 5
             replies.append((t, 'fixed ' + ' '.join(blk))); t += R.uniform(5, 60)
-            doc += blk; truth += ['E'] * k; snap()
+            doc += blk; truth += ['E:deleted-reentered'] * k; snap()
         elif r == 'S':
             blk = list(R.choice(SHARED)); doc += blk; truth += ['S'] * len(blk); snap()
         else:
@@ -74,9 +74,10 @@ def student(cfg):
     return truth, cls
 
 def evaluate(cfg, n=300):
-    pairs = []
+    sub = []
     for _ in range(n):
-        tr, cl = student(cfg); pairs += list(zip(tr, cl))
+        tr, cl = student(cfg); sub += list(zip(tr, cl))
+    pairs = [(a.split(':')[0], b) for a, b in sub]
     res = {'tokens': len(pairs), 'accuracy': sum(a == b for a, b in pairs) / len(pairs)}
     for c in 'CESTX':
         tp = sum(a == c and b == c for a, b in pairs); pp = sum(b == c for a, b in pairs); ap = sum(a == c for a, b in pairs)
@@ -84,6 +85,10 @@ def evaluate(cfg, n=300):
     conf = {}
     for a, b in pairs: conf.setdefault(a, {}).setdefault(b, 0); conf[a][b] += 1
     res['confusion'] = conf
+    rs = {}
+    for a, b in sub:
+        if ':' in a: rs.setdefault(a, [0, 0]); rs[a][0] += a[0] == b; rs[a][1] += 1
+    res['recall_by_route'] = {k: v[0] / v[1] for k, v in rs.items()}
     return res
 
 base = dict(offset=0, thin=0, para=0, tau=5)
@@ -94,5 +99,5 @@ for th in (5, 15, 60, 300):
 for k in (12, 8, 4): conds[f'paraphrase_every_{k}th'] = {**base, 'para': k}
 out = {}
 for name, cfg in conds.items():
-    out[name] = evaluate(cfg); print(name, round(out[name]['accuracy'], 3), {c: (round(out[name][c]['precision'] or 0, 3), round(out[name][c]['recall'] or 0, 3)) for c in 'CESTX'}, flush=True)
+    out[name] = evaluate(cfg); print(name, round(out[name]['accuracy'], 3), {c: (round(out[name][c]['precision'] or 0, 3), round(out[name][c]['recall'] or 0, 3)) for c in 'CESTX'}, {k: round(v, 3) for k, v in out[name]['recall_by_route'].items()}, flush=True)
 json.dump(out, open('results/r9_synthetic.json', 'w'), indent=1)

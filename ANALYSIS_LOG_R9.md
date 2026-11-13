@@ -20,3 +20,11 @@ F-7. A human contribution ratio in the spirit of NIRVANA: share of final tokens 
 
 K-1. Decomposition of the chance baseline under the three lexers: share of null-covered n-grams of the final code that are reference-solution n-grams, to explain why bound (a) and chance-corrected uptake diverge under the code lexers.
 K-2. Runtime per student.
+
+## Audit of sampled passages against evidence the attribution does not use (src/r9_flora.py, AUDIT)
+
+A-1. For the 71 FLoRA students whose editor and chat-box keystrokes and chatbot-panel text selections are logged, maximal runs of at least eight tokens of one class (C, E, T, X) are sampled at random (seed 2091; at most three per student; up to 50 per class). The attribution uses dialogue, snapshots and shared sources only; the audit uses keystrokes and selections. Criteria, fixed before the audit was run:
+- T agrees if the printable editor keystrokes in the entry interval of the passage (from 3 s before its first n-gram entered to 1 s after its last) number at least half its characters and no Control/Meta+V occurred.
+- X and C agree if those keystrokes number fewer than a fifth of its characters (the text was not typed in the editor). For C we also report the share selected in the chatbot panel before entry, evidence of chatbot origin.
+- E agrees if there is student-side evidence before the chatbot repeated the text: for prompt-first E, chat-box keystrokes numbering at least half the passage characters, or a Control/Meta+V in the chat box, in the 10 minutes before the ask; for editor-first E, the passage entered the editor before the first reply that contains it, with editor keystrokes or a paste shortcut at entry. We also report the share of E passages selected in the chatbot panel before entry, which would contradict the label.
+Per-class agreement with intervals from 2,000 resamples of students. The sample is released (results/r9_audit_sample.csv) for manual replay coding.
