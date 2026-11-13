@@ -1,4 +1,4 @@
-"""Plan R5, RelianceScope (PREREG_R5.md R1-R4): code-aware tokenisation, outcome models with bounded measures,
+"""Plan R5, RelianceScope (ANALYSIS_LOG_R5.md R1-R4): code-aware tokenisation, outcome models with bounded measures,
 origin of copied strings, token-level projections and segment-local entry rule.
 Usage: python -I src/r5_rs.py RS_DIR PROMPT_TXT -> results/r5_rs.json"""
 import sys, json, re, warnings

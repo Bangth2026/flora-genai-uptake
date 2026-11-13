@@ -1,4 +1,4 @@
-"""Plan R7, FLoRA (PREREG_R7.md H1): students with and without logged pastes. Data readers, the snapshot scan and the
+"""Plan R7, FLoRA (ANALYSIS_LOG_R7.md H1): students with and without logged pastes. Data readers, the snapshot scan and the
 labelling rules are copied from src/r6_flora.py (which reproduces U* exactly).
 Usage: python -I src/r7_flora.py DATA_DIR -> results/r7_flora.json"""
 import sys, re, json, warnings

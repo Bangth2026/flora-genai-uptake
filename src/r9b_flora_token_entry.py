@@ -132,7 +132,7 @@ def propagate(enc, tau):
         lab, tin, prev = nl, nt, cur
     return prev, lab, tin
 
-OUT = {}; TOK = {}; rows = []
+OUT = {}; TK = {}; rows = []
 for kk, u in enumerate(users):
     g_ = WG.get(u); times = list(g_.t) if g_ is not None else []; vocab = {}
     enc = [np.array([vocab.setdefault(x, len(vocab)) for x in tok(c)], np.int32) for c in (g_.writing_content if g_ is not None else [])]
@@ -145,21 +145,21 @@ for kk, u in enumerate(users):
     for op, i1, i2, j1, j2 in SequenceMatcher(None, Fi.tolist(), last.tolist(), autojunk=False).get_opcodes():
         if op == 'equal': te[i1:i2] = tl[j1:j2]; tt[i1:i2] = ti[j1:j2]
     var = np.where(np.isin(lab, ['C', 'E', 'S']), lab, np.where(te == 1, 'T', 'X'))
-    TOK[u] = dict(F=F, lab=lab, var=var, tt=tt, times=times)
+    TK[u] = dict(F=F, lab=lab, var=var, tt=tt, times=times)
     if kk % 50 == 0: print(kk, flush=True)
 del WG, w
-tot = sum(len(TOK[u]['F']) for u in users)
-o = {'shares_primary': {c: float(np.mean([(TOK[u]['lab'] == c).mean() for u in users])) for c in 'CESTX'},
-     'shares_token_entry': {c: float(np.mean([(TOK[u]['var'] == c).mean() for u in users])) for c in 'CESTX'},
-     'tokens_T_to_X': sum(int(((TOK[u]['lab'] == 'T') & (TOK[u]['var'] == 'X')).sum()) for u in users) / tot,
-     'tokens_X_to_T': sum(int(((TOK[u]['lab'] == 'X') & (TOK[u]['var'] == 'T')).sum()) for u in users) / tot,
-     'share_of_T_moving_to_X': sum(int(((TOK[u]['lab'] == 'T') & (TOK[u]['var'] == 'X')).sum()) for u in users) / sum(int((TOK[u]['lab'] == 'T').sum()) for u in users)}
+tot = sum(len(TK[u]['F']) for u in users)
+o = {'shares_primary': {c: float(np.mean([(TK[u]['lab'] == c).mean() for u in users])) for c in 'CESTX'},
+     'shares_token_entry': {c: float(np.mean([(TK[u]['var'] == c).mean() for u in users])) for c in 'CESTX'},
+     'tokens_T_to_X': sum(int(((TK[u]['lab'] == 'T') & (TK[u]['var'] == 'X')).sum()) for u in users) / tot,
+     'tokens_X_to_T': sum(int(((TK[u]['lab'] == 'X') & (TK[u]['var'] == 'T')).sum()) for u in users) / tot,
+     'share_of_T_moving_to_X': sum(int(((TK[u]['lab'] == 'T') & (TK[u]['var'] == 'X')).sum()) for u in users) / sum(int((TK[u]['lab'] == 'T').sum()) for u in users)}
 # keystroke support per labelled run (both versions), same sampling and criteria as the R9 audit
 rngA = np.random.default_rng(2091)
 def audit(version):
     runs = []
     for u in KEYU:
-        L = TOK[u][version]; i = 0
+        L = TK[u][version]; i = 0
         while i < len(L):
             j = i
             while j < len(L) and L[j] == L[i]: j += 1
@@ -169,7 +169,7 @@ def audit(version):
     for c in 'TX':
         x = runs[runs.cls == c].sample(frac=1, random_state=2091).groupby('u').head(3).head(50); ag = []
         for r in x.itertuples():
-            d_ = TOK[r.u]; ks = d_['tt'][r.i:r.j]; ks = ks[ks >= 0]
+            d_ = TK[r.u]; ks = d_['tt'][r.i:r.j]; ks = ks[ks >= 0]
             if not len(ks): ag.append(c == 'X'); continue
             t1 = np.datetime64(d_['times'][ks.min()]) - np.timedelta64(3, 's'); t2 = np.datetime64(d_['times'][ks.max()]) + np.timedelta64(1, 's')
             # previous snapshot before the earliest entry, to include keys typed just before the snapshot was saved
@@ -187,18 +187,18 @@ o['audit_primary'] = audit('lab'); o['audit_token_entry'] = audit('var')
 if PASS:
     Rr = pd.read_pickle(PASS); Rr = Rr[(Rr.user_id.isin(users)) & (Rr.label == 'composed')].copy()
     def span(u, text):
-        t = tok(text); F = TOK[u]['F']; n_ = len(t)
+        t = tok(text); F = TK[u]['F']; n_ = len(t)
         for i in range(len(F) - n_ + 1):
             if F[i:i + n_] == t: return i, i + n_
     sp = [span(u, s) for u, s in zip(Rr.user_id, Rr.text)]
     for ver in ('lab', 'var'):
-        Rr['T_' + ver] = [float((TOK[u][ver][a:b] == 'T').mean()) if s is not None else np.nan for u, s, (a, b) in zip(Rr.user_id, sp, [s if s else (0, 0) for s in sp])]
+        Rr['T_' + ver] = [float((TK[u][ver][a:b] == 'T').mean()) if s is not None else np.nan for u, s, (a, b) in zip(Rr.user_id, sp, [s if s else (0, 0) for s in sp])]
     o['typed_paragraphs'] = {'primary': int((Rr.T_lab >= .9).sum()), 'token_entry': int((Rr.T_var >= .9).sum()),
                              'both': int(((Rr.T_lab >= .9) & (Rr.T_var >= .9)).sum())}
     ks = []
     for (u, s_), tl_ in zip(zip(Rr.user_id, sp), Rr.T_lab):
         if s_ is None or tl_ < .9 or u not in EKT: continue
-        d_ = TOK[u]; tt_ = d_['tt'][s_[0]:s_[1]]; tt_ = tt_[tt_ >= 0]
+        d_ = TK[u]; tt_ = d_['tt'][s_[0]:s_[1]]; tt_ = tt_[tt_ >= 0]
         if not len(tt_): continue
         t1 = np.datetime64(d_['times'][max(tt_.min() - 1, 0)]); t2 = np.datetime64(d_['times'][tt_.max()]) + np.timedelta64(1, 's')
         keys = int(((EKT[u] >= t1) & (EKT[u] <= t2)).sum()); ks.append(keys / len(' '.join(d_['F'][s_[0]:s_[1]])))

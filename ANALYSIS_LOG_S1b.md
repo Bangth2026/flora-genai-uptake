@@ -15,7 +15,7 @@ A gram is **chatbot-first** if it never appears in the editor or t_bot ≤ t_ed 
 - Pooled token-weighted share of Ue-covered tokens that are chatbot-first. Ue is treated as a valid measure of uptake if this share is at least 0.80 at the primary offset; between 0.60 and 0.80, Ue is reported with this caveat and U_prov becomes the primary label; below 0.60, Ue is not used.
 - Spearman correlation between Ue and U_prov.
 - Paste evidence: share of chatbot-first grams that enter the editor in a single snapshot transition adding at least 20 tokens.
-- RQ2–RQ4 of PREREG_S1_flora.md repeated with U_prov as the label.
+- RQ2–RQ4 of ANALYSIS_LOG_S1.md repeated with U_prov as the label.
 
 ## Outcome of the decision rule (recorded after the run)
 

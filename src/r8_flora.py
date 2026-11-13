@@ -1,4 +1,4 @@
-"""Plan R8, FLoRA (PREREG_R8.md J1-J5): misclassification sensitivity of the grade model (C + lambda*X, C with the
+"""Plan R8, FLoRA (ANALYSIS_LOG_R8.md J1-J5): misclassification sensitivity of the grade model (C + lambda*X, C with the
 untraced text that entered together with chatbot text), equivalence tests, order of the E and S rules, students
 contributing to the detector comparison, and a token-level export of the five provenance classes.
 Readers, scan and classification are copied from src/r6_flora.py (plan R4 rules, n = 8, tau = 5, delta = 0).

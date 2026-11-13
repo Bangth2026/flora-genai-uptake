@@ -1,4 +1,4 @@
-"""R2 detector analyses D-a..D-e (PREREG_R2.md). Usage: python -I src/r2_stats.py -> results/r2_stats.json"""
+"""R2 detector analyses D-a..D-e (ANALYSIS_LOG_R2.md). Usage: python -I src/r2_stats.py -> results/r2_stats.json"""
 import json, numpy as np, pandas as pd
 from scipy.stats import spearmanr
 from sklearn.metrics import roc_auc_score

@@ -1,4 +1,4 @@
-"""Plan R8, RelianceScope (PREREG_R8.md K1-K4): segments coded "write over the response" under other n, lexers,
+"""Plan R8, RelianceScope (ANALYSIS_LOG_R8.md K1-K4): segments coded "write over the response" under other n, lexers,
 windows and a label-free count; order of the E and S rules; agreement ceiling under label noise; post-test models
 with pre-activity covariates instead of task progress. Readers and attribution are copied from src/r7_rs.py.
 Usage: python -I src/r8_rs.py RS_DIR PROMPT_TXT -> results/r8_rs.json"""

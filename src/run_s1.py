@@ -1,4 +1,4 @@
-"""Study 1 (FLoRA): measured uptake of chatbot text. Implements PREREG_S1_flora.md.
+"""Study 1 (FLoRA): measured uptake of chatbot text. Implements ANALYSIS_LOG_S1.md.
 
 Usage: python -I src/run_s1.py --data DATA_DIR --out results/s1_stats.json
 DATA_DIR holds the Figshare files renamed: dialogue.xlsx, proposal.xlsx, bio.xlsx, prior.xlsx, post.xlsx

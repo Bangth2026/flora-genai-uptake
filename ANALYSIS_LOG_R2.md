@@ -1,6 +1,6 @@
 # Analysis plan R2 (revision 2)
 
-Written and pushed before any detector score was computed. Before writing it we checked only that the three open models listed below download and load on CPU, and that final proposals are split into paragraphs by newline characters (median 44 newlines per proposal). These are time-stamped analysis plans, not registrations with a third party; all analyses remain exploratory. The primary uptake measure, U* (= U_R1 in `PREREG_R1.md`), and all its parameters are unchanged.
+Written and pushed before any detector score was computed. Before writing it we checked only that the three open models listed below download and load on CPU, and that final proposals are split into paragraphs by newline characters (median 44 newlines per proposal). These are time-stamped analysis plans, not registrations with a third party; all analyses remain exploratory. The primary uptake measure, U* (= U_R1 in `ANALYSIS_LOG_R1.md`), and all its parameters are unchanged.
 
 ## D. Open zero-shot detectors (new RQ5)
 
