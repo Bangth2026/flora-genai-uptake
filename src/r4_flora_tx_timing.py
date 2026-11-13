@@ -1,4 +1,4 @@
-"""Post hoc refinement of R4 F-1 (not in PREREG_R4): a logged paste explains an n-gram's entry only if the paste
+"""Post hoc refinement of R4 F-1 (not in ANALYSIS_LOG_R4): a logged paste explains an n-gram's entry only if the paste
 occurred at its first editor appearance. Logged pastes also contain text the student had typed earlier and then
 moved within the document. Usage: python -I src/r4_flora_tx_timing.py DATA_DIR -> results/r4_flora_tx_timing.json"""
 import sys, re, json

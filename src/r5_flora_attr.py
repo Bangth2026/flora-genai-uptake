@@ -1,4 +1,4 @@
-"""Plan R5, FLoRA attribution checks (PREREG_R5.md F1-F6): within-document moves in X, segment-local entry rule,
+"""Plan R5, FLoRA attribution checks (ANALYSIS_LOG_R5.md F1-F6): within-document moves in X, segment-local entry rule,
 students without logged pastes, token-level projections, clocks and ties, origin of E, timing baseline.
 Usage: python -I src/r5_flora_attr.py DATA_DIR -> results/r5_flora_attr.json, results/_r5_flora_lab.pkl (local)"""
 import sys, re, json, pickle, warnings

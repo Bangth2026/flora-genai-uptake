@@ -1,4 +1,4 @@
-"""Fig. 4 of the v6 manuscript (plan R7 version: panel b from the edit-size attribution of plan R4, results/r7_rs.json): class composition (a) and segment uptake by human response-use code with segment counts and 95% intervals from 2,000 bootstrap resamples of students (b).
+"""Fig. 4 of the manuscript (plan R7 version: panel b from the edit-size attribution of plan R4, results/r7_rs.json): class composition (a) and segment uptake by human response-use code with segment counts and 95% intervals from 2,000 bootstrap resamples of students (b).
 Panel (a) as in the R5 figure."""
 import numpy as np, pandas as pd
 import json, matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
@@ -25,12 +25,14 @@ a.tick_params(axis='y', length=0); a.legend([plt.Rectangle((0, 0), 1, 1, color=c
 a.set_title('(a) Provenance classes', loc='left', fontsize=8, color=ink)
 order = sorted([k for k in seg if seg[k][1] >= 8], key=lambda k: seg[k][0])
 pos = {'copy the response', 'write over the response'}
-b.barh(range(len(order)), [seg[k][0] for k in order], color=['#1baf7a' if k in pos else '#b9b8b3' for k in order], height=0.6)
+bars = b.barh(range(len(order)), [seg[k][0] for k in order], color=['#1baf7a' if k in pos else '#b9b8b3' for k in order], height=0.6, edgecolor='#2b2a27', lw=0.4)
+for br, k in zip(bars, order):
+    if k in pos: br.set_hatch('////')
 b.errorbar([seg[k][0] for k in order], range(len(order)), xerr=np.array([[seg[k][0] - CI[k][0] for k in order], [CI[k][1] - seg[k][0] for k in order]]), fmt='none', ecolor='#52514e', elinewidth=0.7, capsize=1.5)
-b.set_yticks(range(len(order))); b.set_yticklabels([f'{k} (n = {seg[k][1]})' for k in order], fontsize=6.4)
+b.set_yticks(range(len(order))); b.set_yticklabels([f'{"R  " if k in pos else ""}{k} (n = {seg[k][1]})' for k in order], fontsize=6.4)
 b.set_xlim(0, 1); b.xaxis.set_major_formatter(lambda v, p: f'{v:.0%}'); b.set_xlabel('Segments with any chatbot-first uptake')
 for i, k in enumerate(order): b.text(min(CI[k][1] + .02, .9), i, f'{seg[k][0]:.0%}', va='center', fontsize=6.4, color=sub)
 for s in ['top', 'right', 'left']: b.spines[s].set_visible(False)
 b.tick_params(axis='y', length=0); b.grid(axis='x', color=grid, lw=.6); b.set_axisbelow(True)
 b.set_title('(b) Segments by response-use code', loc='left', fontsize=8, color=ink)
-fig.tight_layout(); fig.savefig('results/fig3_classes_r7.png', dpi=300); print('ok')
+fig.tight_layout(); fig.savefig('results/fig4_classes_r9.png', dpi=300); print('ok')

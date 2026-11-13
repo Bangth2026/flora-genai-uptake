@@ -1,4 +1,4 @@
-"""Plan R6, RelianceScope (PREREG_R6.md G5, G7): precision of the post-test estimates (SD of uptake, slopes per 10
+"""Plan R6, RelianceScope (ANALYSIS_LOG_R6.md G5, G7): precision of the post-test estimates (SD of uptake, slopes per 10
 percentage points, minimum detectable effects, simulation-based power of the censored model) and attribution from the
 dialogue alone. Shared code (readers, attribution, measures) copied from src/r5_rs.py.
 Usage: python -I src/r6_rs.py RS_DIR PROMPT_TXT -> results/r6_rs.json"""
@@ -112,7 +112,7 @@ def measures(lex, n):
     return o, U, corr, Ur, R, TG, REF
 
 
-# ---------------- Plan R6 (PREREG_R6.md G5, G7) ----------------
+# ---------------- Plan R6 (ANALYSIS_LOG_R6.md G5, G7) ----------------
 rng = np.random.default_rng(2061)
 out = {'n_students': len(users)}
 o, U, corr, Ur, R, TG, REF = measures('alnum', 8)

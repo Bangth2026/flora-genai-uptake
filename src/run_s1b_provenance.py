@@ -1,4 +1,4 @@
-"""S1b: provenance of overlapping text from the writing log (PREREG_S1b_provenance.md).
+"""S1b: provenance of overlapping text from the writing log (ANALYSIS_LOG_S1b.md).
 Usage: python -I src/run_s1b_provenance.py DATA_DIR  (needs writing.pkl made from 5.3_writing_log.xlsx)"""
 import sys, json, re, numpy as np, pandas as pd
 from scipy.stats import spearmanr

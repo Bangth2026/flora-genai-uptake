@@ -1,4 +1,4 @@
-"""R2 passage labels and third-source sensitivity (PREREG_R2.md).
+"""R2 passage labels and third-source sensitivity (ANALYSIS_LOG_R2.md).
 Usage: python -I src/r2_label.py DATA_DIR  -> results/r2_passages.pkl, results/r2_sens.json"""
 import sys, json, re, warnings
 import numpy as np, pandas as pd

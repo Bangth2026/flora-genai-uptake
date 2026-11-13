@@ -1,4 +1,4 @@
-"""Plan R7, RelianceScope (PREREG_R7.md H2): agreement of segment uptake with each human response-use code.
+"""Plan R7, RelianceScope (ANALYSIS_LOG_R7.md H2): agreement of segment uptake with each human response-use code.
 Readers, attribution and segment construction are copied from src/r5_rs.py.
 Usage: python -I src/r7_rs.py RS_DIR PROMPT_TXT -> results/r7_rs.json"""
 import sys, json, re, warnings

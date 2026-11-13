@@ -1,0 +1,39 @@
+{
+ "n_students": 79,
+ "alnum": {
+  "U_mean": 0.2336676717436109,
+  "null_median_mean": 0.10134171166223131,
+  "null_median_ref_only_mean": 0.09347302058010545,
+  "null_median_nonref_only_mean": 0.0,
+  "corrected_mean": 0.13232596008137956,
+  "boundA_mean": 0.11063494410638942,
+  "C_ref_part_mean": 0.15268516613813618,
+  "convergence_share_of_U": 0.4337001815699491,
+  "runtime_total_sec": 0.3767431380001085,
+  "runtime_median_sec": 0.004800231999979587
+ },
+ "code": {
+  "U_mean": 0.29576548522119056,
+  "null_median_mean": 0.2107523268796288,
+  "null_median_ref_only_mean": 0.18587313033973252,
+  "null_median_nonref_only_mean": 0.02898610030806149,
+  "corrected_mean": 0.08501315834156177,
+  "boundA_mean": 0.1394791822607747,
+  "C_ref_part_mean": 0.20264522863144285,
+  "convergence_share_of_U": 0.7125656555970891,
+  "runtime_total_sec": 1.0718915470001207,
+  "runtime_median_sec": 0.013230188000022736
+ },
+ "code_norm": {
+  "U_mean": 0.3016455835901757,
+  "null_median_mean": 0.28374278769683503,
+  "null_median_ref_only_mean": 0.23372405671341484,
+  "null_median_nonref_only_mean": 0.06939502062376927,
+  "corrected_mean": 0.017902795893340755,
+  "boundA_mean": 0.14276146925297878,
+  "C_ref_part_mean": 0.21653548853635396,
+  "convergence_share_of_U": 0.9406495673489988,
+  "runtime_total_sec": 1.937820964000423,
+  "runtime_median_sec": 0.025035321000018484
+ }
+}

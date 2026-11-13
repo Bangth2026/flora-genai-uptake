@@ -1,4 +1,4 @@
-"""Revision R1 analyses (PREREG_R1.md).
+"""Revision R1 analyses (ANALYSIS_LOG_R1.md).
 Usage: python -I src/run_r1.py DATA_DIR
 DATA_DIR: dialogue.xlsx, proposal.xlsx, bio.xlsx, prior.xlsx, post.xlsx, writing.pkl, trace.pkl, annot.pkl"""
 import sys, json, re, warnings

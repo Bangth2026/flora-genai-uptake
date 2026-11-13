@@ -5,7 +5,7 @@ Written and pushed before the R4 analyses were run. These are time-stamped analy
 ## What is already known
 
 - All results of plans R1–R3.
-- The template-only shared-source rule for code was fixed in `PREREG_R3.md` before any R3 analysis was run. It was justified there by the single reference solution. The 66% removal by the peer filter was observed afterwards, as a pre-specified variant.
+- The template-only shared-source rule for code was fixed in `ANALYSIS_LOG_R3.md` before any R3 analysis was run. It was justified there by the single reference solution. The 66% removal by the peer filter was observed afterwards, as a pre-specified variant.
 - An internal check has already compared paragraphs entering as large insertions (X) with typed paragraphs (T) in their 4-gram and 5-gram overlap with the student's own replies and with other students' replies. It found no excess. Analysis F-4 below repeats this check with the R4 entry rule and is therefore **post hoc in direction**.
 
 ## E. Entry rule based on edit size (both datasets)

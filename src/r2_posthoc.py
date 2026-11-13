@@ -1,4 +1,4 @@
-"""Post hoc (not in PREREG_R2.md): how much of the 'composed' passages overlaps reading highlights or other students' proposals,
+"""Post hoc (not in ANALYSIS_LOG_R2.md): how much of the 'composed' passages overlaps reading highlights or other students' proposals,
 as a rough check on text retyped from shared sources. Usage: python -I src/r2_posthoc.py DATA_DIR -> results/r2_posthoc.json"""
 import sys, re, json, numpy as np, pandas as pd
 from collections import Counter

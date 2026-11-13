@@ -1,4 +1,4 @@
-"""R2 open zero-shot detector scores (PREREG_R2.md). Needs results/r2_passages.pkl from r2_label.py.
+"""R2 open zero-shot detector scores (ANALYSIS_LOG_R2.md). Needs results/r2_passages.pkl from r2_label.py.
 Usage: python -I src/r2_detect.py DATA_DIR STAGE (d12 | d3 | merge), one process per stage to fit in memory -> results/r2_scores.pkl, results/r2_proposal_scores.pkl"""
 import sys, os, re, time
 import numpy as np, pandas as pd, torch

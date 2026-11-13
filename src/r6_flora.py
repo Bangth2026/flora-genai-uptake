@@ -1,4 +1,4 @@
-"""Plan R6, FLoRA (PREREG_R6.md G1-G5): degraded logs (dialogue only, thinned snapshots), parameter choices
+"""Plan R6, FLoRA (ANALYSIS_LOG_R6.md G1-G5): degraded logs (dialogue only, thinned snapshots), parameter choices
 (chance baseline by n, entry threshold tau, effect of every variant on the main conclusions), subdivision of X by entry
 evidence, origin of logged pastes, precision of the grade estimates.
 Usage: python -I src/r6_flora.py DATA_DIR -> results/r6_flora.json"""

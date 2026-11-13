@@ -1,4 +1,4 @@
-"""Deviation D1 (added after the primary run, not in PREREG_S1_flora.md).
+"""Deviation D1 (added after the primary run, not in ANALYSIS_LOG_S1.md).
 Chatbot replies can echo text the student pasted into a prompt (e.g. a draft sent for feedback).
 Overlap with such text is the student's own writing, not uptake. Recompute U excluding 8-grams
 that also occur in the student's own prompts, then repeat RQ1-RQ3 with the corrected label."""
