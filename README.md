@@ -91,7 +91,7 @@ No measure or class definition changed. `src/r6_flora.py` reproduces U\* for eve
 
 ## Analysis log, not pre-registration (v1.9.0)
 
-The files `ANALYSIS_LOG_*.md` were named `PREREG_*.md` up to v1.8.0 and were renamed without changes to their content. Each entry was written as the analysis proceeded, after the results of earlier entries were known, and first results usually followed within minutes; commit times show the order of commits, not that an analysis had not been tried locally before. The entries are a record of decisions, not pre-registrations, and all analyses are exploratory.
+The files `ANALYSIS_LOG_*.md` were named `PREREG_*.md` up to v1.8.0 and were renamed; file names cited inside them were updated, and their content is otherwise unchanged. Each entry was written as the analysis proceeded, after the results of earlier entries were known, and first results usually followed within minutes; commit times show the order of commits, not that an analysis had not been tried locally before. The entries are a record of decisions, not pre-registrations, and all analyses are exploratory.
 
 ## Validation against known routes and independent process evidence (log entry R9)
 
