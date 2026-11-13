@@ -1,0 +1,175 @@
+{
+ "n_students": 275,
+ "F8_U_distribution": {
+  "mean": 0.23639070545454544,
+  "median": 0.047739,
+  "share_U_zero": 0.2909090909090909,
+  "share_U_below_1pct": 0.3090909090909091,
+  "quartiles": [
+   0.0,
+   0.047739,
+   0.4061925
+  ],
+  "share_U_ge50": 0.2,
+  "skewness": 1.2690256585517263
+ },
+ "F9_naive_overlap": {
+  "n5": {
+   "median": 0.29632721202003337,
+   "mean": 0.4159651225718447,
+   "share_ge50": 0.41818181818181815,
+   "ci_share_ge50": [
+    0.36,
+    0.4763636363636364
+   ]
+  },
+  "n8": {
+   "median": 0.21301775147928995,
+   "mean": 0.3726664331172001,
+   "share_ge50": 0.36,
+   "ci_share_ge50": [
+    0.3018181818181818,
+    0.41454545454545455
+   ]
+  },
+  "n12": {
+   "median": 0.1503623188405797,
+   "mean": 0.3418876885353825,
+   "share_ge50": 0.32727272727272727,
+   "ci_share_ge50": [
+    0.2727272727272727,
+    0.38181818181818183
+   ]
+  }
+ },
+ "F6_X_not_in_last_snapshot": {
+  "share_of_X_tokens_pooled": 0.013465996149766235,
+  "mean_share_of_proposal": 0.0070858568495554795,
+  "median_share_of_proposal": 0.0,
+  "students_with_any": 3,
+  "students_with_ge10pct_of_proposal": 3,
+  "students_without_snapshots": 0,
+  "all_tokens_not_in_last_snapshot_mean_share": 0.010873429113155142
+ },
+ "F7_working_span_days": {
+  "definition": "time from the first to the last editor snapshot of the student",
+  "n": 275,
+  "quartiles": [
+   0.06408328703703703,
+   0.6719997106481481,
+   2.7486642708333333
+  ],
+  "p90": 6.863451113425922,
+  "share_le_1day": 0.5818181818181818,
+  "share_le_4days": 0.8363636363636363,
+  "max": 17.807033333333333
+ },
+ "F7_timing_by_class": {
+  "C": {
+   "last24h": 0.6901365037428445,
+   "first_quarter_of_span": 0.6414354909731396,
+   "last_quarter_of_span": 0.18659180977542933,
+   "first_snapshot": 0.2834654337296345,
+   "first_hour": 0.5852708058124174,
+   "first_24h": 0.8206076618229855,
+   "last24h_students_span_gt4days": 0.13624005638908468,
+   "tokens": 45420
+  },
+  "T": {
+   "last24h": 0.5621105110095554,
+   "first_quarter_of_span": 0.46687901029404977,
+   "last_quarter_of_span": 0.2703226699903061,
+   "first_snapshot": 0.000507778239394359,
+   "first_hour": 0.28518672390712274,
+   "first_24h": 0.7330932927110742,
+   "last24h_students_span_gt4days": 0.16849340516440647,
+   "tokens": 21663
+  },
+  "X": {
+   "last24h": 0.8193466811361894,
+   "first_quarter_of_span": 0.5332981551358509,
+   "last_quarter_of_span": 0.33943310002887267,
+   "first_snapshot": 0.3773359484672594,
+   "first_hour": 0.5392917234993678,
+   "first_24h": 0.7813243595742775,
+   "last24h_students_span_gt4days": 0.32040605916408915,
+   "tokens": 100441
+  }
+ },
+ "F10_pastes_counts": {
+  "C": {
+   "n": 162,
+   "students": 29
+  },
+  "X": {
+   "n": 184,
+   "students": 34
+  },
+  "mixed_CX": {
+   "n": 23,
+   "students": 12
+  },
+  "other": {
+   "n": 176,
+   "students": 38
+  }
+ },
+ "F10_students_with_both_C_and_X_pastes": 8,
+ "F10_pastes_C_vs_X": {
+  "len": {
+   "median_X": 70.5,
+   "median_C": 37.0,
+   "mannwhitney_p_pastes_as_independent": 0.008389015776360104,
+   "mixedlm_log_coef_X": 0.35881386843826957,
+   "mixedlm_p": 0.055889350164503575,
+   "mixedlm_ci": [
+    -0.009020851520586293,
+    0.7266485883971254
+   ],
+   "ratio_X_over_C_from_mixedlm": 1.431630305186209,
+   "median_diff_X_minus_C": 33.5,
+   "cluster_bootstrap_ci_median_diff": [
+    -27.0125,
+    72.01249999999993
+   ]
+  },
+  "h_before_end": {
+   "median_X": 2.329569444444444,
+   "median_C": 17.90161833333333,
+   "mannwhitney_p_pastes_as_independent": 3.079136515655897e-08,
+   "mixedlm_log_coef_X": -0.5643047279038863,
+   "mixedlm_p": 0.0046340840519416785,
+   "mixedlm_ci": [
+    -0.9549264971798691,
+    -0.1736829586279035
+   ],
+   "ratio_X_over_C_from_mixedlm": 0.5687554491135487,
+   "median_diff_X_minus_C": -15.572048888888887,
+   "cluster_bootstrap_ci_median_diff": [
+    -20.893926791666665,
+    0.22602258333332859
+   ]
+  },
+  "s_since_reply": {
+   "median_X": 1774.503,
+   "median_C": 326.2555,
+   "mannwhitney_p_pastes_as_independent": 1.2303878509887215e-21,
+   "mixedlm_log_coef_X": 1.338639963967301,
+   "mixedlm_p": 4.524375395181741e-07,
+   "mixedlm_ci": [
+    0.8186304037959855,
+    1.8586495241386165
+   ],
+   "ratio_X_over_C_from_mixedlm": 3.8138529990264898,
+   "median_diff_X_minus_C": 1448.2475,
+   "cluster_bootstrap_ci_median_diff": [
+    729.9431125000001,
+    2684.022337499996
+   ]
+  },
+  "within_60s_of_reply": {
+   "X": 0.043478260869565216,
+   "C": 0.17901234567901234
+  }
+ }
+}

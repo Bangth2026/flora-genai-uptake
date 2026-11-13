@@ -36,6 +36,8 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `results/r10_*.json` | R10 analyses (`src/r10_benchmark.py`, `src/r10_online.py`, `src/r10_baselines.py`, `src/r10_rs.py`, `src/r10_flora_checks.py`; `demo/baselines.py`, `demo/provenance_online.py`) |
 | `ANALYSIS_LOG_R11.md` | Log entry R11 (properties of the rules, routes outside the specification, route mixes, seeds and intervals, earliest-plausible, paste-log and LLM baselines, entry rules, risk-coverage; FLoRA unresolved class, shared-source rule, clock direction, audit clustering; token entry rule made primary), committed before the R11 analyses |
 | `results/r11_*.json`, `results/fig4_classes_r11.png`, `results/fig5_risk_coverage_r11.png` | R11 analyses (`src/r11_benchmark.py`, `src/r11_flora.py`, `src/r11_llm_baseline.py`; figures `src/make_fig_classes_r11.py`, `src/make_fig_rc_r11.py`). `results/flora_token_classes.csv.gz` and `results/flora_student_classes.csv` re-exported with the token entry rule (n-gram entry kept as a column) |
+| `ANALYSIS_LOG_R12.md` | Log entry R12 (selective prediction with a stated confidence for every baseline and abstention by entry size attached to the baselines; online version with delta > 0; FLoRA unresolved text, working span, U\* distribution, naive overlap at n = 5 and 12, paste comparisons with students as clusters; RelianceScope token entry rule). Written after its analyses ran; no measure, class definition or parameter changed |
+| `results/r12_*.json`, `results/fig3_risk_coverage_r12.png`, `results/fig5_classes_r12.png` | R12 analyses (`src/r12_benchmark.py`, `src/r12_flora.py`, `src/r12_rs.py`, `src/r12_audit_selection.py`; figures `src/make_fig_rc_r12.py`, `src/make_fig_classes_r12.py`); `demo/provenance_online.py` holds labels for delta seconds after entry |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -155,6 +157,15 @@ Composed paragraphs of students with a first language other than English scored 
 
 All numbers: `results/r1_stats.json`, `results/r2_stats.json`. Earlier versions of the measure: `results/s1_*.json`, `results/s1b_provenance.json`.
 
+## Selective prediction, online operation and unresolved text (log entry R12)
+
+No measure, class definition or parameter value changed. The rules are listed in the order the code has always applied them: R1 echo (turn first), R2 echo (editor first), R3 shared source, R4 chatbot-first, R5 no evidence.
+
+- Risk-coverage with a stated confidence for every method (`results/r12_benchmark.json`, same simulated students as R11). 13 routes, AURC / error when every token is decided: attribution 0.021 / 0.054; earliest plausible attribution 0.058 / 0.053, with abstention by entry size 0.023 / 0.053 (difference from the attribution -0.001 [-0.004, 0.000]); dialogue only 0.075 / 0.121 (0.092 with abstention); direction-blind 0.079 / 0.124; naive overlap 0.123 / 0.179 (0.188 with abstention); paste-log 0.234 / 0.192; winnowing and string tiling (no graded score) error 0.163 and 0.149. 20 routes: attribution 0.065 / 0.107; earliest plausible 0.116, with abstention 0.070 (difference -0.005 [-0.008, -0.004]). The benefit of the unresolved outcome comes from abstaining by entry size, which works for any attribution with an order check.
+- Online version: with delta = 0 identical to the offline labels (13 and 20 routes); with delta = 30 s on 20 routes 99.998% agreement (R11 online version 97.8%, streamed text 35%).
+- FLoRA (`results/r12_flora.json`): 1.3% of X tokens (three students) are absent from the last snapshot; working span median 16 h (quartiles 1.5 h, 2.7 days; 84% at most four days); 38% of X tokens entered with the first snapshot and 82% in the last 24 h; U\* = 0 for 29.1% of students; naive overlap at least half of the proposal for 41.8% (n = 5), 36.0% (n = 8), 32.7% (n = 12). Pastes mostly X against mostly C, mixed models with a random intercept per student: later (p = 0.005), further from a reply (p < 0.001), length p = 0.06. Chatbot-panel selection before entry (`results/r12_audit_selection.json`): C 86% [74, 96], X 2% [0, 7].
+- RelianceScope token entry rule, tau = 20 (`results/r12_rs.json`): T 22.6%, X 6.1%; 99.8% of these X tokens entered with the starter template when the editor was loaded.
+
 ## Reproduce
 
 ```bash
@@ -210,4 +221,13 @@ python -I src/r10_online.py DATA RS_DIR
 python -I src/r10_baselines.py DATA
 python -I src/r10_rs.py RS_DIR PROMPT_TXT
 python -I src/r10_flora_checks.py DATA
+```
+
+```
+# R12 (R8_TOKEN_CLASSES: git show af6bdb9:results/flora_token_classes.csv.gz > FILE, the labels R11 read when it ran;
+#      DATA/pastes.pkl: rows of Figshare files 5.2 with learning_action_label PASTE_TEXT_ESSAY)
+python -I src/r12_benchmark.py DATA R8_TOKEN_CLASSES
+python -I src/r12_flora.py DATA && python -I src/r12_audit_selection.py
+python -I src/r12_rs.py RS_DIR PROMPT_TXT
+python -I src/make_fig_rc_r12.py && python -I src/make_fig_classes_r12.py
 ```
