@@ -10,7 +10,8 @@ Routes and true class:
 - C-retype: a reply passage retyped token by token (C).
 - C-para-p: a reply passage pasted after a share p of its tokens was replaced (p = 0.1, 0.25), (C).
 - E-prompt: the student's own draft sent in a prompt, repeated in the reply and pasted back from the reply (E).
-- E-editor: text typed in the editor and later repeated by the chatbot (E).
+- E-editor: text typed in the editor, later quoted in a prompt and repeated by the chatbot (E).
+- E-editor-auto: text typed in the editor and later repeated by the chatbot without being quoted in a prompt, as when the environment passes the draft to the chatbot (E). Added before the full run, after a test run on 30 students showed that every simulated editor-first echo was also prompt-first.
 - E-deleted: text typed, deleted, sent in a prompt and pasted back from the reply (E).
 - S: a reading highlight pasted (S).
 - X-ai: text from an AI tool outside the environment (a reply given to another student) pasted (X).
@@ -25,7 +26,7 @@ B-3. Baselines on the same simulated logs, scored for the binary decision "chatb
 O-1. An incremental version of Algorithms 1 and 2 processes the events of one student in time order (reply, prompt, snapshot). At each snapshot it labels the n-grams that enter the editor at that moment from the events seen so far (C, E prompt-first, S, T or X); n-grams that enter before a reply contains them are relabelled E when that reply arrives (editor-first echo). Recurrence across the cohort's proposals is not known while students write, so online S uses reading highlights only.
 O-2. On FLoRA and RelianceScope: agreement of the online n-gram labels at submission with the offline labels (share of tokens with the same class, Cohen's kappa), share of tokens whose online label at entry changed later, latency per snapshot (median, 99th percentile, maximum), and peak memory per student (tracemalloc) for the online and the offline versions, with total time per cohort on one CPU core. Machine described in the results file.
 
-## W. Winnowing, string tiling and contribution ratio on the study data (src/r10_baselines.py)
+## W. Winnowing, string tiling and contribution ratio on the study data (FLoRA: src/r10_baselines.py; RelianceScope: src/r10_rs.py)
 
 W-1. FLoRA: for every student, the share of the final proposal marked by (d) winnowing and (e) string tiling against the student's own replies; median, share of students at or above 50%, Spearman correlation with U*, and the share of marked tokens that fall in each of the five classes. Chance level: the same measures against the replies of other students (median over 20 random other students).
 W-2. RelianceScope: the same student-level measures for the final code, with and without the template, and against other students' replies; segment-level agreement with the human codes "copy the response" and "write over the response" (one against rest, AUC with student-cluster bootstrap intervals) for winnowing and tiling of each segment's replies against the final code, compared with segment uptake (Algorithm 4).

@@ -32,6 +32,8 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R8.md` | Log entry R8 (misclassification of uptake, equivalence tests, order of the E and S rules, retyped code, label-noise ceiling, comparison with the LLM classifiers released with RelianceScope, pre-activity covariates, Tobit standard errors, token-level export), committed before the R8 analyses; addendum K5 and the Tobit correction were committed before they ran |
 | `results/r8_flora.json`, `results/r8_rs.json`, `results/r8_rs_llm.json`, `results/r8_rs_tobit.json` | R8 analyses (`src/r8_flora.py`, `src/r8_rs.py`, `src/r8_rs_llm.py`, `src/r8_rs_tobit.py`) |
 | `results/flora_token_classes.csv.gz`, `results/flora_student_classes.csv` | Five-class label of every token of the 275 FLoRA proposals (user_id, token_index, token, class) and per-student class shares, including X_with_C (untraced text that entered with chatbot-first text). Derived from FLoRA Open Data IPS (CC BY 4.0) and released under the same licence |
+| `ANALYSIS_LOG_R9.md`, `ANALYSIS_LOG_R10.md` | Log entries R9 and R10, each committed before its analyses (R10: planted-provenance benchmark, external baselines, online version, RelianceScope intermediate snapshots and parameter table, paste checks with intervals) |
+| `results/r10_*.json` | R10 analyses (`src/r10_benchmark.py`, `src/r10_online.py`, `src/r10_baselines.py`, `src/r10_rs.py`, `src/r10_flora_checks.py`; `demo/baselines.py`, `demo/provenance_online.py`) |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -101,6 +103,17 @@ The files `ANALYSIS_LOG_*.md` were named `PREREG_*.md` up to v1.8.0 and were ren
 - Run time of Algorithms 1–2: 51 s for 275 FLoRA students and 496,733 snapshots on one CPU core (0.1 ms per snapshot); 0.4 s for RelianceScope.
 - Chance decomposition for code (`src/r9_rs.py`): convergence explains 43% (alphanumeric), 71% (code lexer) and 94% (identifiers normalised) of chatbot-first code.
 
+## Planted provenance, external baselines and online operation (log entry R10)
+
+No measure, class definition or parameter value changed.
+
+- Benchmark with planted provenance fitted to FLoRA (`src/r10_benchmark.py`, `results/r10_benchmark.json`; 400 simulated students built from real FLoRA replies, proposals, highlights and editor timing; 13 routes): token accuracy 0.93; precision/recall C 0.997/0.847, E 0.945/0.994, S 0.923/0.971, T 0.879/0.989, X 0.892/0.959. Retyped chatbot text is recognised as C (0.97); paraphrase removes it from C (C 0.69 with 10% and 0.22 with 25% of tokens replaced, the rest falls in X). Student-level U* against the true C share: mean absolute error 0.051, bias -0.050, Spearman 0.92, agreement on "at least half" 0.92. With snapshots 60-300 s apart, editor-first echo that the environment passes to the chatbot becomes C (80-89%), and T recall falls below 0.10.
+- Baselines on the same logs, chatbot text at token level (precision/recall/F1): attribution 0.997/0.847/0.916; dialogue only 0.924/0.848/0.885; direction-blind removal 0.923/0.839/0.879; naive 8-gram overlap 0.746/0.860/0.799; string tiling (MML 8) 0.748/0.860/0.800; winnowing (k 8, w 4) 0.749/0.796/0.772. Typed share: attribution MAE 0.019; 1 minus the overlap share MAE 0.48.
+- Study data (`src/r10_baselines.py`, `src/r10_rs.py`): in FLoRA, winnowing and string tiling mark a median of 16.0% and 20.6% of the proposal (U* 4.8%); 32.4% and 36.0% of students at or above half (U* 20.0%); 37% to 38% of the marked tokens are echo. In RelianceScope, segment agreement with "copy the response": segment uptake AUC 0.762 [0.724, 0.805], string tiling 0.693 [0.646, 0.740], winnowing 0.674 [0.627, 0.723]; chance level 8-9% of the final code.
+- Online version (`demo/provenance_online.py`, `src/r10_online.py`): labels agree with the primary offline labels on 99.3% of FLoRA tokens (kappa 0.99; U* Spearman 0.998) and on all RelianceScope tokens; 1.9% of n-gram labels change after entry (editor-first echo). Latency per snapshot: median 0.06 ms, 99th percentile 0.23 ms, maximum 9 ms (FLoRA, one CPU core); peak memory per student median 3.2 MB (max 13 MB) online and 1.1 MB offline; 40 s online and 33 s offline for the 275 FLoRA students and 496,733 snapshots.
+- RelianceScope (`src/r10_rs.py`): labelling the snapshot at the end of each segment instead of the final code leaves "write over the response" at AUC 0.55 (copy 0.78). Parameter table: chance-corrected mean uptake 13.2% (primary), 10.7% (n = 5), 11.4% (n = 12), 9.9% (E before C), 2.1% (majority), 8.5% (code lexer), 1.8% (identifiers normalised); tau has no effect on C; post-test slope per SD between -0.31 and -0.41, all intervals but E-before-C include zero. Label-noise ceiling for the copy code: 0.97, 0.94, 0.92, 0.89, 0.87, 0.85, 0.82, 0.80, 0.78, 0.76 at q = 0.02 to 0.20.
+- FLoRA paste checks with student-level intervals (`src/r10_flora_checks.py`, 68 students): C tokens covered by logged pastes 97.4% [94.6, 99.3]; X 94.1% [85.7, 99.3]; T 56.2% [40.2, 77.1]. Editor snapshots per 100 final tokens, interval between snapshots and share of large insertions do not differ between students with and without logged pastes (p > 0.13). Asks whose nearest Enter keystroke lay near 1, 10 or 11 h (6 asks, 4 students) all had another chat-box keystroke within 30 s.
+
 ## Demo without the study data
 
 ```bash
@@ -168,4 +181,13 @@ python -I src/r9_synthetic.py
 python -I src/r9_flora.py DATA R2_PASSAGES
 python -I src/r9b_flora_token_entry.py DATA R2_PASSAGES
 python -I src/r9_rs.py RS_DIR PROMPT_TXT
+```
+
+```
+# R10 (FLoRA writing log as DATA/writing.pkl, trace as DATA/trace.pkl)
+python -I src/r10_benchmark.py DATA
+python -I src/r10_online.py DATA RS_DIR
+python -I src/r10_baselines.py DATA
+python -I src/r10_rs.py RS_DIR PROMPT_TXT
+python -I src/r10_flora_checks.py DATA
 ```
