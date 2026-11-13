@@ -4,37 +4,37 @@
 
 All versions: concept DOI 10.5281/zenodo.24101339.
 
-Code, time-stamped analysis plans and statistics files for a study that attributes each token of students' submitted work to five provenance classes (chatbot-first, echo of the student's own text, shared source, typed, untraced insertion) from dialogue, editor and clipboard logs, and relates verbatim uptake to grades, a post-test, dialogue features and AI-text detectors. Data: FLoRA Open Data IPS (Li et al., 2026; Figshare [10.6084/m9.figshare.32321499](https://doi.org/10.6084/m9.figshare.32321499); CC BY 4.0; 275 postgraduate students) and RelianceScope (Jin et al., 2026; 79 students; used with the authors' permission, not bundled here). All analyses are exploratory.
+Code, a dated analysis log and statistics files for a study that attributes each token of students' submitted work to five provenance classes (chatbot-first, echo of the student's own text, shared source, typed, untraced insertion) from dialogue and editor logs, validates the classes against simulated logs with known routes, keystrokes, chatbot-panel selections, logged pastes, a chance baseline and human codes, and relates verbatim uptake to grades, a post-test, dialogue features and AI-text detectors. Data: FLoRA Open Data IPS (Li et al., 2026; Figshare [10.6084/m9.figshare.32321499](https://doi.org/10.6084/m9.figshare.32321499); CC BY 4.0; 275 postgraduate students) and RelianceScope (Jin et al., 2026; 79 students; used with the authors' permission, not bundled here). All analyses are exploratory.
 
 ## Order of work (see `git log`)
 
 | Commit | Content |
 |---|---|
-| `PREREG_S1_flora.md` | Plan for Study 1, committed before any association was computed |
-| `results/s1_stats.json` | Primary run as planned (naive uptake U) |
+| `ANALYSIS_LOG_S1.md` | Log entry for Study 1, committed before any association was computed |
+| `results/s1_stats.json` | Primary run as specified (naive uptake U) |
 | Deviation D1 | Echo correction: exclude text the student pasted into prompts (`src/run_s1_echo.py`) |
-| `src/align_check.py`, `PREREG_S1b_provenance.md` | Clock check and plan for provenance validation, committed before the provenance run |
+| `src/align_check.py`, `ANALYSIS_LOG_S1b.md` | Clock check and log entry for provenance validation, committed before the provenance run |
 | `results/s1b_provenance.json` | Provenance from the writing log; decision rule selects U_prov as the primary label |
 | `results/s1_stats_uprov.json` | RQ2–RQ4 with U_prov |
-| `PREREG_R1.md`, `src/r1_clock.py` | Plan R1 and clock check, pushed before the R1 analyses |
+| `ANALYSIS_LOG_R1.md`, `src/r1_clock.py` | Log entry R1 and clock check, committed before the R1 analyses |
 | `results/r1_stats.json` | R1 analyses (`src/run_r1.py`) |
-| `PREREG_R2.md` | Plan R2 (open AI-text detectors, third-source threshold), pushed before the R2 analyses; deviations R2-1 and R2-2 recorded |
+| `ANALYSIS_LOG_R2.md` | Log entry R2 (open AI-text detectors, third-source threshold), committed before the R2 analyses; deviations R2-1 and R2-2 recorded |
 | `results/r2_stats.json`, `results/r2_sens.json` | R2 analyses (`src/r2_label.py`, `src/r2_detect.py`, `src/r2_stats.py`); post hoc check `results/r2_posthoc.json` |
-| `PREREG_R3.md` | Plan R3 (five provenance classes C/E/S/T/X; second dataset with human response-use codes and post-test; FLoRA typed/untraced reanalysis declared post hoc), pushed before the R3 analyses |
+| `ANALYSIS_LOG_R3.md` | Log entry R3 (five provenance classes C/E/S/T/X; second dataset with human response-use codes and post-test; FLoRA typed/untraced reanalysis declared post hoc), committed before the R3 analyses |
 | `results/r3_rs_stats.json`, `results/r3_flora_stats.json`, `results/r3_d3swap.json` | R3 analyses (`src/run_r3_rs.py`, `src/run_r3_flora.py`, `src/r3_d3swap.py`) |
-| `PREREG_R4.md` | Plan R4 (edit-size entry rule; T/X validation against logged pastes; chance baseline and bounds for code; length-controlled human-code validation; censored post-test model), pushed before the R4 analyses |
+| `ANALYSIS_LOG_R4.md` | Log entry R4 (edit-size entry rule; T/X validation against logged pastes; chance baseline and bounds for code; length-controlled human-code validation; censored post-test model), committed before the R4 analyses |
 | `results/r4_rs_stats.json`, `results/r4_flora_stats.json`, `results/r4_flora_tx_timing.json` | R4 analyses (`src/r4_rs.py`, `src/r4_flora.py`, `src/r4_flora_tx_timing.py`) |
-| `PREREG_R5.md` | Plan R5 (moves within the document, token projection, clock distribution, code-aware tokenisation, origin of E, timing baseline, robustness of grade and post-test models, detector thresholds, size-matched and semantic paraphrase check), pushed before the R5 analyses |
+| `ANALYSIS_LOG_R5.md` | Log entry R5 (moves within the document, token projection, clock distribution, code-aware tokenisation, origin of E, timing baseline, robustness of grade and post-test models, detector thresholds, size-matched and semantic paraphrase check), committed before the R5 analyses |
 | `results/r5_*.json` | R5 analyses (`src/r5_flora_attr.py`, `src/r5_clock.py`, `src/r5_flora_grade.py`, `src/r5_flora_para.py`, `src/r5_rs.py`; figure `src/make_fig_classes_r5.py`) |
-| `PREREG_R6.md` | Plan R6 (degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), pushed before the R6 analyses |
+| `ANALYSIS_LOG_R6.md` | Log entry R6 (degraded logs, parameter choices, subdivision of X, origin of logged pastes, precision of outcome estimates, demonstration code), committed before the R6 analyses |
 | `results/r6_flora.json`, `results/r6_rs.json`, `demo/` | R6 analyses (`src/r6_flora.py`, `src/r6_rs.py`) and an end-to-end demonstration on synthetic logs |
-| `PREREG_R7.md` | Plan R7 (students with and without logged pastes; agreement by response-use code), pushed before the R7 analyses |
-| `PREREG_R8.md` | Plan R8 (misclassification of uptake, equivalence tests, order of the E and S rules, retyped code, label-noise ceiling, comparison with the LLM classifiers released with RelianceScope, pre-activity covariates, Tobit standard errors, token-level export), pushed before the R8 analyses; addendum K5 and the Tobit correction were pushed before they ran |
+| `ANALYSIS_LOG_R7.md` | Log entry R7 (students with and without logged pastes; agreement by response-use code), committed before the R7 analyses |
+| `ANALYSIS_LOG_R8.md` | Log entry R8 (misclassification of uptake, equivalence tests, order of the E and S rules, retyped code, label-noise ceiling, comparison with the LLM classifiers released with RelianceScope, pre-activity covariates, Tobit standard errors, token-level export), committed before the R8 analyses; addendum K5 and the Tobit correction were committed before they ran |
 | `results/r8_flora.json`, `results/r8_rs.json`, `results/r8_rs_llm.json`, `results/r8_rs_tobit.json` | R8 analyses (`src/r8_flora.py`, `src/r8_rs.py`, `src/r8_rs_llm.py`, `src/r8_rs_tobit.py`) |
 | `results/flora_token_classes.csv.gz`, `results/flora_student_classes.csv` | Five-class label of every token of the 275 FLoRA proposals (user_id, token_index, token, class) and per-student class shares, including X_with_C (untraced text that entered with chatbot-first text). Derived from FLoRA Open Data IPS (CC BY 4.0) and released under the same licence |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
-## Main results (plan R1, primary measure U*)
+## Main results (log entry R1, primary measure U*)
 
 U* is the share of the final proposal covered by 8-grams that are in a chatbot reply, were not supplied by the student in an earlier prompt (time-aware echo correction), do not occur in reading highlights or in at least five other proposals, and were in a reply no later than their first appearance in the editor. Clocks aligned (chat-box Enter keystrokes vs ask times: median difference 2.2 s, `results/r1_clock.json`).
 
@@ -44,7 +44,7 @@ U* is the share of the final proposal covered by 8-grams that are in a chatbot r
 - Grade per SD of U*: 0.02 points on 0–15 (95% CI −0.21 to 0.24); mean grade by uptake quartile 11.9, 11.8, 11.8, 11.7.
 - Detection of the top quartile: exposure AUC 0.615 (0.538–0.693); coded intent and request features add nothing detectable (all gains inconclusive).
 
-## Five provenance classes (plan R3)
+## Five provenance classes (log entry R3)
 
 Each token of the final artefact is labelled C (chatbot-first), E (echo of the student's own text), S (shared source), T (typed in the editor) or X (untraced insertion). U* is the share of class C.
 
@@ -55,15 +55,15 @@ Each token of the final artefact is labelled C (chatbot-first), E (echo of the s
 
 RelianceScope validation: segment uptake vs human codes "copy / write over the response" AUC 0.759 [0.713, 0.799]; U* vs perceived reliance ρ = 0.65. Post-test on pre-test and U*: −0.32 per SD [−0.71, 0.06] (58% at ceiling). FLoRA detectors, chatbot vs typed paragraphs: AUC 0.805 (D1), 0.665 (D2), 0.710 (D3); untraced paragraphs score like chatbot paragraphs.
 
-Plan R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams but 3.0% of T 8-grams entered through a logged paste. RelianceScope chance-corrected U* 13.2% (raw 23.4%); human-code AUC for "copy the response" 0.762, gain over a reply-length model 0.187 [0.139, 0.238]; post-test Tobit −0.75 per SD of U* [−1.37, −0.12].
+Log entry R4 (entry mode by edit size): FLoRA T 12.4%, X 50.2%; 89.7% of X 8-grams but 3.0% of T 8-grams entered through a logged paste. RelianceScope chance-corrected U* 13.2% (raw 23.4%); human-code AUC for "copy the response" 0.762, gain over a reply-length model 0.187 [0.139, 0.238]; post-test Tobit −0.75 per SD of U* [−1.37, −0.12].
 
-Plan R5 (checks of assumptions and robustness): moves within the document account for 1.1% of FLoRA X tokens (X 50.2% → 49.6%); a segment-local entry rule gives X 43.6%, T 19.0%. Token projection with E before C: median U* 2.8%, ≥ 50% 16.0% (ρ = 0.98 with U*). Clock: 99.0% of asks whose nearest Enter keystroke was > 30 s away had another chat-box keystroke within 30 s; no offset near 1 h. Grade: null under multiple imputation, missing indicators, Tobit at 15, rank/log/spline U*, and for X and T shares. RelianceScope post-test, per SD: raw U* OLS −0.32 [−0.71, 0.06], Tobit −0.75; U* excluding the reference solution OLS −0.59 [−1.01, −0.18], Tobit −1.04 [−1.58, −0.51]. Code-aware lexers: chance-corrected U* 8.5% (operators kept) and 1.8% (identifiers normalised); bound excluding the reference solution 11–16%.
+Log entry R5 (checks of assumptions and robustness): moves within the document account for 1.1% of FLoRA X tokens (X 50.2% → 49.6%); a segment-local entry rule gives X 43.6%, T 19.0%. Token projection with E before C: median U* 2.8%, ≥ 50% 16.0% (ρ = 0.98 with U*). Clock: 99.0% of asks whose nearest Enter keystroke was > 30 s away had another chat-box keystroke within 30 s; no offset near 1 h. Grade: null under multiple imputation, missing indicators, Tobit at 15, rank/log/spline U*, and for X and T shares. RelianceScope post-test, per SD: raw U* OLS −0.32 [−0.71, 0.06], Tobit −0.75; U* excluding the reference solution OLS −0.59 [−1.01, −0.18], Tobit −1.04 [−1.58, −0.51]. Code-aware lexers: chance-corrected U* 8.5% (operators kept) and 1.8% (identifiers normalised); bound excluding the reference solution 11–16%.
 
 The RelianceScope data (Jin et al., 2026; [10.1145/3774398.3811612](https://doi.org/10.1145/3774398.3811612)) are used with the permission of the dataset authors, who allow use and redistribution provided the paper is cited. They are not bundled here: obtain them from the authors' Open Science Framework repository and place them in RS_DIR. This repository holds only code and aggregate RelianceScope statistics; `src/run_r3_rs.py` also writes a student-level file (`results/r3_rs_students.csv`), which is excluded from version control and must not be shared.
 
-In v1.8.0 the headings of plans R6 and R7 were reworded to describe their content; their analysis specifications are unchanged, and the original files are in the git history at the commits listed in the article's Online Resource 2.
+In v1.8.0 the headings of log entries R6 and R7 were reworded to describe their content; their analysis specifications are unchanged, and the original files are in the git history at the commits listed in Table S3 of the article's Supplementary Material.
 
-## Degraded logs and parameter choices (plan R6)
+## Degraded logs and parameter choices (log entry R6)
 
 No measure or class definition changed. `src/r6_flora.py` reproduces U\* for every FLoRA student exactly.
 
@@ -74,12 +74,12 @@ No measure or class definition changed. `src/r6_flora.py` reproduces U\* for eve
 - Logged pastes (≥ 8 tokens, n = 687): 30.6% mostly chatbot text, 19.8% moved within the document, 39.3% from outside the logs, 10.3% mixed; 73.1% of C tokens entered through a paste that was mostly chatbot text.
 - Precision: FLoRA grade 0.005 points per 10 percentage points of uptake (CI −0.06 to 0.07), minimum detectable slope 0.32 points per SD; RelianceScope minimum detectable slope 0.55 (OLS) and 0.89 (Tobit) points per SD; simulated Tobit power 33% for −0.50 and 64% for −0.75 per SD.
 
-## Paste-logged students and agreement by code (plan R7)
+## Paste-logged students and agreement by code (log entry R7)
 
 - Students with (68) and without (207) logged pastes: no difference in grade (mean 11.81 both), proposal length (median 715 vs 703 tokens), large insertions (median 4 vs 3), untraced share (46.4% vs 51.4%) or English as first language (14.9% vs 9.5%, p = 0.32). Logged students received more chatbot text (median 5,515 vs 4,714 words, SMD 0.30, p = 0.04) and had higher median U\* (11.8% vs 3.4%, p = 0.06). Share of large insertions carrying chatbot-first text: 26.5% vs 24.3%.
 - RelianceScope agreement by response-use code (one against rest, segment uptake): copy the response AUC 0.76 [0.72, 0.80]; write over the response 0.55 [0.49, 0.61]; correct artefact 0.39; create artefacts by oneself 0.32; read and move on 0.31. Share of segments with any uptake: 73%, 47%, 19%, 6%, 3% (edit-size entry rule; the R5 figure used the R3 rule).
 
-## Misclassification, retyped code and LLM classifiers (plan R8)
+## Misclassification, retyped code and LLM classifiers (log entry R8)
 
 - FLoRA grade (OLS, HC3, per SD): C + 0.25X 0.04 [−0.19, 0.26]; C + 0.5X 0.06 [−0.16, 0.29]; C + X 0.08 [−0.16, 0.32]; C + X_C −0.01 [−0.25, 0.24]; C and X_C together 0.01 and −0.02. X_C (untraced text entering with chatbot-first text) is 36.0% of X tokens, 17.4% of the mean proposal. TOST against ±0.25 grade SD: p < 0.001 for U\* and every composite; smallest equivalence bound 0.10 grade SD for U\*. Tobit at 15 with numerical-Hessian SE: 0.02 [−0.21, 0.26].
 - Order of the E and S rules: no n-gram in either dataset was both in a shared source and in the editor before the first reply containing it, so the order changes nothing.
@@ -87,7 +87,19 @@ No measure or class definition changed. `src/r6_flora.py` reproduces U\* for eve
 - Label-noise ceiling for the copy code (simulated AUC of a perfect score): 0.93, 0.87, 0.81, 0.79 at label error 5%, 10%, 15%, 17%.
 - Released LLM classifiers (145 matched benchmark segments, passive response use): segment uptake > 0 precision 0.88, recall 0.50, F1 0.64; best LLM configuration F1 0.77, median 0.62.
 - Post-test with pre-activity questionnaire (self-efficacy, motivation, metacognition) instead of task progress, per SD: raw U\* OLS −0.23 [−0.68, 0.22], Tobit −0.56 [−1.19, 0.07]; U\* excluding the reference solution OLS −0.50 [−0.99, −0.02], Tobit −0.85 [−1.39, −0.31].
-- Tobit standard errors: the BFGS inverse-Hessian approximation used in plans R4–R6 understated the uncertainty of models with several covariates; R8 reports numerical-Hessian standard errors (`results/r8_rs_tobit.json`). With the pre-test alone, intervals move by at most 0.04 points.
+- Tobit standard errors: the BFGS inverse-Hessian approximation used in log entries R4–R6 understated the uncertainty of models with several covariates; R8 reports numerical-Hessian standard errors (`results/r8_rs_tobit.json`). With the pre-test alone, intervals move by at most 0.04 points.
+
+## Analysis log, not pre-registration (v1.9.0)
+
+The files `ANALYSIS_LOG_*.md` were named `PREREG_*.md` up to v1.8.0 and were renamed without changes to their content. Each entry was written as the analysis proceeded, after the results of earlier entries were known, and first results usually followed within minutes; commit times show the order of commits, not that an analysis had not been tried locally before. The entries are a record of decisions, not pre-registrations, and all analyses are exploratory.
+
+## Validation against known routes and independent process evidence (log entry R9)
+
+- Simulated logs with known routes (`src/r9_synthetic.py`, `results/r9_synthetic.json`; 300 students per condition): with complete logs on one clock, C, E and S precision and recall ≥ 0.998; X recall 0.91 (boundary tokens become T); a dialogue clock 60 s ahead of the editor turns about a third of chatbot-first tokens into E; thinning removes the T/X split; replacing every 8th token of pasted chatbot text removes it from C.
+- Keystroke and selection audit (`src/r9_flora.py`, `results/r9_audit_sample.csv`; 70 FLoRA students; 50 passages per class): C not typed 0.86 [0.76, 0.94] and selected in the chatbot panel before entry 0.86; E student side first 0.64 (prompt-first 0.73, editor-first 0.30); X not typed 0.94; T typed 0.48 per n-gram entry and 0.96 with token-level entry (`src/r9b_flora_token_entry.py`, added after the first audit result).
+- Echo by entry mode: E-X 11.0% and E-T 2.6% of the mean proposal; students with at least half the proposal in C 20.0%, in C + E-X 32.7%, in C + E 36.0%.
+- Run time of Algorithms 1–2: 51 s for 275 FLoRA students and 496,733 snapshots on one CPU core (0.1 ms per snapshot); 0.4 s for RelianceScope.
+- Chance decomposition for code (`src/r9_rs.py`): convergence explains 43% (alphanumeric), 71% (code lexer) and 94% (identifiers normalised) of chatbot-first code.
 
 ## Demo without the study data
 
@@ -96,7 +108,7 @@ python demo/make_synthetic.py && python demo/run_demo.py   # or open demo/demo.i
 ```
 See `demo/README.md`. `demo/provenance.py` implements Algorithms 1, 2 and 4 with the standard library only.
 
-## Open AI-text detectors (plan R2)
+## Open AI-text detectors (log entry R2)
 
 Paragraphs of the final proposals (≥ 40 tokens) labelled from the logs: 147 chatbot (≥ 80% covered by chatbot-first 8-grams) and 618 composed (no reply 8-gram, < 5% logged paste).
 
@@ -149,3 +161,11 @@ python -I src/r8_flora.py DATA R2_PASSAGES && python -I src/r8_rs.py RS_DIR PROM
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
+
+```
+# R9
+python -I src/r9_synthetic.py
+python -I src/r9_flora.py DATA R2_PASSAGES
+python -I src/r9b_flora_token_entry.py DATA R2_PASSAGES
+python -I src/r9_rs.py RS_DIR PROMPT_TXT
+```
