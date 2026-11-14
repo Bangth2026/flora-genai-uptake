@@ -77,8 +77,8 @@ def attribute(final, replies, turns, snapshots, shared=(), n=8, tau=5, delta=0):
         shared_g = g in shared_grams                                                       # Alg. 1, line 5
         if in_reply and not prompt_first and not shared_g and g in t_ed and t_bot[g] <= t_ed[g] + delta:
             label[g] = "C"                                                                 # Alg. 2, line 9
-        elif in_reply and (prompt_first or (g in t_ed and t_ed[g] < t_bot[g])):
-            label[g] = "E"                                                                 # Alg. 1 line 4, Alg. 2 line 10
+        elif in_reply and (prompt_first or (g in t_ed and t_ed[g] + delta < t_bot[g])):
+            label[g] = "E"                                                                 # R1 / R2 (Alg. 1 line 5, Alg. 2 line 9)
         elif shared_g:
             label[g] = "S"
         elif g in t_ed:                                                                     # Alg. 2, line 11

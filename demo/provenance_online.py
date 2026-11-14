@@ -9,7 +9,8 @@ moment are labelled from the events seen so far, so a learning environment can r
   X  entered in a larger edit, source not in the logs
 An n-gram that entered before any reply contained it is relabelled E (editor-first echo) when such a reply arrives
 more than delta after its entry. With delta > 0, a reply that arrives within delta of an n-gram's entry makes a T or X
-label C, as the offline rule does; a label is final delta after entry (log entry R12). With delta = 0 nothing changes.
+label C, as the offline rule does, and makes a T, X or S label E if a writer turn contained the n-gram before the reply
+(rule R1 precedes R3; log entries R12 and R13); a label is final delta after entry. With delta = 0 nothing changes.
 Cohort-level recurrence (the peer rule of the offline attribution) is not known while students write, so S uses the
 shared texts given at start only.
 
@@ -48,11 +49,17 @@ class OnlineAttributor:
                 if self.label[g] in "TXS":
                     self.label[g] = "E"
                     self.changed.add(g)
-            elif self.label[g] in "TX":
-                # reply within delta of entry (delta > 0 only): the offline rule gives C unless the n-gram came first
-                # in a prompt or is shared, which a T or X label at entry already excludes
+            elif self.label[g] in "TXS":
+                # reply within delta of entry (delta > 0 only), as the offline rules decide it: R1 (turn first) comes
+                # before R3, so an n-gram that a writer turn contained before this reply becomes E even if it is
+                # shared; otherwise a shared n-gram stays S (R3 before R4) and a T or X label becomes C (R4)
                 prompt_first = g in self.t_pr and self.t_pr[g] < t
-                self.label[g] = "E" if prompt_first else "C"
+                if prompt_first:
+                    self.label[g] = "E"
+                elif self.label[g] != "S":
+                    self.label[g] = "C"
+                else:
+                    continue
                 self.changed.add(g)
 
     def _decide(self, g, t, ins):
