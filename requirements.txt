@@ -8,3 +8,5 @@ statsmodels
 torch
 transformers
 sentence-transformers
+pyarrow
+pyahocorasick

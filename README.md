@@ -38,6 +38,8 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `results/r11_*.json`, `results/fig4_classes_r11.png`, `results/fig5_risk_coverage_r11.png` | R11 analyses (`src/r11_benchmark.py`, `src/r11_flora.py`, `src/r11_llm_baseline.py`; figures `src/make_fig_classes_r11.py`, `src/make_fig_rc_r11.py`). `results/flora_token_classes.csv.gz` and `results/flora_student_classes.csv` re-exported with the token entry rule (n-gram entry kept as a column) |
 | `ANALYSIS_LOG_R12.md` | Log entry R12 (selective prediction with a stated confidence for every baseline and abstention by entry size attached to the baselines; online version with delta > 0; FLoRA unresolved text, working span, U\* distribution, naive overlap at n = 5 and 12, paste comparisons with students as clusters; RelianceScope token entry rule). Written after its analyses ran; no measure, class definition or parameter changed |
 | `results/r12_*.json`, `results/fig3_risk_coverage_r12.png`, `results/fig5_classes_r12.png` | R12 analyses (`src/r12_benchmark.py`, `src/r12_flora.py`, `src/r12_rs.py`, `src/r12_audit_selection.py`; figures `src/make_fig_rc_r12.py`, `src/make_fig_classes_r12.py`); `demo/provenance_online.py` holds labels for delta seconds after entry |
+| `ANALYSIS_LOG_R13.md` | Log entry R13 (decision list applied as written when delta > 0: offline R2 with delta, online R1 for S labels; sources of the remaining risk-coverage difference by route; FLoRA unresolved text in the first snapshot, panel selections for the token-rule audit sample, overlap of each class with English Wikipedia). Written after its analyses ran; no result with delta = 0 changed |
+| `results/r13_*.json` | R13 analyses (`src/r13_benchmark.py`, `src/r13_flora.py`, `src/r13_wiki.py`); `demo/provenance.py` and `demo/provenance_online.py` updated (D-3, D-4) |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -165,6 +167,17 @@ No measure, class definition or parameter value changed. The rules are listed in
 - Online version: with delta = 0 identical to the offline labels (13 and 20 routes); with delta = 30 s on 20 routes 99.998% agreement (R11 online version 97.8%, streamed text 35%).
 - FLoRA (`results/r12_flora.json`): 1.3% of X tokens (three students) are absent from the last snapshot; working span median 16 h (quartiles 1.5 h, 2.7 days; 84% at most four days); 38% of X tokens entered with the first snapshot and 82% in the last 24 h; U\* = 0 for 29.1% of students; naive overlap at least half of the proposal for 41.8% (n = 5), 36.0% (n = 8), 32.7% (n = 12). Pastes mostly X against mostly C, mixed models with a random intercept per student: later (p = 0.005), further from a reply (p < 0.001), length p = 0.06. Chatbot-panel selection before entry (`results/r12_audit_selection.json`): C 86% [74, 96], X 2% [0, 7].
 - RelianceScope token entry rule, tau = 20 (`results/r12_rs.json`): T 22.6%, X 6.1%; 99.8% of these X tokens entered with the starter template when the editor was loaded.
+
+## Decision list with delta > 0, sources of the risk-coverage difference, unresolved text (log entry R13)
+
+No measure, class definition or parameter value changed, and no result with delta = 0 changed.
+
+- Offline R2 now requires t_W + delta < t_R, as the decision list states (the code tested t_W < t_R; the two differ only for a shared n-gram whose first reply came within delta after entry). The online version now turns an S label into E when a reply within delta of entry follows a writer turn that contained the n-gram (R1 before R3). With R2 as written, online and offline labels agree on every benchmark token with delta = 30 s (R12: 99.998%, three tokens of reading highlights in streamed text). Streamed text 97.8% C and editor-first echo passed by the environment 7.8% C at delta = 30 s, as before (`results/r13_benchmark.json`).
+- Remaining AURC difference between the attribution and earliest plausible attribution with abstention by entry size: 20 routes -0.0053, -0.0037 without the shared-source route (R3 decides its 3,136 tokens, the other method abstains on all of them) and -0.0034 without streamed text; 13 routes -0.0015, -0.0005 without the shared-source route.
+- FLoRA (`results/r13_flora.json`): 37% of X tokens entered with the first snapshot (126 students, median first snapshot 642 tokens); the editor loaded no common text (56 of 33,486 such 8-grams occur in another student's first snapshot; 118 in one to four other proposals). Token-rule audit sample: X selected in the chatbot panel before entry 0 of 50, T 3 of 50.
+- English Wikipedia (`src/r13_wiki.py`, `results/r13_wiki.json`; 6.4 million articles): share of class tokens in an 8-gram that also occurs in Wikipedia, C 0.9%, E 0.9%, S 36.9%, T 0.3%, X 0.8%.
+
+Reproduce: `python -I src/r13_benchmark.py DATA R8_TOKEN_CLASSES && python -I src/r13_flora.py DATA && python -I src/r13_wiki.py SHARD_DIR` (R8_TOKEN_CLASSES: `git show af6bdb9:results/flora_token_classes.csv.gz > FILE`; `src/r13_wiki.py` needs `pyahocorasick` and `pyarrow` and downloads about 11 GB, one shard at a time).
 
 ## Reproduce
 

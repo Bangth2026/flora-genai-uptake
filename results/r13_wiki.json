@@ -1,0 +1,30 @@
+{
+ "dump": "wikimedia/wikipedia 20231101.en",
+ "shards_scanned": 41,
+ "articles_scanned": 6407814,
+ "characters_scanned": 18782481476,
+ "n_windows": 156628,
+ "n_windows_found": 269,
+ "pooled_share_of_class_tokens_web_matched": {
+  "C": 0.009092506369146974,
+  "E": 0.008516552043616149,
+  "S": 0.3688118811881188,
+  "T": 0.002723537829478835,
+  "X": 0.008446941421443446
+ },
+ "median_student_share_of_class_tokens_web_matched": {
+  "C": 0.0,
+  "E": 0.0,
+  "S": 0.0,
+  "T": 0.0,
+  "X": 0.0
+ },
+ "mean_share_of_proposal_web_matched_by_class": {
+  "C": 0.002260783954225899,
+  "E": 0.0011646388910818814,
+  "S": 0.0007365113812315629,
+  "T": 0.0002972693548727873,
+  "X": 0.004247889899658
+ },
+ "seconds": 1995.8700755789998
+}

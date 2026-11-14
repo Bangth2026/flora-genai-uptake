@@ -1,0 +1,52 @@
+{
+ "n_students": 275,
+ "F14_first_snapshot": {
+  "share_of_X_tokens_entering_with_first_snapshot": 0.3722547440380309,
+  "students_with_X_in_first_snapshot": 126,
+  "first_snapshot_tokens_quartiles_all_students": [
+   1.0,
+   59.0,
+   637.0
+  ],
+  "share_of_students_first_snapshot_empty": 0.007272727272727273,
+  "share_of_students_first_snapshot_gt_100_tokens": 0.45454545454545453,
+  "first_snapshot_tokens_quartiles_students_with_X0": [
+   230.5,
+   641.5,
+   736.75
+  ],
+  "students_whose_first_snapshot_shares_an_8gram_with_ge5_other_first_snapshots": 26,
+  "X0_8grams_by_number_of_other_proposals_containing_them": {
+   "0": 33368,
+   "1-4": 118
+  },
+  "X0_8grams_total": 33486,
+  "X0_8grams_in_another_student_first_snapshot": 56,
+  "X0_tokens_covered_by_8gram_in_1_to_4_other_proposals_share": 0.012559366754617414,
+  "X0_tokens_covered_by_8gram_in_another_first_snapshot_share": 0.006675461741424802,
+  "students_with_X0_whose_first_snapshot_precedes_first_reply": 5,
+  "share_of_X0_tokens_from_those_students": 0.04034300791556728
+ },
+ "F12_selection_token_entry_sample": {
+  "T": {
+   "passages": 50,
+   "students": 22,
+   "keystroke_criterion_agree_check": 0.96,
+   "selected_in_chat_before_entry": 0.06,
+   "ci": [
+    0.0,
+    0.1875
+   ]
+  },
+  "X": {
+   "passages": 50,
+   "students": 32,
+   "keystroke_criterion_agree_check": 0.94,
+   "selected_in_chat_before_entry": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ]
+  }
+ }
+}
