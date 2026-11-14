@@ -40,6 +40,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `results/r12_*.json`, `results/fig3_risk_coverage_r12.png`, `results/fig5_classes_r12.png` | R12 analyses (`src/r12_benchmark.py`, `src/r12_flora.py`, `src/r12_rs.py`, `src/r12_audit_selection.py`; figures `src/make_fig_rc_r12.py`, `src/make_fig_classes_r12.py`); `demo/provenance_online.py` holds labels for delta seconds after entry |
 | `ANALYSIS_LOG_R13.md` | Log entry R13 (decision list applied as written when delta > 0: offline R2 with delta, online R1 for S labels; sources of the remaining risk-coverage difference by route; FLoRA unresolved text in the first snapshot, panel selections for the token-rule audit sample, overlap of each class with English Wikipedia). Written after its analyses ran; no result with delta = 0 changed |
 | `results/r13_*.json` | R13 analyses (`src/r13_benchmark.py`, `src/r13_flora.py`, `src/r13_wiki.py`); `demo/provenance.py` and `demo/provenance_online.py` updated (D-3, D-4) |
+| `ANALYSIS_LOG_R14.md`, `results/r14_benchmark.json` | Log entry R14 (`src/r14_benchmark.py`): risk-coverage difference with routes left out together; snapshots thinned to 300 s with the current code; the reading-highlight route across resolutions. Written after its analyses ran; nothing changed |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -178,6 +179,10 @@ No measure, class definition or parameter value changed, and no result with delt
 - English Wikipedia (`src/r13_wiki.py`, `results/r13_wiki.json`; 6.4 million articles): share of class tokens in an 8-gram that also occurs in Wikipedia, C 0.9%, E 0.9%, S 36.9%, T 0.3%, X 0.8%.
 
 Reproduce: `python -I src/r13_benchmark.py DATA R8_TOKEN_CLASSES && python -I src/r13_flora.py DATA && python -I src/r13_wiki.py SHARD_DIR` (R8_TOKEN_CLASSES: `git show af6bdb9:results/flora_token_classes.csv.gz > FILE`; `src/r13_wiki.py` needs `pyahocorasick` and `pyarrow` and downloads about 11 GB, one shard at a time).
+
+## Routes left out together, 300 s snapshots (log entry R14)
+
+Nothing changed. AURC difference between the attribution and earliest plausible attribution with abstention, 20 routes: -0.0053; without the shared-source and streaming routes together -0.0021, the rest spread over chatbot routes (each at most 0.0007). Leaving out the outside-text route widens it to -0.0067 because both methods abstain on all its tokens. Thinning to 300 s with the current code reproduces the R10 values (C precision 0.933). The 108 highlight tokens that are E at full resolution become S only at 60 s, where the kept snapshot follows the reply that repeated them (`results/r14_benchmark.json`).
 
 ## Reproduce
 
