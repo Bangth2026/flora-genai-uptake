@@ -1,0 +1,190 @@
+{
+ "n_students": 275,
+ "check": {
+  "max_abs_diff_full_vs_U": 0.0,
+  "max_abs_diff_naive_vs_saved": 0.0
+ },
+ "F16_levels": {
+  "naive": {
+   "share_ge50": 0.36,
+   "ci": [
+    0.3054545454545455,
+    0.41818181818181815
+   ],
+   "median_U": 0.21301775147928995,
+   "mean_U": 0.3726664331172001
+  },
+  "echo": {
+   "share_ge50": 0.24363636363636362,
+   "ci": [
+    0.19272727272727272,
+    0.29454545454545455
+   ],
+   "median_U": 0.08788282290279627,
+   "mean_U": 0.28031795199708837
+  },
+  "echo_S": {
+   "share_ge50": 0.24363636363636362,
+   "ci": [
+    0.19272727272727272,
+    0.29818181818181816
+   ],
+   "median_U": 0.08788282290279627,
+   "mean_U": 0.2796057813677056
+  },
+  "echo_order": {
+   "share_ge50": 0.2,
+   "ci": [
+    0.15636363636363637,
+    0.24727272727272728
+   ],
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.23712313347717162
+  },
+  "full": {
+   "share_ge50": 0.2,
+   "ci": [
+    0.15636363636363637,
+    0.2509090909090909
+   ],
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.23639070458750014
+  }
+ },
+ "F16_steps": [
+  {
+   "from": "naive",
+   "to": "echo",
+   "step": "time-aware echo (R1)",
+   "diff_pp_share_ge50": 11.636363636363637,
+   "ci_pp": [
+    7.999999999999999,
+    15.272727272727273
+   ],
+   "students_moving_below_50": 32,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 12.513492857649366
+  },
+  {
+   "from": "echo",
+   "to": "echo_S",
+   "step": "shared-source rule (R3), no order check",
+   "diff_pp_share_ge50": 0.0,
+   "ci_pp": [
+    0.0,
+    0.0
+   ],
+   "students_moving_below_50": 0,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 0.0
+  },
+  {
+   "from": "echo_S",
+   "to": "full",
+   "step": "order check against the editor (R2, R4)",
+   "diff_pp_share_ge50": 4.3636363636363615,
+   "ci_pp": [
+    2.181818181818182,
+    6.909090909090909
+   ],
+   "students_moving_below_50": 12,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 4.014412943545959
+  },
+  {
+   "from": "echo",
+   "to": "echo_order",
+   "step": "order check without the shared-source rule",
+   "diff_pp_share_ge50": 4.3636363636363615,
+   "ci_pp": [
+    2.181818181818182,
+    6.909090909090909
+   ],
+   "students_moving_below_50": 12,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 4.014412943545959
+  },
+  {
+   "from": "echo_order",
+   "to": "full",
+   "step": "shared-source rule after the order check",
+   "diff_pp_share_ge50": 0.0,
+   "ci_pp": [
+    0.0,
+    0.0
+   ],
+   "students_moving_below_50": 0,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 0.0
+  },
+  {
+   "from": "naive",
+   "to": "full",
+   "step": "all rules",
+   "diff_pp_share_ge50": 15.999999999999998,
+   "ci_pp": [
+    12.0,
+    20.363636363636363
+   ],
+   "students_moving_below_50": 44,
+   "students_moving_above_50": 0,
+   "diff_median_U_pp": 16.527905801195324
+  }
+ ],
+ "F17_U_distribution": {
+  "mean": 0.23639070458750014,
+  "quartiles": [
+   0.0,
+   0.04773869346733668,
+   0.40619236240139933
+  ],
+  "share_zero": 0.2909090909090909,
+  "deciles": [
+   0.0,
+   0.0,
+   0.009068379016637039,
+   0.021476073061546936,
+   0.04773869346733668,
+   0.11707214879014897,
+   0.2666134426583234,
+   0.5007073397986904,
+   0.8543706293706292
+  ]
+ },
+ "F18_same_prompt_replies": {
+  "prompt_reply_pairs_considered": 2722,
+  "pairs_identical_prompt": 8,
+  "pairs_near_identical_prompt": 10,
+  "n_pairs": 18,
+  "students_in_pairs": 12,
+  "coverage_of_one_reply_by_8grams_of_the_other": {
+   "mean": 0.004648663439128027,
+   "median": 0.0,
+   "p90": 0.021647976056312013,
+   "share_pairs_gt_0": 0.16666666666666666,
+   "share_pairs_ge_25": 0.0,
+   "ci_mean": [
+    0.0,
+    0.0102704422750228
+   ]
+  },
+  "random_reply_pairs": {
+   "n": 4969,
+   "mean": 0.00027252889818328075,
+   "median": 0.0,
+   "share_gt_0": 0.013684846045481988,
+   "p90": 0.0
+  }
+ },
+ "check_118": {
+  "r11_flora_paths_equal_118": [
+   "/F3_shared/S_reply_before_editor",
+   "/F3_shared/S_in_any_reply"
+  ],
+  "r13_flora_paths_equal_118": [
+   "/F14_first_snapshot/X0_8grams_by_number_of_other_proposals_containing_them/1-4"
+  ],
+  "r13_X0_8grams_total": 33486
+ },
+ "seconds": 48.59202790260315
+}
