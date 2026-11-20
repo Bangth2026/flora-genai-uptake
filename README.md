@@ -200,6 +200,19 @@ Nothing in the attribution changed; the students of seeds 2100 and 2200 are rebu
 
 Reproduce: `python -I src/r15_flora.py DATA && python -I src/r15_benchmark.py DATA R8_TOKEN_CLASSES`.
 
+## Subtypes of the unresolved class, operating points, parameter grid, trained classifier (log entry R16)
+
+Nothing in the attribution changed; the students of seeds 2100-2400 are rebuilt exactly as in R15. New seeds 2500 and 2600 (training) and 2700 (validation for thresholds); no parameter was chosen on a test set.
+
+- Subtypes of X (reporting partition, `src/r16_features.py`): on the 13-route benchmark, X tokens entering in the same paste as chatbot-first text are planted chatbot text for 93%; the embedding flag "near the writer's own reply" (theta 0.70, tuned on validation) for 11%. FLoRA: 24.6% of X with-C, 26.3% near-own-reply, 14.5% first snapshot, 10.9% re-entered, 1.6% matching other students' replies, 1.4% log gap, 20.8% no evidence.
+- Operating points, 13 routes: audit (C only where all covering 8-grams are C) coverage 29.5%, C precision 1.000, recall 0.55; screening 51.6%, risk 1.05%; full 5.4%.
+- Parameter grid (n 5-12, tau 3-20, delta 0/5/30 s): C precision >= 0.987 everywhere; recall 0.80-0.89 (13 routes).
+- Tuned embedding retrieval (theta 0.75): F1 0.796 [0.779, 0.812]; tolerant matching F1 0.923 [0.915, 0.931], difference from the attribution -0.007 [-0.016, 0.002].
+- Evidence fusion (gradient-boosted trees, 25 features): trained on 13 routes, F1 0.983 on 13 routes and 0.949 on the 20-route set (attribution 0.916, 0.857), but 96% of outside text pasted with reply chunks marked as chatbot text (precision 0.881 against 0.998); trained on 26 routes, F1 0.910 on 13 routes; A3 precision 0.65-0.66 for both. On FLoRA, mean chatbot share 43.4% (trained on 13 routes) or 26.3% (26 routes) against U 23.6%.
+- FLoRA labels recomputed from the raw files agree with the released token labels on 99.94% of tokens.
+
+Reproduce: `EMB_CACHE=FILE python -I src/r16_benchmark.py DATA R8_TOKEN_CLASSES && EMB_CACHE=FILE python -I src/r16_flora.py DATA R8_TOKEN_CLASSES` (needs scikit-learn and sentence-transformers; trained models in `results/r16_fusion_models.pkl`).
+
 ## Reproduce
 
 ```bash
