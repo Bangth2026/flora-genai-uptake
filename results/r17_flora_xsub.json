@@ -1,0 +1,40 @@
+{
+ "F29_x_subtypes_without_embedding_flags": {
+  "pooled_share_of_X": {
+   "X-log-gap": 0.01346374804819845,
+   "X-reentered": 0.10868220251598268,
+   "X-with-C": 0.24613813353759734,
+   "X-near-own-reply": 0.0,
+   "X-cohort-reply": 0.014170815779394868,
+   "X-first-snapshot": 0.2252305335415255,
+   "X-no-evidence": 0.3923145665773012
+  },
+  "mean_share_of_proposal": {
+   "X-log-gap": 0.0070858568495554795,
+   "X-reentered": 0.05457513531804216,
+   "X-with-C": 0.1232948022192728,
+   "X-near-own-reply": 0.0,
+   "X-cohort-reply": 0.007132410530909503,
+   "X-first-snapshot": 0.11569986747925656,
+   "X-no-evidence": 0.2014933825822153
+  },
+  "students": {
+   "X-log-gap": 3,
+   "X-reentered": 93,
+   "X-with-C": 132,
+   "X-near-own-reply": 0,
+   "X-cohort-reply": 86,
+   "X-first-snapshot": 64,
+   "X-no-evidence": 168
+  },
+  "share_in_logged_pastes": {
+   "X-log-gap": 0.6507503410641201,
+   "X-reentered": 0.866546762589928,
+   "X-with-C": 0.9403955567596857,
+   "X-near-own-reply": 0.0,
+   "X-cohort-reply": 0.9795918367346939,
+   "X-first-snapshot": 0.9986363636363637,
+   "X-no-evidence": 0.9163763066202091
+  }
+ }
+}
