@@ -1,4 +1,6 @@
-# Five-class provenance of chatbot text in student writing (FLoRA) and programming (RelianceScope)
+# Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
+
+Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.14.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
