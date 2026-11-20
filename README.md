@@ -213,6 +213,20 @@ Nothing in the attribution changed; the students of seeds 2100-2400 are rebuilt 
 
 Reproduce: `EMB_CACHE=FILE python -I src/r16_benchmark.py DATA R8_TOKEN_CLASSES && EMB_CACHE=FILE python -I src/r16_flora.py DATA R8_TOKEN_CLASSES` (needs scikit-learn and sentence-transformers; trained models in `results/r16_fusion_models.pkl`).
 
+## Standard-form selective risk, new audit, outside-text sources, LLM baseline (log entry R17)
+
+Nothing in the attribution changed; the students of seeds 2100-2700 are rebuilt exactly as in R16.
+
+- Standard-form risk over decided tokens at the common coverage (13 routes, c* = 0.455): attribution 0.85%, earliest plausible attribution with abstention by entry size 0.89%, without 5.76%; 20 routes 5.05%, 5.68%, 11.92%. Difference in the area, attribution minus earliest plausible with abstention: 13 routes -0.20 pp [-0.59, 0.07]; 20 routes -0.83 pp [-1.39, -0.55] (-0.69 without the shared-source route, -0.46 without the streaming route).
+- A3 set: both methods make the same number of false chatbot labels (20,001 vs 20,003 tokens); abstention removes correct "not chatbot" decisions from the decided set, so its risk at the common coverage is higher (18.6% vs 11.8%).
+- Other outside text drawn from FLoRA X-no-evidence runs or from 618 arXiv abstracts: C precision 0.997-0.999 (sets without A3), 0.68-0.69 (A3); the classifier still marks 96-99% of outside text pasted with reply chunks as chatbot text.
+- Classifier hyperparameters chosen on validation (learning rate 0.05, 15 leaves, 300 iterations): F1 0.983 on 13 routes; FLoRA mean chatbot share 43.3% (trained on 13 routes) vs 27.0% (26 routes).
+- LLM baseline (Qwen2.5-3B-Instruct Q4_K_M, llama.cpp, greedy; first 12 students per set): F1 0.783 (13 routes), 0.833 (20 routes), 0.608 (A3) against 0.921, 0.915, 0.827 for the attribution on the same students; never answered 'student'; identical answers on rerun.
+- FLoRA: share of students at or above half 20.0% [15.3, 24.7] under U, 33.5% [27.6, 38.9] with large-entry echo counted as C; 82% of echo tokens entered in insertions > 5 tokens, 70% prompt-first. New keystroke audit (passages not in the R9/R9b samples): T typed 95% (token rule) vs 57% (n-gram rule); X not typed 80-81%. Echo census: writer-side evidence for 66% of large prompt-first echo and 40% of large editor-first echo.
+- Chance coverage by other students' replies: mean 0.95% (n = 5), 0.11% (n = 8), 0.003% (n = 12).
+
+Reproduce: see ANALYSIS_LOG_R17.md.
+
 ## Reproduce
 
 ```bash
