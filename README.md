@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.14.0** produced every result reported in the article.
+Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.15.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -43,6 +43,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R13.md` | Log entry R13 (decision list applied as written when delta > 0: offline R2 with delta, online R1 for S labels; sources of the remaining risk-coverage difference by route; FLoRA unresolved text in the first snapshot, panel selections for the token-rule audit sample, overlap of each class with English Wikipedia). Written after its analyses ran; no result with delta = 0 changed |
 | `results/r13_*.json` | R13 analyses (`src/r13_benchmark.py`, `src/r13_flora.py`, `src/r13_wiki.py`); `demo/provenance.py` and `demo/provenance_online.py` updated (D-3, D-4) |
 | `ANALYSIS_LOG_R14.md`, `results/r14_benchmark.json` | Log entry R14 (`src/r14_benchmark.py`): risk-coverage difference with routes left out together; snapshots thinned to 300 s with the current code; the reading-highlight route across resolutions. Written after its analyses ran; nothing changed |
+| `ANALYSIS_LOG_R15.md`, `results/r15_benchmark.json`, `results/r15_flora.json` | Log entry R15 (`src/r15_benchmark.py`, `src/r15_flora.py`): routes that break the definitions of T and X, routes that violate assumption A3, selective risk in the standard form, tolerant-matching and embedding-retrieval baselines; stepwise decomposition of the FLoRA naive-overlap estimate, replies to near-identical prompts. Written after its analyses ran, after an internal review; nothing changed |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -185,6 +186,19 @@ Reproduce: `python -I src/r13_benchmark.py DATA R8_TOKEN_CLASSES && python -I sr
 ## Routes left out together, 300 s snapshots (log entry R14)
 
 Nothing changed. AURC difference between the attribution and earliest plausible attribution with abstention, 20 routes: -0.0053; without the shared-source and streaming routes together -0.0021, the rest spread over chatbot routes (each at most 0.0007). Leaving out the outside-text route widens it to -0.0067 because both methods abstain on all its tokens. Thinning to 300 s with the current code reproduces the R10 values (C precision 0.933). The 108 highlight tokens that are E at full resolution become S only at 60 s, where the kept snapshot follows the reply that repeated them (`results/r14_benchmark.json`).
+
+## Definitions under stress, A3 failures, tolerant baselines (log entry R15)
+
+Nothing in the attribution changed; the students of seeds 2100 and 2200 are rebuilt exactly and reproduce the R11/R12 values.
+
+- Outside text retyped or pasted in pieces of at most five tokens is labelled T in full (T precision 0.469 on that set); mixed with reply chunks in one paste it stays X and the reply chunks stay C (0.97). Chatbot-first precision 0.998.
+- Outside copies of the embedded chatbot's own reply (assumption A3 violated): pasted after the reply 99% C, regenerated with 15% of tokens changed 51% C, pasted before the reply 66% E. Chatbot-first precision 0.685 with these routes at 0.05 each.
+- Selective risk in the standard form (risk over decided tokens only), at the common coverage: 13 routes, attribution 0.96%, earliest plausible attribution with abstention 1.00%, without 5.79%; 20 routes 4.96%, 5.07%, 11.93%; outside text retyped/chunked/mixed 0.47%, 0.55%, 4.82%; A3 routes 19.97%, 20.61%, 11.49%.
+- Tolerant matching (one token may differ) F1 0.923 (13 routes) and 0.891 (20 routes) against 0.916 and 0.857, precision 0.910 and 0.921; embedding retrieval of reply windows (all-MiniLM-L6-v2, Krishna et al. 2023 style) F1 0.72 to 0.83, marking 86% of prompt-first echo without a direction check.
+- FLoRA, share of students at or above half: naive 36.0%, time-aware echo 24.4% (difference 11.6 pp [8.0, 15.3]), shared source no change, order check 20.0% (4.4 pp [2.2, 6.9]); all rules 16.0 pp [12.0, 20.4] (paired bootstrap over students).
+- Replies to near-identical prompts of different students (18 pairs): 8-gram coverage of one reply by the other, mean 0.5%, 3 of 18 above zero.
+
+Reproduce: `python -I src/r15_flora.py DATA && python -I src/r15_benchmark.py DATA R8_TOKEN_CLASSES`.
 
 ## Reproduce
 
