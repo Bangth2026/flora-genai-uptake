@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.18.0** produced every result reported in the article.
+Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.19.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -226,6 +226,16 @@ Nothing in the attribution changed; the students of seeds 2100-2700 are rebuilt 
 - Chance coverage by other students' replies: mean 0.95% (n = 5), 0.11% (n = 8), 0.003% (n = 12).
 
 Reproduce: see ANALYSIS_LOG_R17.md.
+
+## Independent writer text, decision cost and alternative counts (log entry R19)
+
+No measure, class definition or parameter changed (`src/r19_*.py`; results in `results/r19_*.json`).
+
+- With writer text from arXiv abstracts instead of FLoRA's typed runs, chatbot-first precision stays at 0.998-0.999 on the sets without A3 routes.
+- Decision cost: the attribution costs less than the classifier trained on the specified routes once a false chatbot label costs more than about 15-25 misses on routes the classifier was trained for, and at almost any ratio on routes that break the definitions or violate A3.
+- FLoRA: students with at least half of the proposal first in a chatbot reply 20.0%; alternative counts 16.0% (echo first) to 47.3% (large-entry echo and X-with-C added).
+
+Reproduce: see ANALYSIS_LOG_R19.md.
 
 ## Reply timing, clock tolerance, entry threshold and intervals (log entry R18)
 
