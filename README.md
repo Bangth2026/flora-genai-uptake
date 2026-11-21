@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.15.0** produced every result reported in the article.
+Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.18.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -226,6 +226,18 @@ Nothing in the attribution changed; the students of seeds 2100-2700 are rebuilt 
 - Chance coverage by other students' replies: mean 0.95% (n = 5), 0.11% (n = 8), 0.003% (n = 12).
 
 Reproduce: see ANALYSIS_LOG_R17.md.
+
+## Reply timing, clock tolerance, entry threshold and intervals (log entry R18)
+
+No measure, class definition or parameter changed (`src/r18_flora.py`, `src/r18_benchmark.py`, `src/r18_make_fig_example.py`; results in `results/r18_*.json`).
+
+- FLoRA logs a reply when generation ends (median latency 13.4 s; 3.41 s + 0.020 s per token), but only 47 of 67,454 reply 8-grams (0.07%) reached the editor before the logged time; with delta up to +120 s the share of students at or above half stays 20.0%.
+- 94.6% of snapshot transitions insert one token; typed share 84% (1 token), 34% (2-5), 3.9% (6-20), 0% (> 20).
+- Peer criterion without the student's own chatbot 8-grams: mean U +0.07 points, no student crosses one half.
+- Risk-coverage area difference with earliest plausible attribution + abstention (2,000 paired resamples): -0.20 pp [-0.52, 0.08] (13 routes), -0.83 [-1.35, -0.55] (20 routes).
+- Intervals for every evidence-fusion classifier; worked-example figure `results/fig6_worked_example_r18.png`.
+
+Reproduce: see ANALYSIS_LOG_R18.md.
 
 ## Reproduce
 

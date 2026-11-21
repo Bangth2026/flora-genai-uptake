@@ -1,0 +1,188 @@
+{
+ "F31a_latency": {
+  "replies": 3542,
+  "replies_latency_0_600s": 3535,
+  "latency_s_quantiles": {
+   "0.05": 4.102650000000001,
+   "0.25": 9.755,
+   "0.5": 13.36,
+   "0.75": 18.06175,
+   "0.95": 34.35614999999998
+  },
+  "spearman_latency_length": 0.6842882895458492,
+  "median_regression_intercept_s": 3.406005123695818,
+  "median_regression_s_per_token": 0.020137760668635978,
+  "median_regression_ci": [
+   [
+    3.0925648370738807,
+    3.719445410317755
+   ],
+   [
+    0.019563575875614796,
+    0.02071194546165716
+   ]
+  ],
+  "by_length_band": {
+   "0-50": {
+    "replies": 197,
+    "median_latency_s": 3.4
+   },
+   "50-150": {
+    "replies": 175,
+    "median_latency_s": 5.419
+   },
+   "150-300": {
+    "replies": 372,
+    "median_latency_s": 8.908999999999999
+   },
+   "300-500": {
+    "replies": 1155,
+    "median_latency_s": 11.93
+   },
+   "500-1000000": {
+    "replies": 1636,
+    "median_latency_s": 16.619
+   }
+  }
+ },
+ "F31b_reply_ngrams_before_logged_time": {
+  "replies_scored": 3542,
+  "students": 275,
+  "reply_8grams_entering_editor_after_ask": 67454,
+  "share_of_those_before_logged_reply_time": 0.0006967711329202123,
+  "share_within_logged_latency_after_reply_time": 0.04007175260177306,
+  "replies_with_any_8gram_before_logged_time": [
+   0.000564652738565782,
+   0.0,
+   0.0014241973912974852
+  ],
+  "replies_with_any_8gram_in_same_span_after": [
+   0.00282326369282891,
+   0.0012801414888518516,
+   0.004736534615588286
+  ],
+  "students_with_any_8gram_before_logged_time": 2,
+  "gap_histogram_s": {
+   "<-60": 42,
+   "[-60,-30)": 0,
+   "[-30,-10)": 0,
+   "[-10,-5)": 5,
+   "[-5,0)": 0,
+   "[0,5)": 0,
+   "[5,30)": 5708,
+   "[30,60)": 3807,
+   "[60,300)": 21166,
+   "[300,3600)": 22467,
+   ">=3600": 14259
+  }
+ },
+ "F32_delta": {
+  "0": {
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.23639070458750014,
+   "mean_E": 0.13574368652810614,
+   "share_at_or_above_half": [
+    0.2,
+    0.15272727272727274,
+    0.24727272727272728
+   ],
+   "rho_with_U": 1.0,
+   "students_changed": 0
+  },
+  "5": {
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.23639070458750014,
+   "mean_E": 0.13574368652810614,
+   "share_at_or_above_half": [
+    0.2,
+    0.15272727272727274,
+    0.24727272727272728
+   ],
+   "rho_with_U": 1.0,
+   "students_changed": 0
+  },
+  "30": {
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.23659721938417885,
+   "mean_E": 0.13553717173142743,
+   "share_at_or_above_half": [
+    0.2,
+    0.15636363636363637,
+    0.24727272727272728
+   ],
+   "rho_with_U": 0.9999958589180712,
+   "students_changed": 2
+  },
+  "60": {
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.2390361167942324,
+   "mean_E": 0.13309827432137392,
+   "share_at_or_above_half": [
+    0.2,
+    0.15272727272727274,
+    0.24727272727272728
+   ],
+   "rho_with_U": 0.9987990862406932,
+   "students_changed": 8
+  },
+  "120": {
+   "median_U": 0.04773869346733668,
+   "mean_U": 0.2409357530911746,
+   "mean_E": 0.13119863802443169,
+   "share_at_or_above_half": [
+    0.2,
+    0.15272727272727274,
+    0.24727272727272728
+   ],
+   "rho_with_U": 0.9963670099529702,
+   "students_changed": 21
+  }
+ },
+ "F33_transitions": {
+  "transitions_all_students": 307677,
+  "share_by_inserted_tokens_all_students": {
+   "0 (deletion only)": 0.03223835385810444,
+   "1-1": 0.9464665867126889,
+   "2-5": 0.013364664892078382,
+   "6-20": 0.0021938591444924387,
+   ">20": 0.005736535392635783
+  },
+  "keystroke_students": 63,
+  "insertions_keystroke_students": 84481,
+  "typed_share_by_band": {
+   "1-1": {
+    "insertions": 82250,
+    "typed": 0.83990273556231
+   },
+   "2-5": {
+    "insertions": 1543,
+    "typed": 0.34348671419313026
+   },
+   "6-20": {
+    "insertions": 203,
+    "typed": 0.03940886699507389
+   },
+   ">20": {
+    "insertions": 485,
+    "typed": 0.0
+   }
+  }
+ },
+ "F34_peer_not_for_own_chatbot_text": {
+  "median_U": 0.04773869346733668,
+  "mean_U": 0.23705671587650748,
+  "share_at_or_above_half": [
+   0.2,
+   0.15272727272727274,
+   0.24727272727272728
+  ],
+  "rho_with_U": 0.9989190521298961,
+  "mean_U_difference_pp": 0.06660112890073319
+ },
+ "check_delta0": {
+  "median_U": 0.04773869346733668,
+  "mean_U": 0.23639070458750014,
+  "share_at_or_above_half": 0.2
+ },
+ "seconds": 103
+}
