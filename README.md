@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.19.0** produced every result reported in the article.
+Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.20.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -44,6 +44,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `results/r13_*.json` | R13 analyses (`src/r13_benchmark.py`, `src/r13_flora.py`, `src/r13_wiki.py`); `demo/provenance.py` and `demo/provenance_online.py` updated (D-3, D-4) |
 | `ANALYSIS_LOG_R14.md`, `results/r14_benchmark.json` | Log entry R14 (`src/r14_benchmark.py`): risk-coverage difference with routes left out together; snapshots thinned to 300 s with the current code; the reading-highlight route across resolutions. Written after its analyses ran; nothing changed |
 | `ANALYSIS_LOG_R15.md`, `results/r15_benchmark.json`, `results/r15_flora.json` | Log entry R15 (`src/r15_benchmark.py`, `src/r15_flora.py`): routes that break the definitions of T and X, routes that violate assumption A3, selective risk in the standard form, tolerant-matching and embedding-retrieval baselines; stepwise decomposition of the FLoRA naive-overlap estimate, replies to near-identical prompts. Written after its analyses ran, after an internal review; nothing changed |
+| `ANALYSIS_LOG_R20.md`, `results/r20_benchmark.json`, `results/r20b_benchmark.json`, `results/r20_flora.json` | Log entry R20 (`src/r20_benchmark.py`, `src/r20b_benchmark.py`, `src/r20_flora.py`, `src/r20_wikiwho.py`): weight of the A3 routes; structural editing of chatbot text; route mixes far from FLoRA; selective risk at the attribution's coverage and risk-coverage of the classifiers; earliest plausible attribution (n-gram and WikiWho) on the field logs; echo split by entry after the reply; numeric and function-word 8-grams; coincidence with replies to similar prompts. Written after test runs on small sets; nothing changed |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
