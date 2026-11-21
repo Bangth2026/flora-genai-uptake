@@ -1,0 +1,108 @@
+{
+ "n_per_set": 400,
+ "B29_check": {
+  "base": 0.008481205995206815,
+  "ext": 0.05051219059979605,
+  "hard_x": 0.0033195330274887174,
+  "a3": 0.18601507549201549
+ },
+ "B44_risk_at_attribution_coverage": {
+  "hard_x": {
+   "coverage": 0.5205929802580151,
+   "ours_token": 0.0054843828205701625,
+   "earliest_plausible": 0.0476129623121732,
+   "dialogue_only": 0.05741030637998786,
+   "naive_overlap": 0.09715344557681863,
+   "direction_blind": 0.06506714375472562,
+   "ours_no_abstention": 0.0054843828205701625
+  },
+  "a3": {
+   "coverage": 0.5720110982608743,
+   "ours_token": 0.20169152056497927,
+   "earliest_plausible": 0.11271108411090755,
+   "dialogue_only": 0.1581410359851541,
+   "naive_overlap": 0.2141928257506004,
+   "direction_blind": 0.16223219964119262,
+   "ours_no_abstention": 0.20169152056497927
+  }
+ },
+ "B45_classifier_risk_coverage": {
+  "hard_x": {
+   "classifier_13_routes": {
+    "at_c_star": {
+     "coverage": 1.0,
+     "selective_risk": 0.04632519667141598,
+     "aurc_own_range": 0.008816417587226864,
+     "aurc_common_range": 0.00011158763751960738,
+     "risk_at_common_coverage": 0.0012805689207166214
+    },
+    "at_attribution_coverage": {
+     "coverage": 1.0,
+     "selective_risk": 0.04632519667141598,
+     "aurc_own_range": 0.008816417587226864,
+     "aurc_common_range": 0.000390568313098481,
+     "risk_at_common_coverage": 0.0026836203316187982
+    },
+    "c_star": 0.4459160535988513,
+    "full_coverage_error": 0.04632519667141598
+   },
+   "classifier_26_routes": {
+    "at_c_star": {
+     "coverage": 1.0,
+     "selective_risk": 0.030020457153628236,
+     "aurc_own_range": 0.004786724425328108,
+     "aurc_common_range": 0.002185924777681515,
+     "risk_at_common_coverage": 0.0018897716111546255
+    },
+    "at_attribution_coverage": {
+     "coverage": 1.0,
+     "selective_risk": 0.030020457153628236,
+     "aurc_own_range": 0.004786724425328108,
+     "aurc_common_range": 0.0021275296229640384,
+     "risk_at_common_coverage": 0.0016825873507768654
+    },
+    "c_star": 0.4459160535988513,
+    "full_coverage_error": 0.030020457153628236
+   }
+  },
+  "a3": {
+   "classifier_13_routes": {
+    "at_c_star": {
+     "coverage": 1.0,
+     "selective_risk": 0.15555483159855135,
+     "aurc_own_range": 0.14584734094218668,
+     "aurc_common_range": 0.13386175293581237,
+     "risk_at_common_coverage": 0.15993080853208697
+    },
+    "at_attribution_coverage": {
+     "coverage": 1.0,
+     "selective_risk": 0.15555483159855135,
+     "aurc_own_range": 0.14584734094218668,
+     "aurc_common_range": 0.13819702045587443,
+     "risk_at_common_coverage": 0.15723927137419436
+    },
+    "c_star": 0.47397827043051916,
+    "full_coverage_error": 0.15555483159855135
+   },
+   "classifier_26_routes": {
+    "at_c_star": {
+     "coverage": 1.0,
+     "selective_risk": 0.15739006260418192,
+     "aurc_own_range": 0.03534753966210808,
+     "aurc_common_range": 0.0018191473754530663,
+     "risk_at_common_coverage": 0.0019703530597750133
+    },
+    "at_attribution_coverage": {
+     "coverage": 1.0,
+     "selective_risk": 0.15739006260418192,
+     "aurc_own_range": 0.03534753966210808,
+     "aurc_common_range": 0.0018664685920790228,
+     "risk_at_common_coverage": 0.002477479615373663
+    },
+    "c_star": 0.47397827043051916,
+    "full_coverage_error": 0.15739006260418192
+   }
+  }
+ },
+ "seconds": 509.9881559769997
+}

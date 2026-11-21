@@ -10,3 +10,4 @@ transformers
 sentence-transformers
 pyarrow
 pyahocorasick
+WikiWho==1.0.3
