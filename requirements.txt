@@ -11,3 +11,4 @@ sentence-transformers
 pyarrow
 pyahocorasick
 WikiWho==1.0.3
+llama-cpp-python==0.3.37

@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents* (under review at Information Processing & Management). Version **v1.20.0** produced every result reported in the article.
+Companion code for the article *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs* (under review at Information Processing & Management; earlier title: *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.21.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -45,6 +45,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R14.md`, `results/r14_benchmark.json` | Log entry R14 (`src/r14_benchmark.py`): risk-coverage difference with routes left out together; snapshots thinned to 300 s with the current code; the reading-highlight route across resolutions. Written after its analyses ran; nothing changed |
 | `ANALYSIS_LOG_R15.md`, `results/r15_benchmark.json`, `results/r15_flora.json` | Log entry R15 (`src/r15_benchmark.py`, `src/r15_flora.py`): routes that break the definitions of T and X, routes that violate assumption A3, selective risk in the standard form, tolerant-matching and embedding-retrieval baselines; stepwise decomposition of the FLoRA naive-overlap estimate, replies to near-identical prompts. Written after its analyses ran, after an internal review; nothing changed |
 | `ANALYSIS_LOG_R20.md`, `results/r20_benchmark.json`, `results/r20b_benchmark.json`, `results/r20_flora.json` | Log entry R20 (`src/r20_benchmark.py`, `src/r20b_benchmark.py`, `src/r20_flora.py`, `src/r20_wikiwho.py`): weight of the A3 routes; structural editing of chatbot text; route mixes far from FLoRA; selective risk at the attribution's coverage and risk-coverage of the classifiers; earliest plausible attribution (n-gram and WikiWho) on the field logs; echo split by entry after the reply; numeric and function-word 8-grams; coincidence with replies to similar prompts. Written after test runs on small sets; nothing changed |
+| `ANALYSIS_LOG_R21.md`, `results/r21_benchmark.json`, `results/r21_flora_openmodel.json`, `results/r21_flora_example.json`, `results/r21_llm_revisions.json.gz`, `results/r21_openmodel_replies.json.gz`, `results/fig5_flora_proposals.png` | Log entry R21 (`src/r21_benchmark.py`, `src/r21_flora_openmodel.py`, `src/r21_flora_example.py`): chatbot text revised by an open language model in the benchmark; an open model's replies to the writers' own prompts compared verbatim with each class; four labelled FLoRA proposals by percentile of U. Open models (Qwen2.5-3B/1.5B-Instruct, Q4_K_M GGUF, llama.cpp, greedy) are research instruments only; every generated text is released. Written after test runs on small sets; nothing changed |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -314,4 +315,13 @@ python -I src/r12_benchmark.py DATA R8_TOKEN_CLASSES
 python -I src/r12_flora.py DATA && python -I src/r12_audit_selection.py
 python -I src/r12_rs.py RS_DIR PROMPT_TXT
 python -I src/make_fig_rc_r12.py && python -I src/make_fig_classes_r12.py
+```
+
+```
+# R21 (R8_TOKEN_CLASSES as for R12-R20; GGUF files from huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF and Qwen2.5-1.5B-Instruct-GGUF;
+#      to skip generation, gunzip results/r21_llm_revisions.json.gz to WORK/r21_llm_cache.json and
+#      results/r21_openmodel_replies.json.gz to WORK/r21_openmodel_replies.json)
+NSTUD=100 python -I src/r21_benchmark.py DATA R8_TOKEN_CLASSES WORK qwen2.5-3b-instruct-q4_k_m.gguf
+python -I src/r21_flora_openmodel.py DATA WORK qwen2.5-1.5b-instruct-q4_k_m.gguf
+python -I src/r21_flora_example.py results/fig5_flora_proposals.png
 ```
