@@ -42,3 +42,7 @@ No threshold for success is set. The parameters are those fixed on FLoRA and are
 - B-47. Tolerant matching on the set with model-revised chatbot text (R21 B-46): C precision 0.912 and recall 0.912, against 0.996 and 0.825 for the attribution; surviving reply text labelled C after a model rewrite 0.85 (attribution 0.64); the model's own words labelled C 31-46% (attribution 0.6-5.4%); echo routes 24-25% (attribution 0%).
 
 The token-level NIRVANA labels are not released, because the NIRVANA files state no licence; the aggregate and per-student results are in `results/r22_nirvana.json` and `results/r22_nirvana_posthoc.json`, and the script recomputes the labels from the dataset.
+
+## Correction to R21
+
+The results of R21 B-46 report the share of true chatbot text labelled C after condensing as 0.67; `results/r21_benchmark.json` gives 0.6645, which rounds to 0.66. The seventh version of the manuscript carried the same rounding error; the eighth corrects it. No other number is affected.
