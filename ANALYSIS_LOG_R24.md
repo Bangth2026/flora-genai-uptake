@@ -31,3 +31,25 @@ No threshold for success is set. The parameters are those fixed on FLoRA and are
 ## Status of NIRVANA
 
 The analyses of R22 and R23 on NIRVANA stay in the repository and its history, but the article no longer uses them.
+
+## Results of the pre-specified outputs (the plan above was pushed in commit 63917a7 at 10:44:30 UTC; the three runs were started at 10:44:37 UTC, two of them ran out of memory when run in parallel and were rerun one after another, the main run finishing at 11:02 UTC; nothing in the script changed between the runs except the post hoc variant below, which adds only an output)
+
+1,447 session files (the dataset description gives 1,445 sessions), 548,057 tokens of final text without the initial prompts. Mean class shares: C 24.4%, E 0.8%, S 1.2%, T 71.0%, X 2.6%.
+
+- A-1. Of the C tokens, 98.7% were suggestion-inserted and 0.6% typed; 908 entered by user insertions of more than five tokens.
+- A-2. Of the suggestion-inserted tokens, 87.4% were labelled C, 8.1% X, 4.0% T, 0.4% E and 0.1% S.
+- A-3. Suggestion-inserted: E 16.3%, S 2.0%, T 1.6%, X 91.0%.
+- A-4. Spearman correlation with the suggestion-inserted share: U 0.968 [0.962, 0.974], naive overlap 0.961 [0.953, 0.967], paired difference 0.008 [0.004, 0.012]; mean absolute difference U 3.5 points, naive 3.5; means U 24.4%, inserted 27.7%, naive 25.2%; at or above half U 9.1%, inserted 12.9%, naive 10.0%; agreement at half U 95.9%, naive 96.4%; 1,391 sessions with an accepted suggestion.
+- A-5. Naive overlap marks 87.9% of the suggestion-inserted tokens; 96.4% of the tokens it marks were suggestion-inserted.
+- A-6. Suggestion-inserted stratum 153,431 tokens; other tokens 394,626, of which 1,782 C (user insertions of more than five tokens 908, typed 828, other 46).
+- A-7. 3,828 E tokens; 623 suggestion-inserted; naive overlap marks all of them.
+- A-8. C without a suggestion event: 1,782 tokens (1.3% of C); typed C 828 tokens in 484 runs, median run 1, none in runs of 16 or more.
+- A-9. 1,796,675 user insert events; 0.009% insert more than five tokens; 99th percentile 1 token by event and by token. X entered by: accepted suggestions 91.0%, user insertions of more than five tokens 8.1%, the initial prompt 0.8%.
+
+Sensitivity: without the initial prompts in H, C 24.4%, S 1.0%, A-1 98.7%, A-4 U 0.968; with 'trimmed' suggestion texts only, every output identical to the main run; with tau = 1 (A-9), T 68.4% and X 5.2%, C, E and S unchanged.
+
+## Post hoc (written after the results above were seen; variant posthoc_len)
+
+- A-10. Suggestion-inserted tokens by the length of the accepted suggestion: 1-5 tokens 6,156 tokens, 99.5% T; 6-7 tokens 8,215, 98.8% X; 8-15 tokens 58,951, 95.4% C; 16 or more 80,109, 97.1% C. Suggestions shorter than n = 8 cannot be matched verbatim, so recall of C is 96.4% for suggestions of at least eight tokens.
+
+Per-session shares (no text) are in `results/r24_coauthor.json`; token-level labels are not released, because the CoAuthor release states no licence.

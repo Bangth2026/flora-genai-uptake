@@ -22,7 +22,8 @@ text-insert of at most tau tokens), 'user-insert>tau' (user text-insert of more 
 bulk insertions), 'prompt' (the initial document), 'other'.
 Usage: python -I src/r24_coauthor.py COAUTHOR_DIR [variant] -> results/r24_coauthor[_variant].json
 variants: (none) main run; noprompt_H (initial prompt not in H); trimmed_only (only 'trimmed' suggestion texts as R);
-tauK (tau = K, for the data-driven threshold of A-9)"""
+tauK (tau = K, for the data-driven threshold of A-9); posthoc_len (main parameters, recall by size of the accepted
+suggestion, written after the pre-specified results were seen)"""
 import sys, os, re, ast, json, glob
 import numpy as np, pandas as pd
 from collections import Counter
@@ -120,11 +121,12 @@ for u in users:
         if kind == 'user-insert': return 'typed' if n_ins <= TAU else 'user-insert>tau'
         return 'other'
     ent = np.array([entry(int(k)) for k in tt], dtype=object)
+    isz = np.array([sn[int(k)][3] if k >= 0 else -1 for k in tt])
     naive = np.zeros(len(Fu), bool)
     for i, g in enumerate(FG):
         if g in tbot: naive[i:i + N] = True
     ins_sizes = [s[3] for s in sn if s[2] == 'user-insert' and s[3] > 0]
-    for i in range(len(Fu)): rows.append((u, i, var[i], ent[i], bool(naive[i])))
+    for i in range(len(Fu)): rows.append((u, i, var[i], ent[i], bool(naive[i]), int(isz[i])))
     sess.append(dict(session=u, tokens=len(Fu), U=float((var == 'C').mean()) if len(Fu) else 0.0, naive=float(naive.mean()) if len(Fu) else 0.0,
                      accepted=float(np.mean(ent == 'suggestion')) if len(Fu) else 0.0, n_shown=len(S[u]['R']), n_requests=len(S[u]['Q']),
                      n_accepted=int(sum(1 for s in sn if s[2] == 'api')), **{f'share_{c}': float((var == c).mean()) if len(Fu) else 0.0 for c in 'CESTX'}))
@@ -132,7 +134,7 @@ for u in users:
 if DRY: print('dry run ok', len(rows) > 0, len(sess)); sys.exit(0)
 
 from scipy import stats
-T_ = pd.DataFrame(rows, columns=['session', 'i', 'cls', 'entry', 'naive'])
+T_ = pd.DataFrame(rows, columns=['session', 'i', 'cls', 'entry', 'naive', 'ins_size'])
 SD = pd.DataFrame(sess); SD = SD[SD.tokens > 0].reset_index(drop=True)
 rng = np.random.default_rng(2401); NB = 2000
 o = {'variant': VAR or 'main', 'sessions': int(len(SD)), 'tokens': int(len(T_)), 'parameters': {'n': N, 'tau': TAU, 'delta': 0, 'peer_threshold': 5},
@@ -187,6 +189,10 @@ o['A9_insert_sizes'] = {'user_inserts': int(len(INS)), 'share_gt_tau': float((IN
                         'p99_by_insert': float(np.percentile(INS, 99)) if len(INS) else None,
                         'p99_by_token': float(w[np.searchsorted(cw, .99)]) if len(w) else None,
                         'X_entry': T_[T_.cls == 'X'].entry.value_counts(normalize=True).to_dict()}
+if VAR == 'posthoc_len':   # post hoc, written after the pre-specified results were seen: recall by length of the accepted suggestion
+    a_ = T_[acc]; bins = [(1, 5), (6, 7), (8, 15), (16, 10 ** 6)]
+    o['A10_posthoc_recall_by_insert_size'] = {f'{lo}-{hi}' if hi < 10 ** 6 else f'>={lo}': {'tokens': int(((a_.ins_size >= lo) & (a_.ins_size <= hi)).sum()),
+        **{c: float((a_[(a_.ins_size >= lo) & (a_.ins_size <= hi)].cls == c).mean()) for c in 'CETXS'}} for lo, hi in bins}
 o['per_session'] = SD.to_dict(orient='records')
 name = 'r24_coauthor' + ('_' + VAR if VAR else '') + '.json'
 json.dump(o, open(os.path.join(HERE, '..', 'results', name), 'w'), indent=1, default=float)
