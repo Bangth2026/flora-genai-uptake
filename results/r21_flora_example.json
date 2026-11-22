@@ -1,0 +1,49 @@
+{
+ "rule": "U nearest the 25th, 50th, 75th, 90th percentile; ties by length nearest the median",
+ "proposals": [
+  {
+   "percentile": 0.25,
+   "U_target": 0.0,
+   "tokens": 707,
+   "C": 0.0,
+   "E": 0.0,
+   "S": 0.0,
+   "T": 0.103253,
+   "X": 0.896747,
+   "X_with_C": 0.0
+  },
+  {
+   "percentile": 0.5,
+   "U_target": 0.047739,
+   "tokens": 796,
+   "C": 0.047739,
+   "E": 0.0,
+   "S": 0.0,
+   "T": 0.729899,
+   "X": 0.222362,
+   "X_with_C": 0.0
+  },
+  {
+   "percentile": 0.75,
+   "U_target": 0.4061925,
+   "tokens": 731,
+   "C": 0.426813,
+   "E": 0.021888,
+   "S": 0.0,
+   "T": 0.0,
+   "X": 0.5513,
+   "X_with_C": 0.5513
+  },
+  {
+   "percentile": 0.9,
+   "U_target": 0.8543703999999999,
+   "tokens": 528,
+   "C": 0.859848,
+   "E": 0.070076,
+   "S": 0.0,
+   "T": 0.022727,
+   "X": 0.047348,
+   "X_with_C": 0.047348
+  }
+ ]
+}
