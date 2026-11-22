@@ -1,0 +1,37 @@
+{
+ "respondents": 180,
+ "respondents_in_275": 180,
+ "name_outside_chatbot": 11,
+ "share": 0.06111111111111111,
+ "answers_counted": [
+  "GoogleChatGPTClaude",
+  "I did use Chatgpt in addition to FLoRA.",
+  "chat-gpt to format and reference",
+  "ChatGPT",
+  "ChatGPT",
+  "Google, ChatGPT, Microsoft CoPilot",
+  "Yes, I used ChatGPT and Google for reference and adding visuals respectively.",
+  "Yes, I also used google scholar to find references. and also used ChatGPT to give me frameworks and opinions.",
+  "I always use chatgpt",
+  "Google and Chatgpt 3.5",
+  "Google Scholar, Chat GPT, Google Search"
+ ],
+ "classes_named": {
+  "n": 11,
+  "C": 0.2586138181818182,
+  "E": 0.17349336363636364,
+  "S": 0.0013562727272727274,
+  "T": 0.04079745454545454,
+  "X": 0.5257390909090909,
+  "X_with_C": 0.2388253636363636
+ },
+ "classes_not_named": {
+  "n": 166,
+  "C": 0.20610939156626504,
+  "E": 0.1401129156626506,
+  "S": 0.002236831325301205,
+  "T": 0.1317371204819277,
+  "X": 0.5198037771084337,
+  "X_with_C": 0.20233659036144577
+ }
+}
