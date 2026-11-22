@@ -1,0 +1,446 @@
+{
+ "F51_check_C_against_released_labels_max_abs_diff": 4.972677595804775e-07,
+ "F51_partial_identification": {
+  "mean_shares": {
+   "C": 0.23639070458750014,
+   "E": 0.13574368652810614,
+   "E_after": 0.038751772019395656,
+   "E_before": 0.0969919145087105,
+   "E_large": 0.10993490895134911,
+   "E_before_large": 0.07291950736966454,
+   "S": 0.0019269795950922913,
+   "T": 0.11672947129455552,
+   "X": 0.5092091579947458,
+   "X_with_C": 0.12329478909090906
+  },
+  "ladder": [
+   {
+    "step": "L0 lower: C only",
+    "assumptions": "A1-A3; no coincidence; E-after, X and T are not chatbot text",
+    "mean": 0.23639070458750014,
+    "at_or_above_25": [
+     0.3054545454545455,
+     0.2509090909090909,
+     0.36
+    ],
+    "at_or_above_50": [
+     0.2,
+     0.14909090909090908,
+     0.24727272727272728
+    ],
+    "at_or_above_75": [
+     0.13090909090909092,
+     0.09090909090909091,
+     0.1709090909090909
+    ]
+   },
+   {
+    "step": "L1 + E-after",
+    "assumptions": "A1-A3; echo that entered only after a reply containing it may have been taken from that reply",
+    "mean": 0.2751424766068958,
+    "at_or_above_25": [
+     0.36,
+     0.3018181818181818,
+     0.41818181818181815
+    ],
+    "at_or_above_50": [
+     0.23636363636363636,
+     0.18545454545454546,
+     0.2872727272727273
+    ],
+    "at_or_above_75": [
+     0.15272727272727274,
+     0.11272727272727273,
+     0.19636363636363635
+    ]
+   },
+   {
+    "step": "L2 + E-after + X-with-C",
+    "assumptions": "A1-A2; edited chatbot text that entered in the same paste as chatbot-first text",
+    "mean": 0.39843726569780485,
+    "at_or_above_25": [
+     0.49818181818181817,
+     0.4399090909090909,
+     0.5563636363636364
+    ],
+    "at_or_above_50": [
+     0.37454545454545457,
+     0.32,
+     0.43272727272727274
+    ],
+    "at_or_above_75": [
+     0.2727272727272727,
+     0.22181818181818183,
+     0.32727272727272727
+    ]
+   },
+   {
+    "step": "L3 + E-after + all X",
+    "assumptions": "A1-A2; any large unmatched insertion may be edited chatbot text",
+    "mean": 0.7843516346016417,
+    "at_or_above_25": [
+     0.9018181818181819,
+     0.8654545454545455,
+     0.9345454545454546
+    ],
+    "at_or_above_50": [
+     0.8181818181818182,
+     0.7709090909090909,
+     0.8618181818181818
+    ],
+    "at_or_above_75": [
+     0.6981818181818182,
+     0.6436363636363637,
+     0.7527272727272727
+    ]
+   },
+   {
+    "step": "L4 + all E + all X",
+    "assumptions": "A2 only: replies not logged (A1 dropped), so echo that came first may also be chatbot text",
+    "mean": 0.8813435491103522,
+    "at_or_above_25": [
+     0.96,
+     0.9345454545454546,
+     0.9818181818181818
+    ],
+    "at_or_above_50": [
+     0.92,
+     0.8836363636363637,
+     0.9490909090909091
+    ],
+    "at_or_above_75": [
+     0.8581818181818182,
+     0.8181818181818182,
+     0.8981818181818182
+    ]
+   },
+   {
+    "step": "L5 + all E + all X + T",
+    "assumptions": "no assumption: typed text may be chatbot text retyped with changes",
+    "mean": 1.0,
+    "at_or_above_25": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "at_or_above_50": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "at_or_above_75": [
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  ],
+  "table4_counts_for_reference": {
+   "C_plus_large_E": [
+    0.33454545454545453,
+    0.28,
+    0.3927272727272727
+   ],
+   "C_plus_X_with_C": [
+    0.34545454545454546,
+    0.2872727272727273,
+    0.4072727272727273
+   ],
+   "C_plus_large_E_plus_X_with_C": [
+    0.4727272727272727,
+    0.41454545454545455,
+    0.5309999999999995
+   ]
+  }
+ },
+ "F52_tau_rule": {
+  "keystroke_students": 63,
+  "insertions": 84481,
+  "typed_insertions": 69620,
+  "tau_hat_token_weighted_p99": 2,
+  "tau_hat_token_weighted_p99_bootstrap_2_5_97_5": [
+   1.0,
+   4.0
+  ],
+  "tau_hat_insertion_weighted_p99": 1,
+  "typed_tokens_in_insertions_le_tau": {
+   "1": 0.9812923479026691,
+   "2": 0.992315231750451,
+   "3": 0.9961078992599327,
+   "4": 0.9984942967939886,
+   "5": 0.9992755578914473,
+   "6": 0.999701700308243,
+   "8": 1.0,
+   "10": 1.0,
+   "13": 1.0,
+   "20": 1.0
+  },
+  "typed_share_by_size": {
+   "1": {
+    "insertions": 82250,
+    "typed": 0.83990273556231
+   },
+   "2": {
+    "insertions": 1252,
+    "typed": 0.30990415335463256
+   },
+   "3": {
+    "insertions": 143,
+    "typed": 0.6223776223776224
+   },
+   "4": {
+    "insertions": 101,
+    "typed": 0.4158415841584158
+   },
+   "5": {
+    "insertions": 47,
+    "typed": 0.23404255319148937
+   },
+   "6": {
+    "insertions": 28,
+    "typed": 0.17857142857142858
+   },
+   "7": {
+    "insertions": 16,
+    "typed": 0.1875
+   },
+   "8": {
+    "insertions": 9,
+    "typed": 0.0
+   },
+   "9": {
+    "insertions": 6,
+    "typed": 0.0
+   },
+   "10": {
+    "insertions": 12,
+    "typed": 0.0
+   },
+   "11": {
+    "insertions": 17,
+    "typed": 0.0
+   },
+   "12": {
+    "insertions": 6,
+    "typed": 0.0
+   },
+   "13": {
+    "insertions": 10,
+    "typed": 0.0
+   },
+   "14": {
+    "insertions": 21,
+    "typed": 0.0
+   },
+   "15": {
+    "insertions": 22,
+    "typed": 0.0
+   },
+   "16": {
+    "insertions": 16,
+    "typed": 0.0
+   },
+   "17": {
+    "insertions": 19,
+    "typed": 0.0
+   },
+   "18": {
+    "insertions": 8,
+    "typed": 0.0
+   },
+   "19": {
+    "insertions": 6,
+    "typed": 0.0
+   },
+   "20": {
+    "insertions": 7,
+    "typed": 0.0
+   },
+   "21": {
+    "insertions": 485,
+    "typed": 0.0
+   }
+  },
+  "grid": {
+   "1": {
+    "mean_T": 0.0906655892847398,
+    "mean_X": 0.5352730400045617,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "2": {
+    "mean_T": 0.1031081703810052,
+    "mean_X": 0.5228304589082962,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "3": {
+    "mean_T": 0.10802944251934088,
+    "mean_X": 0.5179091867699605,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "4": {
+    "mean_T": 0.11288222953185913,
+    "mean_X": 0.5130563997574423,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "5": {
+    "mean_T": 0.11672947129455552,
+    "mean_X": 0.5092091579947458,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "6": {
+    "mean_T": 0.1197230860934992,
+    "mean_X": 0.5062155431958022,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "8": {
+    "mean_T": 0.12491161839409909,
+    "mean_X": 0.5010270108952022,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "10": {
+    "mean_T": 0.12883314809393423,
+    "mean_X": 0.4971054811953671,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "13": {
+    "mean_T": 0.136858689105794,
+    "mean_X": 0.4890799401835074,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "20": {
+    "mean_T": 0.1531521118715341,
+    "mean_X": 0.4727865174177673,
+    "C_plus_X_with_C_unchanged": true
+   }
+  }
+ },
+ "F53_C_census": {
+  "runs": 354,
+  "students": 57,
+  "tokens": 13418,
+  "not_typed": [
+   0.847457627118644,
+   0.7671047496389962,
+   0.9151946045915731
+  ],
+  "typed": [
+   0.05649717514124294,
+   0.020309379543667294,
+   0.09883803048219682
+  ],
+  "pasted_shortcut": [
+   0.2231638418079096,
+   0.1370904074702886,
+   0.3284039865244245
+  ],
+  "selected": [
+   0.8163841807909604,
+   0.7399815950920245,
+   0.8820307336417713
+  ],
+  "in_logged_paste": [
+   0.8813559322033898,
+   0.798020933128952,
+   0.9427101072888283
+  ],
+  "selected_or_pasted_shortcut": [
+   0.8361581920903954,
+   0.7581647308604971,
+   0.8989487994769998
+  ],
+  "token_weighted": {
+   "not_typed": 0.7957221642569683,
+   "typed": 0.030406916082873752,
+   "selected": 0.9499180205693845,
+   "pasted_shortcut": 0.4625130421821434
+  },
+  "students_with_logged_pastes": {
+   "runs": 352,
+   "in_logged_paste": [
+    0.8863636363636364,
+    0.8076742627345844,
+    0.9465709761247361
+   ]
+  },
+  "not_selected": {
+   "runs": 65,
+   "typed": 0.1076923076923077,
+   "pasted_shortcut": 0.1076923076923077,
+   "chat_window_opened_near": 0.07692307692307693,
+   "neither_typed_nor_shortcut": 0.7846153846153846
+  }
+ },
+ "F54_nonselected_C_audit_passages": [
+  {
+   "tokens": 9,
+   "keys": 42,
+   "chars": 47,
+   "pasted_shortcut": false,
+   "in_logged_paste": false,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 11,
+   "keys": 1,
+   "chars": 62,
+   "pasted_shortcut": false,
+   "in_logged_paste": false,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 1,
+   "chars": 59,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 12,
+   "keys": 2,
+   "chars": 84,
+   "pasted_shortcut": false,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 9,
+   "keys": 1,
+   "chars": 59,
+   "pasted_shortcut": false,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 1,
+   "chars": 69,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 2,
+   "chars": 47,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  }
+ ],
+ "seconds": 143
+}
