@@ -1,0 +1,171 @@
+{
+ "n_release": 275,
+ "n_reported": 279,
+ "n_missing": 4,
+ "ladder": [
+  {
+   "step": "L0 lower: C only",
+   "mean_release": 0.23639070545454544,
+   "mean_279_low": 0.23300159139784943,
+   "mean_279_high": 0.24733850896057344,
+   "at_or_above_25": {
+    "count_release": 84,
+    "share_release": 0.3054545454545455,
+    "share_279_low": 0.3010752688172043,
+    "share_279_high": 0.3154121863799283
+   },
+   "at_or_above_50": {
+    "count_release": 55,
+    "share_release": 0.2,
+    "share_279_low": 0.1971326164874552,
+    "share_279_high": 0.2114695340501792
+   },
+   "at_or_above_75": {
+    "count_release": 36,
+    "share_release": 0.13090909090909092,
+    "share_279_low": 0.12903225806451613,
+    "share_279_high": 0.14336917562724014
+   }
+  },
+  {
+   "step": "L1 + E-after",
+   "mean_release": 0.2751424763636363,
+   "mean_279_low": 0.2711977813620071,
+   "mean_279_high": 0.28553469892473116,
+   "at_or_above_25": {
+    "count_release": 99,
+    "share_release": 0.36,
+    "share_279_low": 0.3548387096774194,
+    "share_279_high": 0.36917562724014336
+   },
+   "at_or_above_50": {
+    "count_release": 65,
+    "share_release": 0.23636363636363636,
+    "share_279_low": 0.23297491039426524,
+    "share_279_high": 0.24731182795698925
+   },
+   "at_or_above_75": {
+    "count_release": 42,
+    "share_release": 0.15272727272727274,
+    "share_279_low": 0.15053763440860216,
+    "share_279_high": 0.16487455197132617
+   }
+  },
+  {
+   "step": "L2 + E-after + X-with-C",
+   "mean_release": 0.3984372581818182,
+   "mean_279_low": 0.39272489605734767,
+   "mean_279_high": 0.40706181362007166,
+   "at_or_above_25": {
+    "count_release": 137,
+    "share_release": 0.49818181818181817,
+    "share_279_low": 0.4910394265232975,
+    "share_279_high": 0.5053763440860215
+   },
+   "at_or_above_50": {
+    "count_release": 103,
+    "share_release": 0.37454545454545457,
+    "share_279_low": 0.36917562724014336,
+    "share_279_high": 0.3835125448028674
+   },
+   "at_or_above_75": {
+    "count_release": 75,
+    "share_release": 0.2727272727272727,
+    "share_279_low": 0.26881720430107525,
+    "share_279_high": 0.2831541218637993
+   }
+  },
+  {
+   "step": "L3 + E-after + all X",
+   "mean_release": 0.784351650909091,
+   "mean_279_low": 0.7731064659498208,
+   "mean_279_high": 0.7874433835125448,
+   "at_or_above_25": {
+    "count_release": 248,
+    "share_release": 0.9018181818181819,
+    "share_279_low": 0.8888888888888888,
+    "share_279_high": 0.9032258064516129
+   },
+   "at_or_above_50": {
+    "count_release": 225,
+    "share_release": 0.8181818181818182,
+    "share_279_low": 0.8064516129032258,
+    "share_279_high": 0.8207885304659498
+   },
+   "at_or_above_75": {
+    "count_release": 192,
+    "share_release": 0.6981818181818182,
+    "share_279_low": 0.6881720430107527,
+    "share_279_high": 0.7025089605734767
+   }
+  },
+  {
+   "step": "L4 + all E + all X",
+   "mean_release": 0.8813435672727273,
+   "mean_279_low": 0.8687078172043011,
+   "mean_279_high": 0.8830447347670252,
+   "at_or_above_25": {
+    "count_release": 264,
+    "share_release": 0.96,
+    "share_279_low": 0.946236559139785,
+    "share_279_high": 0.9605734767025089
+   },
+   "at_or_above_50": {
+    "count_release": 253,
+    "share_release": 0.92,
+    "share_279_low": 0.9068100358422939,
+    "share_279_high": 0.921146953405018
+   },
+   "at_or_above_75": {
+    "count_release": 236,
+    "share_release": 0.8581818181818182,
+    "share_279_low": 0.8458781362007168,
+    "share_279_high": 0.8602150537634409
+   }
+  },
+  {
+   "step": "L5 no assumption: every token",
+   "mean_release": 1.0,
+   "mean_279_low": 0.985663082437276,
+   "mean_279_high": 1.0,
+   "at_or_above_25": {
+    "count_release": 275,
+    "share_release": 1.0,
+    "share_279_low": 0.985663082437276,
+    "share_279_high": 1.0
+   },
+   "at_or_above_50": {
+    "count_release": 275,
+    "share_release": 1.0,
+    "share_279_low": 0.985663082437276,
+    "share_279_high": 1.0
+   },
+   "at_or_above_75": {
+    "count_release": 275,
+    "share_release": 1.0,
+    "share_279_low": 0.985663082437276,
+    "share_279_high": 1.0
+   }
+  }
+ ],
+ "identified_range_50": {
+  "release": [
+   0.2,
+   0.37454545454545457
+  ],
+  "worst_case_279": [
+   0.1971326164874552,
+   0.3835125448028674
+  ]
+ },
+ "wide_range_50": {
+  "release": [
+   0.2,
+   0.8181818181818182
+  ],
+  "worst_case_279": [
+   0.1971326164874552,
+   0.8207885304659498
+  ]
+ }
+}

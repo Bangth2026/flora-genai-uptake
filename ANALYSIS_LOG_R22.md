@@ -24,24 +24,24 @@ No threshold for success is set. The parameters are those fixed on FLoRA and are
 
 ## Results of the pre-specified outputs (run at 09:27 UTC, after the plan above was pushed in commit 9c02c2b)
 
-77 students, 29,692 tokens of final text; 6 students sent no prompt. Mean class shares: C 47.6%, E 5.0%, S 0.6%, T 24.2%, X 22.6%.
+[Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
 
-- N-1. Of the C tokens, 80.9% entered by a paste of text copied from a ChatGPT reply and 9.5% by typing; the rest entered by pastes with no matching copy event (6.9%), by moves within the editor (0.9%) or by other operations (1.7%). No C token entered by a paste whose source was the essay prompt.
-- N-2. Of the ChatGPT-copied tokens of the final texts, 96.2% were labelled C, 2.8% E, 0.8% X and 0.1% T.
-- N-3. ChatGPT-copied: 18.7% of E tokens, 1.5% of X tokens, 0.2% of T tokens.
-- N-4. Spearman correlation of U with the dataset's `GPT Final %` 0.88 and with the copied share 0.85; mean absolute difference 12.2 points; mean U 47.6% against 41.0%; at or above half: 50.6% of students by U, 41.6% by `GPT Final %`, 45.5% by the copied share; agreement at half 83%.
-- N-5. Naive overlap: mean 52.6% of the text; 55.8% of students at or above half.
+- N-1. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-2. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-3. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-4. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-5. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
 
 ## Post hoc analyses (written after the results above were seen; src/r22_nirvana_posthoc.py, src/r22_flora_survey.py, src/r22_benchmark.py)
 
-- N-6. Tolerant matching on NIRVANA (one token may differ): C 47.4%; 80.2% of C tokens ChatGPT-copied; 95.2% of copied tokens labelled C; ChatGPT-copied E 22.9%, X 1.0%.
-- N-7. C tokens without a ChatGPT copy event. Typed C: 1,384 tokens in 301 runs from 28 students, median run 2 tokens; 55% of these tokens lie in runs shorter than 12 tokens (words typed inside or at the edge of pasted chatbot passages, which the token priority assigns to C) and 38% in runs of at least 16 tokens (retyped chatbot passages); one typed run consisted only of 8-grams that also occur in replies given to other students. Pastes without a matching copy event: 1,004 C tokens from 4 students.
-- N-8. X tokens: 81.8% entered by insert operations of more than five tokens, 14.8% by pastes with no matching copy event, 1.5% by ChatGPT-copied pastes. 7.8% of the editor's insert operations insert more than five tokens (99th percentile of non-empty inserts: 13 tokens): the NIRVANA editor logs some typing in chunks, so assumption A2 holds only in part and the frozen tau = 5 sends chunked typing to X.
-- N-9. With tau = 13 taken from NIRVANA's own logs: T 41.4%, X 5.5%; C, E, S and every comparison with the copy signal for C are unchanged.
+- N-6. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-7. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-8. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-9. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
 - F-50. FLoRA post-task survey, free-text question on other tools: 11 of 180 respondents (6.1%) named an outside AI chatbot (ChatGPT, Claude, Copilot); their mean shares were C 25.9%, X 52.6%, X-with-C 23.9%, against C 20.6%, X 52.0%, X-with-C 20.2% for the other 166 respondents with labels.
 - B-47. Tolerant matching on the set with model-revised chatbot text (R21 B-46): C precision 0.912 and recall 0.912, against 0.996 and 0.825 for the attribution; surviving reply text labelled C after a model rewrite 0.85 (attribution 0.64); the model's own words labelled C 31-46% (attribution 0.6-5.4%); echo routes 24-25% (attribution 0%).
 
-The token-level NIRVANA labels are not released, because the NIRVANA files state no licence; the aggregate and per-student results are in `results/r22_nirvana.json` and `results/r22_nirvana_posthoc.json`, and the script recomputes the labels from the dataset.
+The token-level NIRVANA labels are not released, because the NIRVANA files state no licence; the aggregate and per-student results are in `results/r22_nirvana.json` and `results/r22_nirvana_posthoc.json`, and the script recomputes the labels from the dataset. (R26: these two results files and the NIRVANA scripts were removed from the repository in v1.26.0.)
 
 ## Correction to R21
 

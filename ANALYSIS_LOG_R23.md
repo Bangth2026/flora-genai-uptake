@@ -13,9 +13,9 @@ Written on 22 November 2026, after the analyses below had run, in response to a 
 
 When this entry was written the OSF project 3a8uh was no longer publicly accessible, and a request for access was not granted. The analyses below are computed from the stored outputs of R22 (`results/r22_nirvana.json`, `results/r22_nirvana_posthoc.json`); nothing was re-run on the raw data.
 
-- N-10. Tokens entered by a paste matched to a copy from a ChatGPT reply: 12,185 (41.0%), of which 96.2% labelled C. All other tokens: 17,507, of which 2,770 (15.8%) labelled C (typed 1,384; pasted without a copy event 1,004; other 382); the copy signal is silent on them. 80.9% of C lies in the first stratum.
-- N-11. Naive 8-gram overlap marks at least 99.0% of the copied tokens; 73.9% of the tokens it marks were copied (C: 80.9%). Spearman correlation with the dataset's share of pasted ChatGPT text: U 0.88 [0.77, 0.95], naive 0.85 [0.74, 0.93], paired difference 0.03 [-0.03, 0.09] (2,000 resamples, seed 2302). Echo: 344 of 1,838 tokens (18.7%) copied, 1,494 not.
-- N-12. Coincidence with the writer's own replies is at most 19.1% of C (C without a copy event). The 5.3% of the eighth version (typed C in runs shorter than 12 tokens) is a bound only if typed runs of 12 or more tokens are retyped reply passages and C pasted without a copy event came from a reply; neither premise can be tested from the stored outputs.
+- N-10. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-11. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
+- N-12. [Withdrawn in R26: NIRVANA result removed, because permission to publish results computed on the NIRVANA data could not be established after the OSF project was made private.]
 - Not run: sensitivity of N-1 to N-4 to the copy-matching threshold (0.3, 0.5, 0.8) and to excluding the essay-prompt pane from H. Both need the raw data. The student-level comparison with the dataset's own measure depends on neither.
 
 ## Not run: a hosted model of the same family
