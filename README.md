@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.24.0** produced every result reported in the article.
+Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.25.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -49,6 +49,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R22.md`, `results/r22_nirvana.json`, `results/r22_nirvana_posthoc.json`, `results/r22_flora_survey.json`, `results/r22_benchmark.json` | Log entry R22: the frozen attribution applied unchanged to NIRVANA (Jelson et al., 2026; OSF 3a8uh), with the plan pushed before the full run (`src/r22_nirvana.py`); post hoc analyses (`src/r22_nirvana_posthoc.py`), tolerant matching on model-revised chatbot text (`src/r22_benchmark.py`), FLoRA post-task survey answers naming outside chatbots (`src/r22_flora_survey.py`). NIRVANA token labels are not redistributed |
 | `ANALYSIS_LOG_R23.md`, `results/r23_flora.json`, `results/r23_flora_students.csv`, `results/r23_flora_xwithc.csv`, `results/r23_nirvana_agg.json` | Log entry R23, written after its analyses ran: the share of chatbot text as a range identified under nested assumptions, a data-driven entry threshold, a census of chatbot-first runs against keystrokes, panel selections and pastes (`src/r23_flora.py`, `src/r23_flora_xsub.py`); NIRVANA agreement by stratum, naive overlap on the copy signal and the bound on coincidence, computed from the stored R22 outputs because the NIRVANA project was no longer publicly accessible (`src/r23_nirvana_agg.py`) |
 | `ANALYSIS_LOG_R24.md`, `results/r24_coauthor*.json` | Log entry R24: the frozen attribution applied to CoAuthor (Lee, Liang & Yang, 2022), whose platform logged every accepted GPT-3 suggestion, with the plan and script pushed before the full run (`src/r24_coauthor.py`); sensitivity runs and one post hoc output. CoAuthor replaces NIRVANA as the hold-out set, because the NIRVANA project stopped being publicly accessible; the NIRVANA analyses of R22 and R23 stay in the history but are not used by the article. CoAuthor token labels are not redistributed |
+| `ANALYSIS_LOG_R25.md`, `results/r25_coauthor_range.json`, `results/r25_coauthor_range_posthoc.json` | Log entry R25: on CoAuthor, the share of sessions whose platform-logged share of model text lies inside the identified range under each set of assumptions, and the subtypes of the unresolved class (`src/r25_coauthor_range.py`, `src/r25_coauthor_range_posthoc.py`) |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -294,6 +295,8 @@ python -I src/r8_flora.py DATA R2_PASSAGES && python -I src/r8_rs.py RS_DIR PROM
 python -I src/r23_flora_xsub.py DATA results/flora_token_classes.csv.gz && python -I src/r23_flora.py DATA && python -I src/r23_nirvana_agg.py
 # R24 (COAUTHOR_DIR: the unzipped coauthor-v1.0 folder from https://coauthor.stanford.edu)
 for v in "" noprompt_H trimmed_only tau1 posthoc_len; do python -I src/r24_coauthor.py COAUTHOR_DIR $v; done
+# R25
+python -I src/r25_coauthor_range.py COAUTHOR_DIR && python -I src/r25_coauthor_range_posthoc.py
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
