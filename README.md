@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.25.0** produced every result reported in the article.
+Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.26.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -46,10 +46,11 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R15.md`, `results/r15_benchmark.json`, `results/r15_flora.json` | Log entry R15 (`src/r15_benchmark.py`, `src/r15_flora.py`): routes that break the definitions of T and X, routes that violate assumption A3, selective risk in the standard form, tolerant-matching and embedding-retrieval baselines; stepwise decomposition of the FLoRA naive-overlap estimate, replies to near-identical prompts. Written after its analyses ran, after an internal review; nothing changed |
 | `ANALYSIS_LOG_R20.md`, `results/r20_benchmark.json`, `results/r20b_benchmark.json`, `results/r20_flora.json` | Log entry R20 (`src/r20_benchmark.py`, `src/r20b_benchmark.py`, `src/r20_flora.py`, `src/r20_wikiwho.py`): weight of the A3 routes; structural editing of chatbot text; route mixes far from FLoRA; selective risk at the attribution's coverage and risk-coverage of the classifiers; earliest plausible attribution (n-gram and WikiWho) on the field logs; echo split by entry after the reply; numeric and function-word 8-grams; coincidence with replies to similar prompts. Written after test runs on small sets; nothing changed |
 | `ANALYSIS_LOG_R21.md`, `results/r21_benchmark.json`, `results/r21_flora_openmodel.json`, `results/r21_flora_example.json`, `results/r21_llm_revisions.json.gz`, `results/r21_openmodel_replies.json.gz`, `results/fig5_flora_proposals.png` | Log entry R21 (`src/r21_benchmark.py`, `src/r21_flora_openmodel.py`, `src/r21_flora_example.py`): chatbot text revised by an open language model in the benchmark; an open model's replies to the writers' own prompts compared verbatim with each class; four labelled FLoRA proposals by percentile of U. Open models (Qwen2.5-3B/1.5B-Instruct, Q4_K_M GGUF, llama.cpp, greedy) are research instruments only; every generated text is released. Written after test runs on small sets; nothing changed |
-| `ANALYSIS_LOG_R22.md`, `results/r22_nirvana.json`, `results/r22_nirvana_posthoc.json`, `results/r22_flora_survey.json`, `results/r22_benchmark.json` | Log entry R22: the frozen attribution applied unchanged to NIRVANA (Jelson et al., 2026; OSF 3a8uh), with the plan pushed before the full run (`src/r22_nirvana.py`); post hoc analyses (`src/r22_nirvana_posthoc.py`), tolerant matching on model-revised chatbot text (`src/r22_benchmark.py`), FLoRA post-task survey answers naming outside chatbots (`src/r22_flora_survey.py`). NIRVANA token labels are not redistributed |
-| `ANALYSIS_LOG_R23.md`, `results/r23_flora.json`, `results/r23_flora_students.csv`, `results/r23_flora_xwithc.csv`, `results/r23_nirvana_agg.json` | Log entry R23, written after its analyses ran: the share of chatbot text as a range identified under nested assumptions, a data-driven entry threshold, a census of chatbot-first runs against keystrokes, panel selections and pastes (`src/r23_flora.py`, `src/r23_flora_xsub.py`); NIRVANA agreement by stratum, naive overlap on the copy signal and the bound on coincidence, computed from the stored R22 outputs because the NIRVANA project was no longer publicly accessible (`src/r23_nirvana_agg.py`) |
-| `ANALYSIS_LOG_R24.md`, `results/r24_coauthor*.json` | Log entry R24: the frozen attribution applied to CoAuthor (Lee, Liang & Yang, 2022), whose platform logged every accepted GPT-3 suggestion, with the plan and script pushed before the full run (`src/r24_coauthor.py`); sensitivity runs and one post hoc output. CoAuthor replaces NIRVANA as the hold-out set, because the NIRVANA project stopped being publicly accessible; the NIRVANA analyses of R22 and R23 stay in the history but are not used by the article. CoAuthor token labels are not redistributed |
+| `ANALYSIS_LOG_R22.md`, `results/r22_flora_survey.json`, `results/r22_benchmark.json` | Log entry R22: the frozen attribution applied, unchanged, to NIRVANA (Jelson et al., 2026; OSF 3a8uh), with the plan pushed before the full run; tolerant matching on model-revised chatbot text (`src/r22_benchmark.py`) and FLoRA post-task survey answers naming outside chatbots (`src/r22_flora_survey.py`). The NIRVANA results, scripts and outputs were withdrawn in R26 |
+| `ANALYSIS_LOG_R23.md`, `results/r23_flora.json`, `results/r23_flora_students.csv`, `results/r23_flora_xwithc.csv` | Log entry R23, written after its analyses ran: the share of chatbot text as a range identified under nested assumptions, a data-driven entry threshold, a census of chatbot-first runs against keystrokes, panel selections and pastes (`src/r23_flora.py`, `src/r23_flora_xsub.py`). Its NIRVANA results were withdrawn in R26 |
+| `ANALYSIS_LOG_R24.md`, `results/r24_coauthor*.json` | Log entry R24: the frozen attribution applied to CoAuthor (Lee, Liang & Yang, 2022), whose platform logged every accepted GPT-3 suggestion, with the plan and script pushed before the full run (`src/r24_coauthor.py`); sensitivity runs and one post hoc output. CoAuthor replaces NIRVANA as the hold-out set, because the NIRVANA project stopped being publicly accessible; the NIRVANA results of R22 and R23 were withdrawn in R26. CoAuthor token labels are not redistributed |
 | `ANALYSIS_LOG_R25.md`, `results/r25_coauthor_range.json`, `results/r25_coauthor_range_posthoc.json` | Log entry R25: on CoAuthor, the share of sessions whose platform-logged share of model text lies inside the identified range under each set of assumptions, and the subtypes of the unresolved class (`src/r25_coauthor_range.py`, `src/r25_coauthor_range_posthoc.py`) |
+| `ANALYSIS_LOG_R26.md`, `results/r26_flora_missing.json` | Log entry R26, written after its analysis ran: worst-case bounds on the identified range for the four FLoRA students absent from the public release (`src/r26_flora_missing.py`); withdrawal of the NIRVANA results, scripts and outputs |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -291,12 +292,14 @@ python -I src/r6_flora.py DATA && python -I src/r6_rs.py RS_DIR PROMPT_TXT
 python -I src/r7_flora.py DATA && python -I src/r7_rs.py RS_DIR PROMPT_TXT && python -I src/make_fig_classes_r7.py && python -I src/make_flow_fig.py
 # R8 (R2_PASSAGES: results/r2_passages.pkl from src/r2_label.py)
 python -I src/r8_flora.py DATA R2_PASSAGES && python -I src/r8_rs.py RS_DIR PROMPT_TXT && python -I src/r8_rs_llm.py RS_DIR PROMPT_TXT && python -I src/r8_rs_tobit.py RS_DIR PROMPT_TXT
-# R23 (FLoRA: DATA as above; NIRVANA: from the stored R22 outputs)
-python -I src/r23_flora_xsub.py DATA results/flora_token_classes.csv.gz && python -I src/r23_flora.py DATA && python -I src/r23_nirvana_agg.py
+# R23 (FLoRA: DATA as above)
+python -I src/r23_flora_xsub.py DATA results/flora_token_classes.csv.gz && python -I src/r23_flora.py DATA
 # R24 (COAUTHOR_DIR: the unzipped coauthor-v1.0 folder from https://coauthor.stanford.edu)
 for v in "" noprompt_H trimmed_only tau1 posthoc_len; do python -I src/r24_coauthor.py COAUTHOR_DIR $v; done
 # R25
 python -I src/r25_coauthor_range.py COAUTHOR_DIR && python -I src/r25_coauthor_range_posthoc.py
+# R26 (from results/r23_flora_students.csv)
+python -I src/r26_flora_missing.py
 ```
 
 Licence: MIT (code). FLoRA data remain under their CC BY 4.0 licence; RelianceScope data may be used and redistributed with citation of Jin et al. (2026), as stated by the dataset authors.
@@ -337,9 +340,7 @@ python -I src/r21_flora_example.py results/fig5_flora_proposals.png
 ```
 
 ```
-# R22 (NIRVANA: download dataset.xlsx from https://osf.io/3a8uh/ ; md5 cf7d122ddf299b6885f83c200a3ef035)
-python -I src/r22_nirvana.py dataset.xlsx
-python -I src/r22_nirvana_posthoc.py dataset.xlsx
+# R22 (the NIRVANA part was withdrawn in R26)
 NSTUD=100 python -I src/r22_benchmark.py DATA R8_TOKEN_CLASSES WORK
 python -I src/r22_flora_survey.py DATA/5.7_post-experience_using_platform_survey.xlsx DATA/275_student_ids.csv
 ```
