@@ -1,0 +1,70 @@
+{
+ "n_per_set": 400,
+ "B48_tolerant_selective": {
+  "base": {
+   "common_coverage": 0.4545049214376016,
+   "tolerant_f1_full": 0.9230806269109468,
+   "tolerant": {
+    "coverage": 0.554813075672747,
+    "selective_risk": 0.067626953125,
+    "aurc_own_range": 0.010573328366207743,
+    "aurc_common_range": 0.0062199173866649,
+    "risk_at_common_coverage": 0.008506041151854566
+   },
+   "attribution": {
+    "coverage": 0.5157068358316778,
+    "selective_risk": 0.010538987688098495,
+    "aurc_own_range": 0.006652779261621804,
+    "aurc_common_range": 0.006279632236149847,
+    "risk_at_common_coverage": 0.008481205995206815
+   },
+   "earliest_plausible_iota": {
+    "coverage": 0.4926686382517609,
+    "selective_risk": 0.00995497920795482,
+    "aurc_own_range": 0.008434671581846328,
+    "aurc_common_range": 0.008365116498943875,
+    "risk_at_common_coverage": 0.00891582123654245
+   },
+   "tolerant_at_attribution_coverage": {
+    "coverage": 0.554813075672747,
+    "selective_risk": 0.067626953125,
+    "aurc_own_range": 0.010573328366207743,
+    "aurc_common_range": 0.007325728232873779,
+    "risk_at_common_coverage": 0.036640218878248976
+   }
+  },
+  "ext": {
+   "common_coverage": 0.46915298466891375,
+   "tolerant_f1_full": 0.8913369462275071,
+   "tolerant": {
+    "coverage": 0.6074643905621399,
+    "selective_risk": 0.0938185202752893,
+    "aurc_own_range": 0.05083744551624212,
+    "aurc_common_range": 0.0479731269963432,
+    "risk_at_common_coverage": 0.04644479466023917
+   },
+   "attribution": {
+    "coverage": 0.5546265086441231,
+    "selective_risk": 0.04945205748005254,
+    "aurc_own_range": 0.04989560897782706,
+    "aurc_common_range": 0.049891346769914316,
+    "risk_at_common_coverage": 0.05051219059979605
+   },
+   "earliest_plausible_iota": {
+    "coverage": 0.5371208002609547,
+    "selective_risk": 0.05066904188343894,
+    "aurc_own_range": 0.058219755740105114,
+    "aurc_common_range": 0.05891247571425057,
+    "risk_at_common_coverage": 0.05675813479187911
+   },
+   "tolerant_at_attribution_coverage": {
+    "coverage": 0.6074643905621399,
+    "selective_risk": 0.0938185202752893,
+    "aurc_own_range": 0.05083744551624212,
+    "aurc_common_range": 0.04812025831286266,
+    "risk_at_common_coverage": 0.06399851006685095
+   }
+  }
+ },
+ "seconds": 110.56989365900017
+}

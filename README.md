@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.27.0** produced every result reported in the article.
+Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.28.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -52,6 +52,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R25.md`, `results/r25_coauthor_range.json`, `results/r25_coauthor_range_posthoc.json` | Log entry R25: on CoAuthor, the share of sessions whose platform-logged share of model text lies inside the identified range under each set of assumptions, and the subtypes of the unresolved class (`src/r25_coauthor_range.py`, `src/r25_coauthor_range_posthoc.py`) |
 | `ANALYSIS_LOG_R26.md`, `results/r26_flora_missing.json` | Log entry R26, written after its analysis ran: worst-case bounds on the identified range for the four FLoRA students absent from the public release (`src/r26_flora_missing.py`); withdrawal of the NIRVANA results, scripts and outputs |
 | `ANALYSIS_LOG_R27.md` | Log entry R27, no analysis: removal of the NIRVANA outputs from the earlier releases v1.22.0 to v1.25.0 (deleted) and deletion of the downloaded copy of the data |
+| `ANALYSIS_LOG_R28.md`, `results/r28_*.json`, `results/r28_flora_students*.csv` | Log entry R28, written after its analyses ran: corrects a reading error of every earlier entry, which read only the first sheet of each workbook of the FLoRA system trace (`src/r28_read_trace.py`), and repeats the process-evidence analyses on the whole trace (`src/r28_process.py`, `src/r28_xsub_paste.py`); a lower end without typing-sized insertions, τ = 2 and the subgroups (`src/r28_flora.py`); tolerant matching with a confidence score (`src/r28_benchmark.py`); CoAuthor with conservative intervals and another reader of the replies (`src/r28_coauthor.py`) |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
@@ -269,7 +270,7 @@ python -I src/run_s1.py --data DATA --out results/s1_stats_echo_removed.json --l
 python -I src/align_check.py DATA
 python -I src/run_s1b_provenance.py DATA
 python -I src/run_s1.py --data DATA --out results/s1_stats_uprov.json --label results/Uprov_primary_0h.npy
-# R1 also needs Figshare files 5.2 (trace) and 5.8 (annotation) saved as DATA/trace.pkl and DATA/annot.pkl
+# R1 also needs Figshare files 5.2 (trace) and 5.8 (annotation) saved as DATA/trace.pkl and DATA/annot.pkl (entries R1-R27 read only the first sheet of each trace workbook; see R28)
 python -I src/r1_clock.py DATA
 python -I src/run_r1.py DATA
 python -I src/make_figs.py DATA && python -I src/make_pipeline_fig.py
@@ -299,6 +300,12 @@ python -I src/r23_flora_xsub.py DATA results/flora_token_classes.csv.gz && pytho
 for v in "" noprompt_H trimmed_only tau1 posthoc_len; do python -I src/r24_coauthor.py COAUTHOR_DIR $v; done
 # R25
 python -I src/r25_coauthor_range.py COAUTHOR_DIR && python -I src/r25_coauthor_range_posthoc.py
+# R28 (DATA_FULL: as DATA, with trace.pkl = DATA/trace_full.pkl written by the first command and pastes.pkl = the PASTE_TEXT_ESSAY rows of it)
+python -I src/r28_read_trace.py DATA
+for s in f62 f63 f64 f65; do python -I src/r28_process.py DATA_FULL $s; done
+python -I src/r28_flora.py DATA_FULL && python -I src/r28_flora.py DATA firstsheets && python -I src/r28_xsub_paste.py DATA_FULL
+python -I src/r28_benchmark.py DATA R8_TOKEN_CLASSES WORK
+python -I src/r28_coauthor.py COAUTHOR_DIR && python -I src/r28_coauthor.py COAUTHOR_DIR selected_only
 # R26 (from results/r23_flora_students.csv)
 python -I src/r26_flora_missing.py
 ```

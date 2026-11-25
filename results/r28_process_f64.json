@@ -1,0 +1,292 @@
+{
+ "F52_tau_rule": {
+  "keystroke_students": 234,
+  "insertions": 297485,
+  "typed_insertions": 249735,
+  "tau_hat_token_weighted_p99": 2,
+  "tau_hat_token_weighted_p99_bootstrap_2_5_97_5": [
+   1.0,
+   2.0
+  ],
+  "tau_hat_insertion_weighted_p99": 1,
+  "typed_tokens_in_insertions_le_tau": {
+   "1": 0.9892955952309866,
+   "2": 0.9977428793216696,
+   "3": 0.9988774108795605,
+   "4": 0.9995780338767143,
+   "5": 0.9997969785633247,
+   "6": 0.9999164029378396,
+   "8": 1.0,
+   "10": 1.0,
+   "13": 1.0,
+   "20": 1.0
+  },
+  "typed_share_by_size": {
+   "1": {
+    "insertions": 291116,
+    "typed": 0.8536665796452273
+   },
+   "2": {
+    "insertions": 3621,
+    "typed": 0.2930129798398233
+   },
+   "3": {
+    "insertions": 196,
+    "typed": 0.4846938775510204
+   },
+   "4": {
+    "insertions": 184,
+    "typed": 0.2391304347826087
+   },
+   "5": {
+    "insertions": 97,
+    "typed": 0.1134020618556701
+   },
+   "6": {
+    "insertions": 53,
+    "typed": 0.09433962264150944
+   },
+   "7": {
+    "insertions": 45,
+    "typed": 0.06666666666666667
+   },
+   "8": {
+    "insertions": 43,
+    "typed": 0.0
+   },
+   "9": {
+    "insertions": 44,
+    "typed": 0.0
+   },
+   "10": {
+    "insertions": 42,
+    "typed": 0.0
+   },
+   "11": {
+    "insertions": 45,
+    "typed": 0.0
+   },
+   "12": {
+    "insertions": 35,
+    "typed": 0.0
+   },
+   "13": {
+    "insertions": 36,
+    "typed": 0.0
+   },
+   "14": {
+    "insertions": 54,
+    "typed": 0.0
+   },
+   "15": {
+    "insertions": 53,
+    "typed": 0.0
+   },
+   "16": {
+    "insertions": 53,
+    "typed": 0.0
+   },
+   "17": {
+    "insertions": 53,
+    "typed": 0.0
+   },
+   "18": {
+    "insertions": 34,
+    "typed": 0.0
+   },
+   "19": {
+    "insertions": 25,
+    "typed": 0.0
+   },
+   "20": {
+    "insertions": 38,
+    "typed": 0.0
+   },
+   "21": {
+    "insertions": 1618,
+    "typed": 0.0
+   }
+  },
+  "grid": {
+   "1": {
+    "mean_T": 0.0906655892847398,
+    "mean_X": 0.5352730400045617,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "2": {
+    "mean_T": 0.1031081703810052,
+    "mean_X": 0.5228304589082962,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "3": {
+    "mean_T": 0.10802944251934088,
+    "mean_X": 0.5179091867699605,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "4": {
+    "mean_T": 0.11288222953185913,
+    "mean_X": 0.5130563997574423,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "5": {
+    "mean_T": 0.11672947129455552,
+    "mean_X": 0.5092091579947458,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "6": {
+    "mean_T": 0.1197230860934992,
+    "mean_X": 0.5062155431958022,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "8": {
+    "mean_T": 0.12491161839409909,
+    "mean_X": 0.5010270108952022,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "10": {
+    "mean_T": 0.12883314809393423,
+    "mean_X": 0.4971054811953671,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "13": {
+    "mean_T": 0.136858689105794,
+    "mean_X": 0.4890799401835074,
+    "C_plus_X_with_C_unchanged": true
+   },
+   "20": {
+    "mean_T": 0.1531521118715341,
+    "mean_X": 0.4727865174177673,
+    "C_plus_X_with_C_unchanged": true
+   }
+  }
+ },
+ "F53_C_census": {
+  "runs": 1280,
+  "students": 193,
+  "tokens": 45303,
+  "not_typed": [
+   0.82578125,
+   0.7708808034671579,
+   0.8772238818589183
+  ],
+  "typed": [
+   0.05625,
+   0.030468452569796953,
+   0.08641647028017803
+  ],
+  "pasted_shortcut": [
+   0.3265625,
+   0.26051281109826024,
+   0.4001640307960708
+  ],
+  "selected": [
+   0.82421875,
+   0.7759120485286711,
+   0.8654394883830777
+  ],
+  "in_logged_paste": [
+   0.83671875,
+   0.7747642836831883,
+   0.8984835828567757
+  ],
+  "selected_or_pasted_shortcut": [
+   0.85625,
+   0.8147159961532936,
+   0.8911888633797801
+  ],
+  "token_weighted": {
+   "not_typed": 0.8376266472419045,
+   "typed": 0.03635520826435335,
+   "selected": 0.941615345562104,
+   "pasted_shortcut": 0.4869655431207646
+  },
+  "students_with_logged_pastes": {
+   "runs": 1257,
+   "in_logged_paste": [
+    0.8520286396181385,
+    0.7888971904924049,
+    0.9064691558441559
+   ]
+  },
+  "not_selected": {
+   "runs": 225,
+   "typed": 0.12444444444444444,
+   "pasted_shortcut": 0.18222222222222223,
+   "chat_window_opened_near": 0.08888888888888889,
+   "neither_typed_nor_shortcut": 0.6933333333333334
+  }
+ },
+ "F54_nonselected_C_audit_passages": [
+  {
+   "tokens": 9,
+   "keys": 42,
+   "chars": 47,
+   "pasted_shortcut": false,
+   "in_logged_paste": false,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 11,
+   "keys": 1,
+   "chars": 62,
+   "pasted_shortcut": false,
+   "in_logged_paste": false,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 1,
+   "chars": 59,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 12,
+   "keys": 2,
+   "chars": 84,
+   "pasted_shortcut": false,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 9,
+   "keys": 1,
+   "chars": 59,
+   "pasted_shortcut": false,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 1,
+   "chars": 69,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  },
+  {
+   "tokens": 8,
+   "keys": 2,
+   "chars": 47,
+   "pasted_shortcut": true,
+   "in_logged_paste": true,
+   "has_logged_pastes": true,
+   "chat_window_opened_near": false,
+   "selected_recomputed": false
+  }
+ ],
+ "seconds": 169
+}
