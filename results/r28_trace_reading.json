@@ -1,0 +1,16 @@
+{
+ "rows_by_sheet": {
+  "trace1.xlsx:Result 1": 1035347,
+  "trace1.xlsx:Result 2": 1031485,
+  "trace1.xlsx:Result 3": 1045908,
+  "trace1.xlsx:Result 4": 623612,
+  "trace2.xlsx:Result 1": 1036441,
+  "trace2.xlsx:Result 2": 1046963,
+  "trace2.xlsx:Result 3": 1044735,
+  "trace2.xlsx:Result 4": 677633
+ },
+ "rows_total": 7542124,
+ "students_total": 275,
+ "rows_in_trace_pkl": 2071788,
+ "students_in_trace_pkl": 71
+}
