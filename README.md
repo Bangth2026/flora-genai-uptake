@@ -1,6 +1,6 @@
 # Bidirectional provenance attribution of chatbot text in writing (FLoRA) and programming (RelianceScope)
 
-Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.26.0** produced every result reported in the article.
+Companion code for the article *What dialogue and editor logs can establish about chatbot text in student writing: token-level provenance with direction and abstention* (under review at Information Processing & Management; earlier titles: *Direction and abstention in token-level provenance attribution of chatbot text from dialogue and editor logs*; *Bidirectional provenance attribution and selective prediction for human–AI co-authored documents*). Version **v1.27.0** produced every result reported in the article.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24101339.svg)](https://doi.org/10.5281/zenodo.24101339)
 
@@ -51,6 +51,7 @@ Code, a dated analysis log and statistics files for a study that attributes each
 | `ANALYSIS_LOG_R24.md`, `results/r24_coauthor*.json` | Log entry R24: the frozen attribution applied to CoAuthor (Lee, Liang & Yang, 2022), whose platform logged every accepted GPT-3 suggestion, with the plan and script pushed before the full run (`src/r24_coauthor.py`); sensitivity runs and one post hoc output. CoAuthor replaces NIRVANA as the hold-out set, because the NIRVANA project stopped being publicly accessible; the NIRVANA results of R22 and R23 were withdrawn in R26. CoAuthor token labels are not redistributed |
 | `ANALYSIS_LOG_R25.md`, `results/r25_coauthor_range.json`, `results/r25_coauthor_range_posthoc.json` | Log entry R25: on CoAuthor, the share of sessions whose platform-logged share of model text lies inside the identified range under each set of assumptions, and the subtypes of the unresolved class (`src/r25_coauthor_range.py`, `src/r25_coauthor_range_posthoc.py`) |
 | `ANALYSIS_LOG_R26.md`, `results/r26_flora_missing.json` | Log entry R26, written after its analysis ran: worst-case bounds on the identified range for the four FLoRA students absent from the public release (`src/r26_flora_missing.py`); withdrawal of the NIRVANA results, scripts and outputs |
+| `ANALYSIS_LOG_R27.md` | Log entry R27, no analysis: removal of the NIRVANA outputs from the earlier releases v1.22.0 to v1.25.0 (deleted) and deletion of the downloaded copy of the data |
 | `results/r7_flora.json`, `results/r7_rs.json` | R7 analyses (`src/r7_flora.py`, `src/r7_rs.py`); figures `src/make_flow_fig.py` (text-flow diagram) and `src/make_fig_classes_r7.py` (class figure with panel b from the R4 attribution) |
 
 ## Main results (log entry R1, primary measure U*)
